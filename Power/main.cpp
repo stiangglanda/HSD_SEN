@@ -5,21 +5,20 @@ using namespace std;
 double power(int initalValue, int power)
 {
     double p=1.0;
-    int i=initalValue;
 
-    if (initalValue < 0)
+    if (initalValue == 0)
     {
-        i=-initalValue;
+        return 1;
     }
 
+    int positive_exp = power > 0 ? power : -power;
 
-    while ( i > 0)
+    for (int i = 0; i < positive_exp; ++i)
     {
-        p*=initalValue;
-        i--;
+        p *= initalValue;
     }
 
-    if (initalValue<0) {
+    if (power<0) {
         p=1/p;
     }
 
