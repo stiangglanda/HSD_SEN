@@ -2,14 +2,27 @@
 
 using namespace std;
 
-int power(int initalValue, int power)
+double power(int initalValue, int power)
 {
-    int p=1;
+    double p=1.0;
+    int i=initalValue;
 
-    for (int i = 1; i <= power; i++)
+    if (initalValue < 0)
+    {
+        i=-initalValue;
+    }
+
+
+    while ( i > 0)
     {
         p*=initalValue;
+        i--;
     }
+
+    if (initalValue<0) {
+        p=1/p;
+    }
+
     return p;
 }
 
