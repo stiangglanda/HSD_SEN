@@ -2,6 +2,9 @@
 #include <vector>
 
 bool IsPrime(const int potentialPrime) {
+    if (potentialPrime<2)
+        return false;
+
     for (int i = 2; i < potentialPrime; i++)// clamp(potentialPrime/2)
     {
         if (potentialPrime % i == 0)
@@ -52,7 +55,6 @@ int main() {
 
 
     int primeDivisionResult=input;
-
     int currentPrimeNumber=GetNextSmallestPrime(input);
 
     do
@@ -62,7 +64,10 @@ int main() {
             primeDivisionResult=primeDivisionResult/currentPrimeNumber;
             primeNumbers.push_back(currentPrimeNumber);
         }
-    } while (MultiplyArray(primeNumbers)==input);
+        else {
+            currentPrimeNumber=GetNextSmallestPrime(currentPrimeNumber-1);
+        }
+    } while (MultiplyArray(primeNumbers)!=input);
 
     PrintResult(primeNumbers);
     return 0;
