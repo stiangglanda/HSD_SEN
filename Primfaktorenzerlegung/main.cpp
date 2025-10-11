@@ -2,6 +2,7 @@
 
 int main() {
     int input=0;
+    int currentPrimeNumber=2;
 
     std::cout << "Eingabe: ";
     std::cin >> input;
@@ -11,9 +12,7 @@ int main() {
         return 0;
     }
 
-
     int primeDivisionResult=input;
-    int currentPrimeNumber=2;
 
     std::cout << "Ausgabe: ";
 
