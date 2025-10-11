@@ -36,8 +36,8 @@ int MultiplyArray(const std::vector<int> &arrayToMultiply) {
 
 void PrintResult(const std::vector<int> &arrayToPrint) {
     std::cout << "Ausgabe: ";
-    for (int i = 0; i < arrayToPrint.size(); i++) {
-        if (i == arrayToPrint.size() - 1) {
+    for (int i = arrayToPrint.size()-1; i >= 0; i--) {
+        if (i == 0) {
             std::cout << arrayToPrint[i];
         }
         else {
