@@ -20,19 +20,6 @@ int GetNextPrime(const int startValue) {
     }
 }
 
-int MultiplyArray(const std::vector<int> &arrayToMultiply) {
-    if (arrayToMultiply.empty()) {
-        return 0;
-    }
-    int result=arrayToMultiply[0];
-
-    for (int i = 1; i < arrayToMultiply.size(); i++) {
-        result*=arrayToMultiply[i];
-    }
-
-    return result;
-}
-
 void PrintResult(const std::vector<int> &arrayToPrint) {
     std::cout << "Ausgabe: ";
     for (int i = 0; i < arrayToPrint.size(); i++) {
@@ -60,7 +47,7 @@ int main() {
     int primeDivisionResult=input;
     int currentPrimeNumber=2;
 
-    do
+    while (primeDivisionResult>1)
     {
         if (primeDivisionResult%currentPrimeNumber==0)
         {
@@ -68,9 +55,10 @@ int main() {
             primeNumbers.push_back(currentPrimeNumber);
         }
         else {
-            currentPrimeNumber=GetNextPrime(currentPrimeNumber+1);
+            currentPrimeNumber++;
+            //currentPrimeNumber=GetNextPrime(currentPrimeNumber+1);
         }
-    } while (MultiplyArray(primeNumbers)!=input);
+    }
 
     PrintResult(primeNumbers);
     return 0;
