@@ -37,21 +37,25 @@ int MultiplyArray(const std::vector<int> &arrayToMultiply) {
 void PrintResult(const std::vector<int> &arrayToPrint) {
     std::cout << "Ausgabe: ";
     for (int i = arrayToPrint.size()-1; i >= 0; i--) {
-        if (i == 0) {
-            std::cout << arrayToPrint[i];
-        }
-        else {
-            std::cout << arrayToPrint[i]<<", ";
+        std::cout << arrayToPrint[i];
+
+        if (i != 0) {
+            std::cout << ", ";
         }
     }
 }
 
 int main() {
-    std::vector<int> primeNumbers={};
+    std::vector<int> primeNumbers;
     int input=0;
 
     std::cout << "Eingabe: ";
     std::cin >> input;
+
+    if (input<2) {
+        std::cout << "The input number should be at least 2";
+        return 0;
+    }
 
 
     int primeDivisionResult=input;
