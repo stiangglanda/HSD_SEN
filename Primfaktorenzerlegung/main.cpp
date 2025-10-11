@@ -13,12 +13,11 @@ bool IsPrime(const int potentialPrime) {
     return true;
 }
 
-int GetNextSmallestPrime(const int startValue) {
-    for (int i = startValue; i >= 2; i--) {
+int GetNextPrime(const int startValue) {
+    for (int i = startValue; true; i++) {
         if (IsPrime(i))
             return i;
     }
-    return 0;
 }
 
 int MultiplyArray(const std::vector<int> &arrayToMultiply) {
@@ -36,10 +35,10 @@ int MultiplyArray(const std::vector<int> &arrayToMultiply) {
 
 void PrintResult(const std::vector<int> &arrayToPrint) {
     std::cout << "Ausgabe: ";
-    for (int i = arrayToPrint.size()-1; i >= 0; i--) {
+    for (int i = 0; i < arrayToPrint.size(); i++) {
         std::cout << arrayToPrint[i];
 
-        if (i != 0) {
+        if (i != arrayToPrint.size()-1) {
             std::cout << ", ";
         }
     }
@@ -59,7 +58,7 @@ int main() {
 
 
     int primeDivisionResult=input;
-    int currentPrimeNumber=GetNextSmallestPrime(input);
+    int currentPrimeNumber=2;
 
     do
     {
@@ -69,7 +68,7 @@ int main() {
             primeNumbers.push_back(currentPrimeNumber);
         }
         else {
-            currentPrimeNumber=GetNextSmallestPrime(currentPrimeNumber-1);
+            currentPrimeNumber=GetNextPrime(currentPrimeNumber+1);
         }
     } while (MultiplyArray(primeNumbers)!=input);
 
