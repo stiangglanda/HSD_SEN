@@ -11,7 +11,7 @@ double power(int initalValue, int power)
         return 1;
     }
 
-    int positive_exp = power > 0 ? power : -power;
+    int positive_exp = power > 0 ? power : -power; // absolut value
 
     for (int i = 0; i < positive_exp; ++i)
     {
