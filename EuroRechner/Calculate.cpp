@@ -1,10 +1,13 @@
 #include <iostream>
 
+using namespace std;
+
 int main() {
     int euro = 0;
-    std::cout << "Please enter a number: ";
-    std::cin >> euro;
+    const float ATStoEuro = 13.7603;
+    cout << "Please enter a number: ";
+    cin >> euro;
 
-    std::cout << euro << " € sind " << euro * 14 << " in Schilling" << std::endl;
+    cout << euro << "€ sind " << euro * ATStoEuro << " Schilling(ATS)" << endl;
     return 0;
 }
