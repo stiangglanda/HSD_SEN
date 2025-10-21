@@ -88,8 +88,30 @@ int main() {
 
     x = 9;      //0b0000 1001
     x = x >> 3; //0b0000 0001
-    //x = 1 -> Division durch 6, schnellste Division
+    //x = 1 -> Division durch 8, schnellste Division
 
+
+    //Sequenzoperator
+    for (int i=0; i<x; i++, a++) {
+        std::cout << ".";
+    }
+
+    int j = 0, k = 5;
+
+    //IF-Anweisung
+
+    c=0;
+    if (c==0||c==244) {
+        std::cin>>c;
+    }
+    else {
+        std::cout<<c<<std::endl;
+    }
+
+    a = 9;
+    if (a % 2 == 0) {
+        std::cout<<"gerande zahl";
+    }
 
     return 0;
 }
