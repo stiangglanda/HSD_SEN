@@ -113,5 +113,22 @@ int main() {
         std::cout<<"gerande zahl";
     }
 
+    //switch
+    i=2;
+    switch (i)
+    {
+    case 0:
+        std::cout<<"Null";
+        break;
+    case 1:
+        std::cout<<"Eins";
+        break;
+    case 2:
+        std::cout<<"Zwei";
+        break;
+    default:
+        std::cout<<"Nicht 0, 1, 2"; break;
+    }
+
     return 0;
 }
