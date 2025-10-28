@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 int main() {
     //Arithmetische Operatoren
@@ -129,6 +130,35 @@ int main() {
     default:
         std::cout<<"Nicht 0, 1, 2"; break;
     }
+
+    //while-Schleife
+    int const max=100;
+    int m = 1;
+    int sum=0;
+    while (m <= max) {
+        sum = sum + m;
+        m++;
+    }
+
+    std::cout << "Summe von 1 bis "<<max<<": "<<sum<<std::endl;
+
+    // for-Schleife
+    sum=0;
+    for (int n=1; n<=max; n++) {
+        sum=sum+n;
+    }
+
+    cout << "Summe von 1 bis "<<max<<": "<<sum<<endl;
+
+    //do-while-Schleife
+    sum=0;
+    m=1;
+    do {
+        sum=sum+m;
+        m++;
+    } while (m <= max);
+
+    cout << "Summe von 1 bis "<<max<<": "<<sum<<endl;
 
     return 0;
 }
