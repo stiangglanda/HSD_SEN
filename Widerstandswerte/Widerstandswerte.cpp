@@ -29,8 +29,8 @@ int main()
 	while(resistanceValue > 0) {
 		resistanceDigitVec.insert(
 			resistanceDigitVec.begin(),
-			resistanceValue%10); //insert so you dont need invert
-		resistanceValue/=10;
+			resistanceValue % 10); //insert so you dont need invert
+		resistanceValue /= 10;
 	}
 
 	for (int i = 0; i < resistanceDigitVec.size(); i++) {
