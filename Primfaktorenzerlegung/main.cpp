@@ -1,29 +1,30 @@
 #include <iostream>
+using namespace std;
 
 int main() {
     int input=0;
     int currentPrimeNumber=2;
 
-    std::cout << "Eingabe: ";
-    std::cin >> input;
+    cout << "Eingabe: ";
+    cin >> input;
 
     if (input<2) {
-        std::cout << "The input number should be at least 2";
+        cerr << "The input number should be at least 2";
         return 0;
     }
 
     int primeDivisionResult=input;
 
-    std::cout << "Ausgabe: ";
+    cout << "Ausgabe: ";
 
     while (primeDivisionResult>1)
     {
         if (primeDivisionResult%currentPrimeNumber==0)
         {
             primeDivisionResult=primeDivisionResult/currentPrimeNumber;
-            std::cout << currentPrimeNumber;
+            cout << currentPrimeNumber;
             if (primeDivisionResult>1) {
-                std::cout << ", ";
+                cout << ", ";
             }
         }
         else {
