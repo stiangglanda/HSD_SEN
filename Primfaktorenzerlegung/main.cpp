@@ -9,7 +9,7 @@ int main() {
     cin >> input;
 
     if (input<2) {
-        cerr << "The input number should be at least 2";
+        cout << "The input number should be at least 2";
         return 0;
     }
 
