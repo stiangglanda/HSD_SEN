@@ -15,31 +15,31 @@ int main()
 	"rot","orange", "gelb", "grün",
 	"blau", "violett", "grau", "weiß"};
 	unsigned int multiplierZeroCount=0;
-	unsigned int resistenceValue=0;
-	vector<unsigned int> resistenceDigitVec;
+	unsigned int resistanceValue=0;
+	vector<unsigned int> resistanceDigitVec;
 
-	cout << "Eingabe von einem Wiederstandswert in Ohm zwischen: " << rangeMin << " und " << rangeMax << endl;
-	cin >> resistenceValue;
+	cout << "Eingabe von einem Widerstandswert in Ohm zwischen: " << rangeMin << " und " << rangeMax << endl;
+	cin >> resistanceValue;
 
-	if (resistenceValue < rangeMin || resistenceValue > rangeMax) {
+	if (resistanceValue < rangeMin || resistanceValue > rangeMax) {
 		cerr << "Resistence Value is out of bounds: Min: "<<rangeMin<<", Max: "<< rangeMax << endl;
 		return 1;
 	}
 
-	while(resistenceValue>0) {
-		resistenceDigitVec.insert(resistenceDigitVec.begin(),resistenceValue%10);//insert so you dont need invert
-		resistenceValue/=10;
+	while(resistanceValue>0) {
+		resistanceDigitVec.insert(resistanceDigitVec.begin(),resistanceValue%10);//insert so you dont need invert
+		resistanceValue/=10;
 	}
 
-	for (int i=0;i<resistenceDigitVec.size();i++) {
+	for (int i=0;i<resistanceDigitVec.size();i++) {
 		if (i<ringCount) {//Ring
-			cout << resistorColors[resistenceDigitVec[i]];
-			if (i < ringCount - 1) {
+			cout << resistorColors[resistanceDigitVec[i]];
+			if (i < ringCount - 1) {//so - is not printed if there is an error in the Multiplier
 				cout << "-";
 			}
 		}
 		else {//Multiplier
-			if (resistenceDigitVec[i]==0) {
+			if (resistanceDigitVec[i]==0) {
 				multiplierZeroCount++;
 			}
 			else {
