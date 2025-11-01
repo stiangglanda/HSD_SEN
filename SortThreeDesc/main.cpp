@@ -2,7 +2,7 @@
 #include <iostream>
 
 void Swap(int& a, int& b) {
-    int temp = a;
+    const int temp = a;
     a = b;
     b = temp;
 }
