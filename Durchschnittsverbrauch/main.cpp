@@ -2,7 +2,12 @@
 
 using namespace std;
 
+// Gibt den Durchnscnittsverbrauch pro 1/100 km zurück bei fehler giebt es -1 zurück
 float Durchnscnittsverbrauch(float Kilometer, float Treibstoffmenge) {
+    if (Kilometer==0) {
+        return -1;
+    }
+
     return ((Treibstoffmenge/Kilometer)/1)*100;
 }
 
@@ -10,12 +15,12 @@ int main() {
     float Kilometer = 0;
     float Treibstoffmenge = 0;
 
-    std::cout << "Kilometer eingabe:" << std::endl;
+    cout << "Kilometer eingabe:" << endl;
     cin >> Kilometer;
-    std::cout << "Treibstoffmenge eingabe:" << std::endl;
+    cout << "Treibstoffmenge eingabe:" << endl;
     cin >> Treibstoffmenge;
 
-    std::cout << "Verbrauch [1/100km]: " << Durchnscnittsverbrauch(Kilometer, Treibstoffmenge) << std::endl;
+    cout << "Verbrauch [1/100km]: " << Durchnscnittsverbrauch(Kilometer, Treibstoffmenge) << endl;
 
     return 0;
 }
