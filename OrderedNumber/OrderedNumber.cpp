@@ -2,7 +2,7 @@
 // Workfile : OrderedNumber.cpp
 // Author : Leander Kieweg
 // Date : 9. 11. 2025
-// Description : Some functions to merge different containers.
+// Description : Checks if a number is Ordered
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
@@ -13,16 +13,15 @@ using namespace std;
 
 int main() {
     int inputNumber = 0;
-    int currentDigit=0;
-    int neighborDigit=0;
-    //vector<unsigned int> resistanceDigitVec = {};
+    int currentDigit = 0;
+    int neighborDigit = 0;
 
-    cout << "Eingabe: " << endl;
+    cout << "Input: " << endl;
     cin >> inputNumber;
 
     if(inputNumber < 0) {
-        cout << "Eingabe: " << endl;
-        return 0;
+        cout << "Invalid Input" << endl;
+        return 1;
     }
     else if (inputNumber==0) {
         cout << "ordered" << endl;
@@ -33,10 +32,10 @@ int main() {
     inputNumber /= 10;
 
     while(inputNumber > 0) {
-        currentDigit=inputNumber % 10; //insert so you dont need invert
+        currentDigit=inputNumber % 10;//Digit extraction
         inputNumber /= 10;
 
-        if(abs(currentDigit-neighborDigit)!=1) {
+        if(abs(currentDigit-neighborDigit)>1) {//check if dignits are neighbors
             cout << "not ordered" << endl;
             return 0;
         }
