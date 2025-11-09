@@ -14,7 +14,6 @@ using namespace std;
 int main() {
     int inputNumber = 0;
     int currentDigit = 0;
-    int neighborDigit = 0;
 
     cout << "Input: " << endl;
     cin >> inputNumber;
@@ -23,12 +22,12 @@ int main() {
         cout << "Invalid Input" << endl;
         return 1;
     }
-    else if (inputNumber==0) {
+    else if (inputNumber<10) {
         cout << "ordered" << endl;
         return 0;
     }
 
-    neighborDigit=inputNumber % 10;
+    int neighborDigit=inputNumber % 10;
     inputNumber /= 10;
 
     while(inputNumber > 0) {
