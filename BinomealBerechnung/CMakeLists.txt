@@ -3,4 +3,6 @@ project(BinomealBerechnung)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(BinomealBerechnung main.cpp)
+add_executable(BinomealBerechnung main.cpp
+        binom.cpp
+        binom.h)
