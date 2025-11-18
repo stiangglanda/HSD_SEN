@@ -4,6 +4,5 @@
 // Schnittstelle mit
 // Funktions-Prototypen
 int Binomial(int n, int k);
-int Faculty(int x);
 
 #endif

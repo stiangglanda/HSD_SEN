@@ -1,5 +1,6 @@
 // Implementierung
 #include "binom.h"
+#include "faculty.h"
 
 int Binomial(int n, int k) {
     int fn=Faculty(n);
@@ -8,13 +9,4 @@ int Binomial(int n, int k) {
 
     int res=fn/(fk*fnk);
     return res;
-}
-
-int Faculty(int x) {
-    int f=1;
-
-    for (int i=2; i<=x; i++) {
-        f *= i;
-    }
-    return f;
 }
