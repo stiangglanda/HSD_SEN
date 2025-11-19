@@ -5,9 +5,9 @@
 
 typedef int Matrix[MATRIX_SIZE][MATRIX_SIZE];
 
-Matrix inputMatrix();
+void inputMatrix(Matrix result);
 void printMatrix(const Matrix m);
-Matrix addMatrices(const Matrix a, const Matrix b);
-Matrix multiplyMatrices(const Matrix a, const Matrix b);
+void addMatrices(const Matrix a, const Matrix b, Matrix result);
+void multiplyMatrices(const Matrix a, const Matrix b, Matrix result);
 
 #endif
