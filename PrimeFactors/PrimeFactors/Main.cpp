@@ -1,11 +1,13 @@
 #include <iostream>
 #include "Prime.h"
 
+
+
 using namespace std;
 
 int main() {
     int input = 0;
-
+	size_t number = 0;
     cout << "Eingabe: ";
     cin >> input;
 

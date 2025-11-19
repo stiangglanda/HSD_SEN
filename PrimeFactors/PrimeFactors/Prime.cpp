@@ -3,6 +3,17 @@
 
 using namespace std;
 
+bool Divides(size_t const divisor, size_t const dividend) {
+    return divisor % dividend == 0;
+}
+
+void PrintPrimeFactor(size_t const factor, bool const comma) {
+    cout << factor;
+    if (comma) {
+        cout << ", ";
+    }
+}
+
 void CalcPrimeFactors(size_t const number) {
     int currentPrimeNumber = 2;
     int primeDivisionResult = number;
@@ -19,16 +30,5 @@ void CalcPrimeFactors(size_t const number) {
         else {
             currentPrimeNumber++;
         }
-    }
-}
-
-bool Divides(size_t const divisor, size_t const dividend) {
-    return divisor % dividend == 0;
-}
-
-void PrintPrimeFactor(size_t const factor, bool const comma) {
-    cout << factor;
-    if (comma) {
-        cout << ", ";
     }
 }
