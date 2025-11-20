@@ -3,7 +3,7 @@
 
 const int matrix_size = 3;
 
-typedef int Matrix[matrix_size][matrix_size];
+typedef double Matrix[matrix_size][matrix_size];
 
 void inputMatrix(Matrix result);
 void printMatrix(const Matrix m);
