@@ -1,19 +1,16 @@
 #include <iostream>
 #include "Prime.h"
 
-
-
 using namespace std;
 
 int main() {
     int input = 0;
-	size_t number = 0;
     cout << "Eingabe: ";
     cin >> input;
 
     if (input < 2) {
         cout << "The input number should be at least 2";
-        return 0;
+        return 1;
     }
 
     CalcPrimeFactors(input);

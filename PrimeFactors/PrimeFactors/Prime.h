@@ -5,5 +5,3 @@
 void CalcPrimeFactors(size_t const number);
 
 #endif
-
-
