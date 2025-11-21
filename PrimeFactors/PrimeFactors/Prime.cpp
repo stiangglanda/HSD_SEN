@@ -1,4 +1,13 @@
-﻿#include "Prime.h"
+﻿///////////////////////////////////////////////////////////////////////////
+// Workfile : Prime.cpp
+// Author : Leander Kieweg
+// Date : 21. 11. 2025
+// Description : Prints the Sum of the Primenumbers of a given input
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
+
+#include "Prime.h"
 #include <iostream>
 
 using namespace std;
