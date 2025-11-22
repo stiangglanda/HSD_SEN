@@ -30,4 +30,6 @@ int main()
 	Matrix c = {};
 	multiplyMatrices(a, b, c);
 	printMatrix(c);
+
+	return 0;
 }
