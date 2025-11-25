@@ -95,8 +95,26 @@ int main() {
         cout << "nicht enthalten" << endl;
     }
     else {
-        cout << "Fefunden an Index " << pos << endl;
+        cout << "Gefunden an Index " << pos << endl;
     }
+
+    // rueckwerts suchen
+    // -----------------
+    pos = s.rfind("C++", s.npos);   // rfind(substring, Startposition von hinten)
+    cout << "Gefunden an Index " << pos << endl;
+
+    // Zahl in Zeichenketten konvertieren (inkl. Vorzeichen)
+    // -----------------------------------------------------
+    int ival=-123;
+    string si=to_string(ival); // "-123" als Zeichenkette
+    cout << si << endl;
+
+    double dval = 3.1415927;    // "3.141593" gerundet!
+    string sd=to_string(dval);
+    cout << sd << endl;
+
+    // todo next week
+
 
     return 0;
 }
