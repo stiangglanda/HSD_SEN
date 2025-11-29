@@ -14,7 +14,7 @@ using namespace std;
 
 int main()
 {
-	analyse("../../../SampleText.txt");
+	analyse("../SampleText.txt");
 
 	return 0;
 }
