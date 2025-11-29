@@ -12,32 +12,32 @@
 
 using namespace std;
 
-int getOpenIndex(string Text, int index) {
+int getOpenIndex(string Text, unsigned int index) {
 	int parenthesisPair=0;
 	for (int i = index; i >= 0; i--) {
 		if (Text[i] == ')') {
-			parenthesisPair++; // Wir laufen in einen verschachtelten Ausdruck rein
+			parenthesisPair++; // other parenthesis Pair
 		} else if (Text[i] == '(') {
 			if (parenthesisPair == 0) {
 				return i; // Gefunden!
 			} else {
-				parenthesisPair--; // Eine geschlossene Klammer wurde "aufgelöst"
+				parenthesisPair--; // other parenthesis Pair is complete
 			}
 		}
 	}
 	return -1;
 }
 
-int getCloseIndex(string Text, int index) {
+int getCloseIndex(string Text, unsigned int index) {
 	int parenthesisPair=0;
-	for (int i = index; i < Text.size(); i++) {
+	for (int i = index+1; i < Text.size(); i++) { //+1 ist wichtig
 		if (Text[i] == '(') {
-			parenthesisPair++; // Wir laufen in einen verschachtelten Ausdruck rein
+			parenthesisPair++; // other parenthesis Pair
 		} else if (Text[i] == ')') {
 			if (parenthesisPair == 0) {
-				return i; // Gefunden!
+				return i;
 			} else {
-				parenthesisPair--; // Eine verschachtelte Klammer wurde geschlossen
+				parenthesisPair--; // other parenthesis Pair is complete
 			}
 		}
 	}
@@ -45,6 +45,10 @@ int getCloseIndex(string Text, int index) {
 }
 
 string SucheKlammern(string Text, int index) {
+	if (index < 0 || index >= Text.size()) {
+		return "";
+	}
+
 	int openIndex = getOpenIndex(Text, index);
 	int CloseIndex = getCloseIndex(Text, index);
 
@@ -56,11 +60,28 @@ string SucheKlammern(string Text, int index) {
 		return "";
 	}
 
-	return Text.substr(openIndex, CloseIndex - openIndex);
+	return Text.substr(openIndex, CloseIndex - openIndex+1);
 }
 
 int main()
 {
-	cout << SucheKlammern("a * (b + c * (d + 1)) / (e - 2)", 13);
+	cout << SucheKlammern("a * (b + c * (d + 1)) / (e - 2)", 13)<<endl;
+	cout << SucheKlammern("a * (b + c * (d + 1)) / (e - 2)", 11)<<endl;
+	cout << SucheKlammern("a * (b + c * (d + 1)) / (e - 2)", 2)<<endl;
+	cout << SucheKlammern("", 0)<<endl;
+	cout << SucheKlammern("abc", 0)<<endl;
+	cout << SucheKlammern("abc", 2)<<endl;
+	cout << SucheKlammern("(a)", 1)<<endl;
+	cout << SucheKlammern("((a))", 2)<<endl;
+	cout << SucheKlammern("(a) + (b)", 6)<<endl;
+	cout << SucheKlammern("(a + b", 1)<<endl;
+	cout << SucheKlammern("a + b)", 1)<<endl;
+	cout << SucheKlammern("(a + (b)", 4)<<endl;
+	cout << SucheKlammern(")(", 1)<<endl;
+	cout << SucheKlammern(")(", 0)<<endl;
+	cout << SucheKlammern("(a)", 0)<<endl;
+	cout << SucheKlammern("(a)", 2)<<endl;
+	cout << SucheKlammern("test", -1)<<endl;
+	cout << SucheKlammern("test", 4)<<endl;
 	return 0;
 }
