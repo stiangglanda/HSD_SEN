@@ -1,20 +1,24 @@
 ﻿///////////////////////////////////////////////////////////////////////////
-// Workfile : Matrix.h
+// Workfile : Textstatistics.h
 // Author : Leander Kieweg
-// Date : 21. 11. 2025
-// Description : Matrix module with general matrix utility functions
+// Date : 29. 11. 2025
+// Description : calculates occurrences of characters in a text
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 
-#include <string>
 #ifndef TEXTSTATISTICS_H
 #define TEXTSTATISTICS_H
+#include <string>
 
-void analyse(std::string const& fileName);
+const unsigned int NUM_CATEGORIES = 29;
 
-void ReadFile(const std::string& fileName, char  text[100], size_t& textLen, bool& retFlag);
+struct AnalysisResult {
+    unsigned int counts[NUM_CATEGORIES];
+    size_t textLength;
+    bool success;
+};
 
-void PrintAnalyticsResult(unsigned int  charOcorencyCounter[29]);
+AnalysisResult AnalyseText(std::string const& fileName);
 
 #endif
