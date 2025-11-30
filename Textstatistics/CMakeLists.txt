@@ -1,7 +1,4 @@
-﻿# CMakeList.txt : CMake project for Matrix, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.10)
+﻿cmake_minimum_required (VERSION 3.10)
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -17,5 +14,3 @@ add_executable (Textstatistics "Textstatistics.cpp" "Textstatistics.h" "main.cpp
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Textstatistics PROPERTY CXX_STANDARD 20)
 endif()
-
-# TODO: Add tests and install targets if needed.
