@@ -113,8 +113,57 @@ int main() {
     string sd=to_string(dval);
     cout << sd << endl;
 
-    // todo next week
+    // konvertierung string in Zahl (inkl Vorzeichen)
+    // ----------------------------------------------
 
+    string inum="-123";
+    int i = stoi(inum); // "-123"
+    cout << i << endl;
+
+    string dnum="3.1415927";
+    double d=stod(dnum);
+    cout << d << endl;
+
+    // Hinweis: in Fehlerfall (etwa bei "abc-123") werden Exceptions geworfen. Siehe 2. Sem.
+
+    // Hilfsfunktionen aus C-Runtime Library ohne Laenderbezug
+    // -------------------------------------------------------
+
+    size_t spaces =0;
+    for (size_t i =0; i < s.size(); i++) {
+        if (isspace(s[i])) {
+            spaces++;
+        }
+    }
+    cout << endl << spaces << " Leerzeichen enthalten." << endl;
+    ch= tolower(s[0]); // 'A' --> 'a'
+    cout << ch << endl;
+
+    ch=toupper(ch);   // 'a' --> 'A'
+    cout << ch << endl;
+
+    //weitere Funktionen
+    isalpha(ch); // nir Zeichen (Alphanomerisch)
+    isdigit(ch); // nur Ziffer
+    isupper(ch);
+    islower(ch);
+
+    // Hilfsfunktionen aus C++ mit Laenderbezug
+    // ----------------------------------------
+    locale loc("German_Austria");
+    cout << boolalpha << isalpha(ch, loc) << endl; // Zeichen 'A'
+    cout << isalnum(ch, loc) << endl;              // Zeichen + Ziffern
+    cout << isspace(ch, loc) << endl;              // Leerzeichen
+    cout << isdigit(ch, loc) << endl;              // Ziffern
+    cout << ispunct(ch, loc) << endl;              // Interpunktionszeichen wie ?!.;,:
+    cout << iscntrl(ch, loc) << endl;              // Steuerzeichen cr, lf, bell, esc
+
+    // locale setzen fuer die Ausgabe auf der Konsole
+    locale::global(loc);
+    cout << "öüäß" << endl;
+
+    ch = 'ä';
+    cout << toupper(ch, loc) << endl;  // 'Ä'
 
     return 0;
 }
