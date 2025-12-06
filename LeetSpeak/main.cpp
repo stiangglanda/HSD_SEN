@@ -15,7 +15,7 @@ using namespace std;
 int main()
 {
 	cout << "Leet Speak Converter Test Driver" << endl;
-	string str = "123 !?";
+	string str = "aBcdefG hijKlMnop qrstuvw xyz 12";
 	cout << endl << str << endl;
 	ToLeet(str);
 	cout << endl << str << endl;
