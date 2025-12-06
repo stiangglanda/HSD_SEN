@@ -19,8 +19,8 @@ using namespace std;
 static void PrintElement(TElement const & el) {
     cout << "Station:  " << el.name << endl;
     cout << "Celsius:  " << el.celsius << " Grad" << endl;
-    cout << "Pressure: " << el.pressure << " Bar" << endl;
-    cout << "------------------" << endl;
+    cout << "Pressure: " << el.pressure << " mBar" << endl;
+    cout << endl;
 }
 
 void Init(TWeatherStations &stations) {
@@ -67,7 +67,6 @@ void PrintAllStations(TWeatherStations const &stations) {
     for (size_t i = 0; i < stations.numberOfStations; i++) {
         PrintElement(stations.station[i]);
     }
-	cout << endl;
 }
 
 bool PrintStation(TWeatherStations const &stations, string const &name) {
@@ -98,7 +97,6 @@ bool PrintColdestStation(TWeatherStations const &stations) {
             PrintElement(stations.station[i]);
         }
     }
-    cout << endl;
     return true;
 }
 
@@ -120,6 +118,5 @@ bool PrintWarmestStation(TWeatherStations const &stations) {
             PrintElement(stations.station[i]);
         }
     }
-    cout << endl;
     return true;
 }

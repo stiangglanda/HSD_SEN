@@ -14,26 +14,55 @@ using namespace std;
 
 int main()
 {
-	cout << "Weather Station Test Driver" << endl;
-	TWeatherStations weatherStations;
-	Init(weatherStations);
-	cout << "IsEmpty: " << boolalpha << IsEmpty(weatherStations) << endl;
+	cout << "### Testfälle" << endl;
+	TWeatherStations ws;
 
-	Insert(weatherStations, "Steyr", 25, 44);
-	PrintAllStations(weatherStations);
+	// Init
+	Init(ws);
+	cout << "- Init() Output: IsEmpty: " << boolalpha << IsEmpty(ws) << endl;
 
-	Insert(weatherStations, "Linz", 26, 45);
-	Insert(weatherStations, "Wels", 27, 46);
-	PrintAllStations(weatherStations);
+	// Insert
+	Insert(ws, "Wien", 10, 1013);
+	bool insertResult = Insert(ws, "Bregenz", -5, 1020);
 
-	Remove(weatherStations, "Linz");
-	PrintAllStations(weatherStations);
+	cout << "- Insert 2 Stations Output: " << insertResult << ", IsEmpty: " << IsEmpty(ws) << endl;
+	// PrintAllStations
+	cout << "- PrintAllStations Output: " << endl;
+	PrintAllStations(ws);
 
-	cout << "IsEmpty: " << boolalpha << IsEmpty(weatherStations) << endl;
-	cout << "IsFull: " << boolalpha << IsFull(weatherStations) << endl;
+	// IsFull
+	Insert(ws, "Salzburg", 10, 1013);
+	Insert(ws, "Innsbruck", -5, 1000);
+	Insert(ws, "Graz", 15, 1000);
+	Insert(ws, "Linz", 16, 1000);
+	Insert(ws, "Klagenfurt", 17, 1000);
+	Insert(ws, "Eisenstadt", 18, 1000);
 
-	PrintStation(weatherStations,"Wels");
-	PrintColdestStation(weatherStations);
-	PrintWarmestStation(weatherStations);
+	cout << "- IsFull (8 items) Output: " << IsFull(ws) << endl;
+
+	// Insert Overflow
+	bool overflowResult = Insert(ws, "OverflowCity", 99, 9999);
+	cout << "- Insert 9th Item (Overflow) Output: " << overflowResult << endl;
+
+	// PrintStation
+	bool printStationResult = PrintStation(ws, "OverflowCity");
+	cout << "- PrintStation OverflowCity Output: " << printStationResult << endl;
+	printStationResult = PrintStation(ws, "Graz");
+	cout << "- PrintStation Graz Output: " << printStationResult << endl;
+
+	// PrintColdestStation
+	cout << "- PrintColdestStation (Expect Innsbruck & Bregenz):" << endl;
+	PrintColdestStation(ws);
+	// PrintWarmestStation
+	cout << "- PrintWarmestStation (Expect Eisenstadt):" << endl;
+	PrintWarmestStation(ws);
+
+	// Remove & GetNumberOfEntries
+	bool removeResult = Remove(ws, "Wien");
+	cout << "- Remove(Wien) Output: " << removeResult << ", Count: " << GetNumberOfEntries(ws) << endl;
+
+	bool removeInvalid = Remove(ws, "GibtsNicht");
+	cout << "- Remove(GibtsNicht) Output: " << removeInvalid << endl;
+
 	return 0;
 }

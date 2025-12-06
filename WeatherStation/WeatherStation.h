@@ -10,7 +10,6 @@
 #ifndef WEATHERSTATION_H
 #define WEATHERSTATION_H
 #include <string>
-using namespace std;
 
 struct TElement {
     std::string name; // Standort der Wetterstation.
@@ -40,7 +39,7 @@ void Init(TWeatherStations & stations);
 // ein. Liefert Funktionswert 'true' zurück, wenn dies
 // möglich war, und 'false' sonst.
 //-----------------------------------------------------------
-bool Insert(TWeatherStations & stations, string const & name, int const celsius, size_t const pressure);
+bool Insert(TWeatherStations & stations, std::string const & name, int const celsius, size_t const pressure);
 
 //-----------------------------------------------------------
 // Entfernt die Station mit Standort 'name' aus der
@@ -49,7 +48,7 @@ bool Insert(TWeatherStations & stations, string const & name, int const celsius,
 // Liefert 'true' zurück, wenn die Station entfernt werden
 // konnte; 'false' sonst.
 //-----------------------------------------------------------
-bool Remove(TWeatherStations & stations, string const & name);
+bool Remove(TWeatherStations & stations, std::string const & name);
 
 //-----------------------------------------------------------
 // Liefert als Funktionswert 'true', wenn keine Station
@@ -80,7 +79,7 @@ void PrintAllStations(TWeatherStations const & stations);
 // aus. Liefert 'true', wenn die Station enthalten ist,
 // 'false' sonst.
 //-----------------------------------------------------------
-bool PrintStation(TWeatherStations const & stations, string const & name);
+bool PrintStation(TWeatherStations const & stations, std::string const & name);
 
 //-----------------------------------------------------------
 // Gibt jene Station(en) inkl. Daten am Bildschirm aus, wo es
