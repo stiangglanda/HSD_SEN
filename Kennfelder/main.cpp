@@ -2,7 +2,7 @@
 // Workfile : main.cpp
 // Author : Leander Kieweg
 // Date : 06. 12. 2025
-// Description : Motorstueererungs Kennfelder
+// Description : Motorsteuerungs Kennfelder
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
@@ -75,7 +75,7 @@ int main() {
     TInjectionData result = GetKennfeldValue(46, 2200, -20, 15);
 
     cout << "Ergebnis:" << endl;
-    cout << "Menge: " << (int)result.amount << " mg/Hub" << endl; // Cast auf int für cout Ausgabe nötig bei char
+    cout << "Menge: " << (int)result.amount << " mg/Hub" << endl; // Cast auf int wegen char
     cout << "Zeit:  " << (int)result.timing << " Grad KW" << endl;
 
     return 0;
