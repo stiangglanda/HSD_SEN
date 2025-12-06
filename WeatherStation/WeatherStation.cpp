@@ -12,6 +12,17 @@
 
 using namespace std;
 
+// ---------------------------------------------------------
+// Hilfsfunktion: Nur in dieser Datei sichtbar.
+// Übernimmt das Formatieren einer einzelnen Station.
+// ---------------------------------------------------------
+static void PrintElement(TElement const & el) {
+    cout << "Station:  " << el.name << endl;
+    cout << "Celsius:  " << el.celsius << " Grad" << endl;
+    cout << "Pressure: " << el.pressure << " Bar" << endl;
+    cout << "------------------" << endl;
+}
+
 void Init(TWeatherStations &stations) {
     stations.numberOfStations = 0;
 }
@@ -54,9 +65,7 @@ size_t GetNumberOfEntries(TWeatherStations const &stations) {
 
 void PrintAllStations(TWeatherStations const &stations) {
     for (size_t i = 0; i < stations.numberOfStations; i++) {
-        cout << "Station: " << stations.station[i].name << endl;
-        cout << "Celsius: " << stations.station[i].celsius << endl;
-        cout << "Pressure: " << stations.station[i].pressure << endl;
+        PrintElement(stations.station[i]);
     }
 	cout << endl;
 }
@@ -64,10 +73,7 @@ void PrintAllStations(TWeatherStations const &stations) {
 bool PrintStation(TWeatherStations const &stations, string const &name) {
     for (size_t i = 0; i < stations.numberOfStations; i++) {
         if (stations.station[i].name == name) {
-            cout << "Station: " << stations.station[i].name << endl;
-            cout << "Celsius: " << stations.station[i].celsius << endl;
-            cout << "Pressure: " << stations.station[i].pressure << endl;
-            cout << endl;
+            PrintElement(stations.station[i]);
             return true;
         }
     }
@@ -89,10 +95,7 @@ bool PrintColdestStation(TWeatherStations const &stations) {
     cout << "--- Kälteste Station(en) (" << minTemp << " Grad) ---" << endl;
     for (size_t i = 0; i < stations.numberOfStations; i++) {
         if (stations.station[i].celsius == minTemp) {
-            cout << "Station: " << stations.station[i].name << endl;
-            cout << "Celsius: " << stations.station[i].celsius << endl;
-            cout << "Pressure: " << stations.station[i].pressure << endl;
-            cout << "------------------" << endl;
+            PrintElement(stations.station[i]);
         }
     }
     cout << endl;
@@ -114,10 +117,7 @@ bool PrintWarmestStation(TWeatherStations const &stations) {
     cout << "--- Waermste Station(en) (" << maxTemp << " Grad) ---" << endl;
     for (size_t i = 0; i < stations.numberOfStations; i++) {
         if (stations.station[i].celsius == maxTemp) {
-            cout << "Station: " << stations.station[i].name << endl;
-            cout << "Celsius: " << stations.station[i].celsius << endl;
-            cout << "Pressure: " << stations.station[i].pressure << endl;
-            cout << "------------------" << endl;
+            PrintElement(stations.station[i]);
         }
     }
     cout << endl;
