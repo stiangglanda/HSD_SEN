@@ -2,7 +2,7 @@
 // Workfile : LeetSpeakConverter.cpp
 // Author : Leander Kieweg
 // Date : 04. 12. 2025
-// Description : calculates occurrences of characters in a text
+// Description : converts text to Leet Speak
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
@@ -13,7 +13,24 @@
 
 using namespace std;
 
-void AnalyseText(std::string const& fileName)
+const unsigned int LeetAlphabetSize = 26;
+
+void ToLeet(std::string& str)
 {
-    return;
+    string result="";
+    static const std::string ConverterArray[LeetAlphabetSize]={"4", "8",
+        "[", "|)", "3", "|=", "6", "|-|", "1", "_)",
+        "|<", "|_", "//.", "/V","0", "|>", "9", "|2",
+        "5", "+", "(_)", "V", "vv", "><", "Y", "2"};
+
+    for (size_t i = 0; i < str.size(); i++) {
+        char lowerChar = tolower(str[i]);
+        if (lowerChar >= 'a' && lowerChar <= 'z') {
+            result += ConverterArray[lowerChar - 'a'];
+        }
+        else {
+            result += str[i];
+        }
+    }
+    str = result;
 }
