@@ -92,7 +92,7 @@ bool PrintColdestStation(TWeatherStations const &stations) {
         }
     }
 
-    cout << "--- Kälteste Station(en) (" << minTemp << " Grad) ---" << endl;
+    cout << "Coldest Station(s) " << minTemp << " Grad" << endl;
     for (size_t i = 0; i < stations.numberOfStations; i++) {
         if (stations.station[i].celsius == minTemp) {
             PrintElement(stations.station[i]);
@@ -114,7 +114,7 @@ bool PrintWarmestStation(TWeatherStations const &stations) {
         }
     }
 
-    cout << "--- Waermste Station(en) (" << maxTemp << " Grad) ---" << endl;
+    cout << "Warmest Station(s) " << maxTemp << " Grad" << endl;
     for (size_t i = 0; i < stations.numberOfStations; i++) {
         if (stations.station[i].celsius == maxTemp) {
             PrintElement(stations.station[i]);
