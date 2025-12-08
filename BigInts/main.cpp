@@ -1,0 +1,20 @@
+///////////////////////////////////////////////////////////////////////////
+// Workfile : main.cpp
+// Author : Leander Kieweg
+// Date : 08. 12. 2025
+// Description : BigInts
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
+
+#include <iostream>
+#include "BigInt.h"
+
+using namespace std;
+
+
+int main () {
+    Read();
+
+    return 0;
+}
