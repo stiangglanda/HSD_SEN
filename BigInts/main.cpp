@@ -14,7 +14,22 @@ using namespace std;
 
 
 int main () {
-    Read();
+    TNode* BigInt;
+    BigInt = Read();
+	Write(BigInt);
+
+
+	cout << "Addition:" << endl;
+	TNode* Result = Add(BigInt, BigInt);
+	cout << "Addition2:" << endl;
+	Write(Result);
+	Delete(Result);
+	cout << "Subtraction:" << endl;
+	Result = Subtract(BigInt, BigInt);
+	Write(Result);
+	cout << "Deletion of Result:" << endl;
+	Delete(Result);
+	Delete(BigInt);
 
     return 0;
 }
