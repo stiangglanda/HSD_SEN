@@ -2,7 +2,7 @@
 // Workfile : main.cpp
 // Author : Leander Kieweg
 // Date : 08. 12. 2025
-// Description : BigInts
+// Description : BigInts Test Driver
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
@@ -14,22 +14,27 @@ using namespace std;
 
 
 int main () {
-    TNode* BigInt;
-    BigInt = Read();
-	Write(BigInt);
+    TNode* BigInt1;
+    BigInt1 = Read();
+	Write(BigInt1);
+	cout << endl;
 
+	TNode* BigInt2;
+	BigInt2 = Read();
+	Write(BigInt2);
+	cout << endl;
 
-	cout << "Addition:" << endl;
-	TNode* Result = Add(BigInt, BigInt);
-	cout << "Addition2:" << endl;
-	Write(Result);
-	Delete(Result);
-	cout << "Subtraction:" << endl;
-	Result = Subtract(BigInt, BigInt);
-	Write(Result);
-	cout << "Deletion of Result:" << endl;
-	Delete(Result);
-	Delete(BigInt);
+	cout << endl << "Addition:" << endl;
+	TNode* AddResult = Add(BigInt1, BigInt2);
+	Write(AddResult);
+	Delete(AddResult);
+
+	cout << endl << "Subtraction:" << endl;
+	TNode* SubResult = Subtract(BigInt1, BigInt2);
+	Write(SubResult);
+	Delete(SubResult);
+	Delete(BigInt1);
+	Delete(BigInt2);
 
     return 0;
 }

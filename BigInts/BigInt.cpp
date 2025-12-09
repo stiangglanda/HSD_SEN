@@ -1,8 +1,11 @@
-//////////////////////////////////////////////////////////////////////////////////////
-// BigInt: Fragment der Funktion Read() zum Einlesen eines BigIntegers via std::string
-// HSD / FH-Hagenberg, 2025
-//////////////////////////////////////////////////////////////////////////////////////
-
+///////////////////////////////////////////////////////////////////////////
+// Workfile : BigInt.cpp
+// Author : Leander Kieweg
+// Date : 08. 12. 2025
+// Description : BigInts Module Implementation
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
 #include "BigInt.h"
@@ -28,8 +31,6 @@ static TNode* Add(TNode const* const pLHS, TNode const* const pRHS, int carry)
     TNode* prepend = new TNode();
     prepend->digit = result % 1000;
 
-    std::cout << prepend->digit << endl;
-
     TNode const* nextLHS = pLHS ? pLHS->pNext : nullptr;
     TNode const* nextRHS = pRHS ? pRHS->pNext : nullptr;
 
@@ -48,17 +49,16 @@ void Delete(TNode*& pBigInt)
     {
         TNode* temp = pBigInt;
         pBigInt = pBigInt->pNext;
-        std::cout << temp->digit << " deleted " << endl;
         delete temp;
 	}
+	pBigInt = nullptr;
 }
 
 TNode * Read () {
-    std::string  bigInt = "";   // Die lange Dezimalzahl.
-    TNode*     pBigInt = nullptr;    // Die neue Liste.
+    std::string bigInt = "";   // Die lange Dezimalzahl.
+    TNode* pBigInt = nullptr;  // Die neue Liste.
 
     // Eingabe einer langen Dezimalzahl.
-
     std::cout << "Bitte geben Sie eine Zahl >= 0 ein: ";
     std::cin  >> bigInt;
 
@@ -70,7 +70,6 @@ TNode * Read () {
         size_t i = 0;
 
         // Zerlegung der gegebenen Zahl zur Basis 10 in Ziffern zur Basis 1000.
-
         for (size_t t = 0; t <= stelT; ++t) {   // Durchlaufe die Ziffern (zur Basis 1000).
             size_t ziffer = 0;
 
@@ -81,7 +80,6 @@ TNode * Read () {
 			prepend->digit = ziffer;
 			prepend->pNext = pBigInt;
             pBigInt = prepend;
-            std::cout << ziffer << " created" << endl;   // Hier muss 'ziffer' mit 'prepend' in die Liste 'pBigInt' eingef�gt werden.
         }
     }
 
@@ -90,6 +88,7 @@ TNode * Read () {
 
 static TNode* Subtract(TNode const* const pLHS, TNode const* const pRHS, int borrow)
 {
+    // Wenn Links zu Ende ist (vorausgesetzt LHS >= RHS)
     if (!pLHS)
     {
         return nullptr;
@@ -102,34 +101,38 @@ static TNode* Subtract(TNode const* const pLHS, TNode const* const pRHS, int bor
 
     borrow = 0;
     if (result < 0) {
-        result += 1000; // Borrow 1000 for the current digit.
-        borrow = 1;  // Pass a borrow of 1 to the next step.
+        result += 1000; // Borrow holen
+        borrow = 1;     // Borrow weitergeben
     }
-
-    TNode* prepend = new TNode();
-    prepend->digit = result;
-
-    std::cout << prepend->digit << endl;
 
     TNode const* nextLHS = pLHS->pNext;
     TNode const* nextRHS = pRHS ? pRHS->pNext : nullptr;
 
-    prepend->pNext = Subtract(nextLHS, nextRHS, borrow);
+    TNode* tailList = Subtract(nextLHS, nextRHS, borrow);
 
-    // This part is important to remove leading zeros from the result.
-    // For example, 523 - 512 = 11, not 011.
-    if (prepend->pNext == nullptr && prepend->digit == 0 && (nextLHS != nullptr || nextRHS != nullptr)) {
-        delete prepend;
+    // Führende Nullen entfernen also kein node erstellen
+    if (tailList == nullptr && result == 0) {
         return nullptr;
     }
 
+    // andernfalls Knoten erstellen
+    TNode* currentNode = new TNode();
+    currentNode->digit = result;
+    currentNode->pNext = tailList;
 
-    return prepend;
+    return currentNode;
 }
 
 TNode* Subtract(TNode const* const pLHS, TNode const* const pRHS)
 {
-    return Subtract(pLHS, pRHS,0);
+    TNode* result = Subtract(pLHS, pRHS, 0);
+
+    if (result == nullptr) {
+        result = new TNode();
+        result->digit = 0;
+        result->pNext = nullptr;
+    }
+    return result;
 }
 
 void Write(TNode const* const pBigInt)
