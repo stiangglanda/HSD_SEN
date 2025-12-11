@@ -26,8 +26,8 @@ TName AnalyseFirstname(string const& name)
 		return eMale;
 	}
 
-	string maleNames[] = { "leander", "maximilian", "lukas" };
-	string femaleNames[] = { "anna", "maria", "sofia", "kim", "ruth" };
+	const string maleNames[] = { "leander", "maximilian", "lukas" };
+	const string femaleNames[] = { "anna", "maria", "sofia", "kim", "ruth" };
 
 	for (const string& m : maleNames) {
 		if (namelower == m) {
