@@ -8,6 +8,7 @@
 ///////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
+#include <cstddef>
 
 using namespace std;
 
@@ -45,6 +46,9 @@ TElements elems = {
 int main () {
 	TDataV2 data = { 1.1, 1.2f, 9, 2, 1, 'a', true, true};
 	cout << "Memory: elems size: " << sizeof(elems) << " TData Size: " << sizeof(elems[0]) << " TDataV2 Size: " << sizeof(data) << endl;
+
+	cout << "Offset of double in TData: " << offsetof(TData, d) << endl; // 16
+	cout << "Offset of double in TDataV2: " << offsetof(TDataV2, d) << endl; // 0
 
     return 0;
 }
