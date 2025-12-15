@@ -62,7 +62,14 @@ TNode * Read () {
     std::cout << "Bitte geben Sie eine Zahl >= 0 ein: ";
     std::cin  >> bigInt;
 
+    // Remove starting zeros
+    while (bigInt.length() > 0 && bigInt[0] == '0')
+    {
+        bigInt.erase(0, 1);
+    }
+
     size_t const stelZ = bigInt.size();   // Die Anzahl der eingegebenen Stellen (zur Basis 10).
+
 
     if (stelZ > 0) {
         size_t const stelT = (stelZ - 1) / 3;       // Wieviele 'ganze' Stellen gibt es (zur Basis 1000)?
