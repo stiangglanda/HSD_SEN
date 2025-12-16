@@ -72,5 +72,50 @@ void Append(TList& pList, int const data) {
 
         pPrev->pNext = pNewNode;
     }
+}
+
+// gesamte Liste loeschen
+void Flush(TList &pList) {
+    TNode* pNode = nullptr;
+    while (pList != nullptr) {
+        pNode = pList;
+        pList = pList->pNext; // Ausketten
+        delete pNode; pNode = nullptr;
+    }
+}
+
+// Knoten in der Liste suchen
+TNode* Search(TList pList, int const data) {
+    TNode* pNode = pList;
+
+    while (pNode != nullptr && pNode->data != data) { // kurzschluss auswertung
+        pNode = pNode->pNext;
+    }
+    return pNode;
+}
+
+TNode* Predecessor(TList pList, TNode* pFound) {
+    TNode* pPrev = pList;
+    while (pPrev != nullptr && pPrev->pNext != pFound) {
+        pPrev = pPrev->pNext;
+    }
+    return pPrev;
+}
+
+// Knoten mit Wert 'data' aus der Liste entfernen (erstes Auftreten ab pList)
+void Delete(TList& pList, int const data) {
+    TNode* pFound = Search(pList, data);
+    if (pFound != nullptr) {
+        if (pFound == pList) {  // 1. Knoten
+            pList = pFound->pNext;
+        }
+        else {
+            Predecessor(pList, pFound)->pNext = pList->pNext;
+        }
+        delete pFound; pFound = nullptr;
+    }
+}
+
+double AvgElements(TList pList) {
 
 }

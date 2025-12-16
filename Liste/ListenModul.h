@@ -18,5 +18,7 @@ void Prepend(TList& pList, int const data);
 void Append(TList& pList, int const data);
 void Print(TList pList);
 void Flush(TList& pList);
+void Delete(TList& pList, int const data);
+double AvgElements(TList pList);
 
 #endif

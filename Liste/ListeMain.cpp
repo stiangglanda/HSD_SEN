@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    TList list; // leere Liste
+    TList list=nullptr; // leere Liste
     Print(list);
     Prepend(list, 1);
     Prepend(list, 2);
@@ -21,6 +21,22 @@ int main() {
     Append(list, 4);
 
     Print(list);
+    Delete(list, 4);
 
+    Print(list);
+    Flush(list);
+    Print(list);
+
+    //---------------------------
+    cout << "Liste aufbauen... " << endl;
+    for (int i = 0; i < 1000000000; i++) {
+        Append(list, 17);
+        //Prepend(list, 17);
+    }
+    cout << "Fertig! Taste druecken fuer Loeschen der Liste." << endl;
+    cin.get(); //_getch(); // warten auf Tastendrucke
+
+    Flush(list);
+    Print(list);
     return 0;
 }
