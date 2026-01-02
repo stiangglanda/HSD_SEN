@@ -323,7 +323,7 @@ void print(TList & list, bool reverse) {
             current = current->pPrev;
         }
     }
-    cout << ">" << endl;
+    cout << ">";
 }
 
 void push_back(TList & list, int data) {
