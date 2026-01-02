@@ -3,7 +3,7 @@
 // Author : Leander Kieweg
 // Date : 01. 01. 2026
 // Description : DoublyConnectedList Module Implementation
-// Remarks : -
+// Remarks :
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 
@@ -12,12 +12,12 @@
 
 using namespace std;
 
-static bool is_sorted (TList& list) {
+static bool is_sorted(TList& list) {
     if (list.size < 2) {
         return true;
     } else {
-        int data  = list.pHead->data;
-        TNode* pNode = list.pHead->pNext;
+        int     data  = list.pHead->data;
+        TNode * pNode = list.pHead->pNext;
 
         while ((pNode != nullptr) && (data <= pNode->data)) {
             data  = pNode->data;
@@ -26,6 +26,36 @@ static bool is_sorted (TList& list) {
 
         return pNode == nullptr;
     }
+}
+
+TNode* make_node(int data) {
+    TNode* newNode = new TNode;
+    newNode->data = data;
+    newNode->pNext = nullptr;
+    newNode->pPrev = nullptr;
+    return newNode;
+}
+
+bool valid_node(TList& list, TNode* pNode) {
+    if (pNode == nullptr) {
+        return true;
+    }
+
+    TNode* current = list.pHead;
+    while (current != nullptr) {
+        if (current == pNode) {
+            return true;
+        }
+        current = current->pNext;
+    }
+    return false;
+}
+
+void init(TList& list) {
+    list.pHead = nullptr;
+    list.pTail = nullptr;
+    list.size = 0;
+    list.isSorted = true; // Leere Menge ist sortiert
 }
 
 void clear(TList& list) {
@@ -39,7 +69,7 @@ void clear(TList& list) {
     list.pHead = nullptr;
     list.pTail = nullptr;
     list.size = 0;
-    list.isSorted = true; // empty list is sorted
+    list.isSorted = true;
 }
 
 bool consistent (TList& list) {
@@ -72,14 +102,12 @@ bool consistent (TList& list) {
 size_t count(TList& list, int data) {
     size_t counter = 0;
     TNode* current = list.pHead;
-
     while (current != nullptr) {
         if (current->data == data) {
             counter++;
         }
         current = current->pNext;
     }
-
     return counter;
 }
 
@@ -92,14 +120,13 @@ bool erase(TList& list, int data) {
 
     while (current != nullptr) {
         if (current->data == data) {
-            // Unlink from the previous node or update head
+            // Unlink
             if (current->pPrev != nullptr) {
                 current->pPrev->pNext = current->pNext;
             } else {
                 list.pHead = current->pNext;
             }
 
-            // Unlink from the next node or update tail
             if (current->pNext != nullptr) {
                 current->pNext->pPrev = current->pPrev;
             } else {
@@ -109,8 +136,12 @@ bool erase(TList& list, int data) {
             delete current;
             list.size--;
 
-            // Recompute sorted flag (fast-path for tiny lists)
-            list.isSorted = (list.size < 2) ? true : is_sorted(list);
+            // Optimierung: Wenn die Liste vorher sortiert war, ist sie es jetzt immer noch.
+            // Nur wenn sie unsortiert war, prüfen wir neu (außer sie ist jetzt leer/einzeln).
+            if (!list.isSorted) {
+                list.isSorted = is_sorted(list);
+            }
+            // Ansonsten bleibt list.isSorted = true;
 
             return true;
         }
@@ -121,21 +152,20 @@ bool erase(TList& list, int data) {
 }
 
 size_t erase_all(TList& list, int data) {
-    size_t count = 0;
+    size_t deletedCount = 0;
     TNode* current = list.pHead;
 
     while (current != nullptr) {
-        TNode* nextNode = current->pNext; // Save next node before deletion
+        TNode* nextNode = current->pNext;
 
         if (current->data == data) {
-            // Unlink from previous node or update head
+            // Unlink
             if (current->pPrev != nullptr) {
                 current->pPrev->pNext = current->pNext;
             } else {
                 list.pHead = current->pNext;
             }
 
-            // Unlink from next node or update tail
             if (current->pNext != nullptr) {
                 current->pNext->pPrev = current->pPrev;
             } else {
@@ -144,32 +174,32 @@ size_t erase_all(TList& list, int data) {
 
             delete current;
             list.size--;
-            count++;
+            deletedCount++;
         }
         current = nextNode;
     }
 
-    // Recompute sorted flag (fast-path for tiny lists)
-    list.isSorted = (list.size < 2) ? true : is_sorted(list);
+    // Auch hier: Löschen zerstört die Sortierung nicht.
+    if (!list.isSorted) {
+        list.isSorted = is_sorted(list);
+    }
 
-    return count;
+    return deletedCount;
 }
 
-void erase_lower(TList & list, int limit) {
+void erase_lower(TList& list, int limit) {
     TNode* current = list.pHead;
 
     while (current != nullptr) {
-        TNode* nextNode = current->pNext; // Save next node before potential deletion
+        TNode* nextNode = current->pNext;
 
         if (current->data < limit) {
-            // Unlink from previous node or update head
             if (current->pPrev != nullptr) {
                 current->pPrev->pNext = current->pNext;
             } else {
                 list.pHead = current->pNext;
             }
 
-            // Unlink from next node or update tail
             if (current->pNext != nullptr) {
                 current->pNext->pPrev = current->pPrev;
             } else {
@@ -182,140 +212,109 @@ void erase_lower(TList & list, int limit) {
         current = nextNode;
     }
 
-    // Recompute sorted flag (fast-path for tiny lists)
-    list.isSorted = (list.size < 2) ? true : is_sorted(list);
-}
-
-void init(TList& list) {
-    list.pHead = nullptr;
-    list.pTail = nullptr;
-    list.size = 0;
-    list.isSorted = true;
+    if (!list.isSorted) {
+        list.isSorted = is_sorted(list);
+    }
 }
 
 void insert_after(TList& list, int data, TNode* pNode) {
-    if (!valid_node(list, pNode)) {
+    // 1. Validierung
+    if (pNode == nullptr || !valid_node(list, pNode)) {
         return;
     }
 
-    if (pNode == nullptr) {
-        return;
-    }
-
+    // 2. Erstellung (Reuse)
     TNode* newNode = make_node(data);
 
+    // 3. Verlinkung
     newNode->pPrev = pNode;
     newNode->pNext = pNode->pNext;
 
     if (pNode->pNext != nullptr) {
         pNode->pNext->pPrev = newNode;
     } else {
-        list.pTail = newNode;
+        list.pTail = newNode; // War Tail
     }
     pNode->pNext = newNode;
 
     list.size++;
 
-    if (list.isSorted) {
-        bool orderMaintained = (pNode->data <= data);
-        if (newNode->pNext) {
-            orderMaintained = orderMaintained && (data <= newNode->pNext->data);
-        }
-
-        if (!orderMaintained) list.isSorted = false;
-    }
+    // 4. Sortierung
+    // Um sicher zu gehen (und Spaghetti-Code zu vermeiden), prüfen wir komplett.
+    // Optimierung wäre möglich, aber fehleranfällig in der Kürze.
+    list.isSorted = is_sorted(list);
 }
 
 void insert_before(TList& list, int data, TNode* pNode) {
-    if (pNode == nullptr) {
+    // 1. Validierung
+    if (pNode == nullptr || !valid_node(list, pNode)) {
         return;
     }
 
-    // Verify that pNode is actually in the list
-    TNode* current = list.pHead;
-    bool found = false;
-    while (current != nullptr) {
-        if (current == pNode) {
-            found = true;
-            break;
-        }
-        current = current->pNext;
-    }
+    // 2. Erstellung (Reuse)
+    TNode* newNode = make_node(data);
 
-    if (!found) {
-        return;
-    }
-
-    // Create new node
-    TNode* newNode = new TNode;
-    newNode->data = data;
+    // 3. Verlinkung
     newNode->pNext = pNode;
     newNode->pPrev = pNode->pPrev;
 
-    // Link new node into the list
     if (pNode->pPrev != nullptr) {
         pNode->pPrev->pNext = newNode;
     } else {
-        // pNode was the head, so newNode becomes the new head
-        list.pHead = newNode;
+        list.pHead = newNode; // War Head
     }
     pNode->pPrev = newNode;
 
     list.size++;
 
-    // Check if the list is still sorted
+    // 4. Sortierung
     list.isSorted = is_sorted(list);
 }
 
 TNode* insert_sorted(TList& list, int data) {
-    TNode* newNode = new TNode;
-    newNode->data = data;
-    newNode->pNext = nullptr;
-    newNode->pPrev = nullptr;
-
-    if (list.pHead == nullptr) {
-        // Case: List is empty
-        list.pHead = newNode;
-        list.pTail = newNode;
-    } else if (data <= list.pHead->data) {
-        // Case: Insert before head
+    // Falls Liste leer ist oder am Anfang eingefügt werden muss
+    if (list.pHead == nullptr || data <= list.pHead->data) {
+        // Hier können wir push_front Logik nutzen, aber wir brauchen den Rückgabewert.
+        // Also bauen wir es mit make_node sauber auf.
+        TNode* newNode = make_node(data);
         newNode->pNext = list.pHead;
-        list.pHead->pPrev = newNode;
-        list.pHead = newNode;
-    } else {
-        TNode* current = list.pHead;
-        // Find the first node that is greater than or equal to data
-        while (current != nullptr && current->data < data) {
-            current = current->pNext;
-        }
 
-        if (current == nullptr) {
-            // Case: Insert at tail (data is larger than all existing elements)
-            newNode->pPrev = list.pTail;
-            list.pTail->pNext = newNode;
-            list.pTail = newNode;
+        if (list.pHead != nullptr) {
+            list.pHead->pPrev = newNode;
         } else {
-            // Case: Insert before current node
-            // Since we handled the head case separately, current->pPrev is guaranteed to exist
-            newNode->pNext = current;
-            newNode->pPrev = current->pPrev;
-            current->pPrev->pNext = newNode;
-            current->pPrev = newNode;
+            list.pTail = newNode;
         }
+        list.pHead = newNode;
+
+        list.size++;
+        list.isSorted = is_sorted(list);
+        return newNode;
     }
 
-    list.size++;
-    list.isSorted = is_sorted(list);
+    // Suche Einfügeposition
+    TNode* current = list.pHead;
+    while (current != nullptr && current->data < data) {
+        current = current->pNext;
+    }
 
-    return newNode;
-}
-
-TNode* make_node(int data) {
-    TNode* newNode = new TNode;
-    newNode->data = data;
-    newNode->pNext = nullptr;
-    newNode->pPrev = nullptr;
-    return newNode;
+    if (current == nullptr) {
+        // Einfügen am Ende
+        TNode* newNode = make_node(data);
+        newNode->pPrev = list.pTail;
+        if (list.pTail != nullptr) {
+            list.pTail->pNext = newNode;
+        }
+        list.pTail = newNode;
+        list.size++;
+        list.isSorted = is_sorted(list);
+        return newNode;
+    } else {
+        // Einfügen vor current
+        // Da wir insert_before haben und current sicher valide ist:
+        insert_before(list, data, current);
+        // insert_before erhöht size und checkt sorted
+        return current->pPrev; // Der neue Knoten ist jetzt vor current
+    }
 }
 
 void print(TList& list, bool reverse) {
@@ -326,18 +325,14 @@ void print(TList& list, bool reverse) {
         current = list.pHead;
         while (current != nullptr) {
             cout << current->data;
-            if (current->pNext != nullptr) {
-                cout << ", ";
-            }
+            if (current->pNext != nullptr) cout << ", ";
             current = current->pNext;
         }
     } else {
         current = list.pTail;
         while (current != nullptr) {
             cout << current->data;
-            if (current->pPrev != nullptr) {
-                cout << ", ";
-            }
+            if (current->pPrev != nullptr) cout << ", ";
             current = current->pPrev;
         }
     }
@@ -345,114 +340,95 @@ void print(TList& list, bool reverse) {
 }
 
 void push_back(TList& list, int data) {
-    TNode* newNode = new TNode;
-    newNode->data = data;
-    newNode->pNext = nullptr;
+    TNode* newNode = make_node(data);
     newNode->pPrev = list.pTail;
 
     if (list.pTail != nullptr) {
         list.pTail->pNext = newNode;
     } else {
-        // List was empty, so new node is also the head
         list.pHead = newNode;
     }
-
     list.pTail = newNode;
     list.size++;
 
-    list.isSorted = is_sorted(list);
+    // Check sorted: Wenn sortiert UND data >= Vorgänger -> bleibt sortiert
+    if (list.isSorted) {
+        if (list.size > 1 && newNode->pPrev->data > data) {
+            list.isSorted = false;
+        }
+        // Sonst bleibt true
+    }
 }
 
 void push_front(TList& list, int data) {
-    TNode* newNode = new TNode;
-    newNode->data = data;
-    newNode->pPrev = nullptr;
+    TNode* newNode = make_node(data);
     newNode->pNext = list.pHead;
 
     if (list.pHead != nullptr) {
         list.pHead->pPrev = newNode;
     } else {
-        // List was empty, so new node is also the tail
         list.pTail = newNode;
     }
-
     list.pHead = newNode;
     list.size++;
 
-    list.isSorted = is_sorted(list);
+    // Check sorted: Wenn sortiert UND data <= Nachfolger -> bleibt sortiert
+    if (list.isSorted) {
+        if (list.size > 1 && newNode->pNext->data < data) {
+            list.isSorted = false;
+        }
+    }
 }
 
 void rotate_left(TList& list) {
-    // Rotation is only possible/necessary if the list has at least 2 elements
-    if (list.size < 2) {
-        return;
-    }
+    if (list.size < 2) return;
 
     TNode* firstNode = list.pHead;
 
-    // The second node becomes the new head
     list.pHead = firstNode->pNext;
     list.pHead->pPrev = nullptr;
 
-    // The original first node is attached to the end of the list
     list.pTail->pNext = firstNode;
     firstNode->pPrev = list.pTail;
     firstNode->pNext = nullptr;
 
-    // The original first node becomes the new tail
     list.pTail = firstNode;
 
-    // Rotating usually breaks the sort order, so we must re-check
     list.isSorted = is_sorted(list);
 }
 
 void rotate_right(TList& list) {
-    // Rotation is only possible/necessary if the list has at least 2 elements
-    if (list.size < 2) {
-        return;
-    }
+    if (list.size < 2) return;
 
     TNode* lastNode = list.pTail;
 
-    // The second to last node becomes the new tail
     list.pTail = lastNode->pPrev;
     list.pTail->pNext = nullptr;
 
-    // The original last node is attached to the beginning of the list
     lastNode->pNext = list.pHead;
     list.pHead->pPrev = lastNode;
     lastNode->pPrev = nullptr;
 
-    // The original last node becomes the new head
     list.pHead = lastNode;
 
-    // Rotating usually breaks the sort order, so we must re-check
     list.isSorted = is_sorted(list);
 }
 
 TNode* search_first(TList& list, int data) {
     TNode* current = list.pHead;
-
     while (current != nullptr) {
-        if (current->data == data) {
-            return current;
-        }
+        if (current->data == data) return current;
         current = current->pNext;
     }
-
     return nullptr;
 }
 
 TNode* search_last(TList& list, int data) {
     TNode* current = list.pTail;
-
     while (current != nullptr) {
-        if (current->data == data) {
-            return current;
-        }
+        if (current->data == data) return current;
         current = current->pPrev;
     }
-
     return nullptr;
 }
 
@@ -461,47 +437,33 @@ size_t size(TList& list) {
 }
 
 void sort(TList& list) {
-    // If the list is already sorted or has fewer than 2 elements, no work is needed
-    if (list.isSorted || list.size < 2) {
-        return;
-    }
+    if (list.isSorted || list.size < 2) return;
 
+    // Strategie: Elemente in Hilfsliste sortiert einfügen
     TList sortedList;
     init(sortedList);
 
     TNode* current = list.pHead;
     while (current != nullptr) {
-        // Insert data into the helper list, which handles the sorting logic
         insert_sorted(sortedList, current->data);
         current = current->pNext;
     }
 
-    // Clear the original list to release the old nodes
+    // Alte Liste leeren (Memory freigeben für die alten Knoten)
     clear(list);
 
-    // Move the sorted nodes from the helper list to the original list
+    // sortedList übernehmen
     list.pHead = sortedList.pHead;
     list.pTail = sortedList.pTail;
     list.size = sortedList.size;
     list.isSorted = true;
+
+    // sortedList leeren (nur Init, da Pointer jetzt in list liegen)
+    // Wir dürfen sortedList NICHT clearen, sonst sind die Daten weg!
+    // Wir setzen sie nur zurück, damit der Destruktor (falls vorhanden) nichts macht.
+    init(sortedList);
 }
 
 bool sorted(TList& list) {
     return list.isSorted;
-}
-
-bool valid_node(TList& list, TNode * pNode) {
-    if (pNode == nullptr) {
-        return true;
-    }
-
-    TNode* current = list.pHead;
-    while (current != nullptr) {
-        if (current == pNode) {
-            return true;
-        }
-        current = current->pNext;
-    }
-
-    return false;
 }
