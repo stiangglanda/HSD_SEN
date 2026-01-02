@@ -12,7 +12,7 @@
 
 using namespace std;
 
-bool is_sorted (TList& list) {
+static bool is_sorted (TList& list) {
     if (list.size < 2) {
         return true;
     } else {
@@ -39,10 +39,37 @@ void clear(TList& list) {
     list.pHead = nullptr;
     list.pTail = nullptr;
     list.size = 0;
-    list.isSorted = true; // An empty list is considered sorted
+    list.isSorted = true; // empty list is sorted
 }
 
-size_t count(TList & list, int data) {
+bool consistent (TList& list) {
+    if (list.size == 0) {
+        return (list.pHead == nullptr) && (list.pTail == nullptr) && list.isSorted;
+    } else {
+        if (list.pHead->pPrev != nullptr) return false;
+        if (list.pTail->pNext != nullptr) return false;
+
+        if (list.size == 1) {
+            return (list.pHead == list.pTail) && list.isSorted;
+        } else {
+            TNode * pNode = list.pHead;
+
+            for (size_t i = 1; i < list.size; ++i) {   // don't trust the pointers
+                if (pNode->pNext->pPrev != pNode) {
+                    return false;
+                }
+
+                pNode = pNode->pNext;
+            }
+
+            return (pNode == list.pTail) && (list.isSorted == is_sorted (list));
+        }
+    }
+
+    return false;
+}
+
+size_t count(TList& list, int data) {
     size_t counter = 0;
     TNode* current = list.pHead;
 
@@ -167,44 +194,36 @@ void init(TList& list) {
 }
 
 void insert_after(TList& list, int data, TNode* pNode) {
+    if (!valid_node(list, pNode)) {
+        return;
+    }
+
     if (pNode == nullptr) {
         return;
     }
 
-    // Verify that pNode is actually in the list
-    TNode* current = list.pHead;
-    bool found = false;
-    while (current != nullptr) {
-        if (current == pNode) {
-            found = true;
-            break;
-        }
-        current = current->pNext;
-    }
+    TNode* newNode = make_node(data);
 
-    if (!found) {
-        return;
-    }
-
-    // Create new node
-    TNode* newNode = new TNode;
-    newNode->data = data;
     newNode->pPrev = pNode;
     newNode->pNext = pNode->pNext;
 
-    // Link new node into the list
     if (pNode->pNext != nullptr) {
         pNode->pNext->pPrev = newNode;
     } else {
-        // pNode was the tail, so newNode becomes the new tail
         list.pTail = newNode;
     }
     pNode->pNext = newNode;
 
     list.size++;
 
-    // Check if the list is still sorted
-    list.isSorted = is_sorted(list);
+    if (list.isSorted) {
+        bool orderMaintained = (pNode->data <= data);
+        if (newNode->pNext) {
+            orderMaintained = orderMaintained && (data <= newNode->pNext->data);
+        }
+
+        if (!orderMaintained) list.isSorted = false;
+    }
 }
 
 void insert_before(TList& list, int data, TNode* pNode) {
@@ -482,33 +501,6 @@ bool valid_node(TList& list, TNode * pNode) {
             return true;
         }
         current = current->pNext;
-    }
-
-    return false;
-}
-
-bool consistent (TList& list) {
-    if (list.size == 0) {
-        return (list.pHead == nullptr) && (list.pTail == nullptr) && list.isSorted;
-    } else {
-        if (list.pHead->pPrev != nullptr) return false;
-        if (list.pTail->pNext != nullptr) return false;
-
-        if (list.size == 1) {
-            return (list.pHead == list.pTail) && list.isSorted;
-        } else {
-            TNode * pNode = list.pHead;
-
-            for (size_t i = 1; i < list.size; ++i) {   // don't trust the pointers
-                if (pNode->pNext->pPrev != pNode) {
-                    return false;
-                }
-
-                pNode = pNode->pNext;
-            }
-
-            return (pNode == list.pTail) && (list.isSorted == is_sorted (list));
-        }
     }
 
     return false;
