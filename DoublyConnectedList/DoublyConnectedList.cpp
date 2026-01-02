@@ -8,17 +8,16 @@
 ///////////////////////////////////////////////////////////////////////////
 
 #include "DoublyConnectedList.h"
-
 #include <iostream>
 
 using namespace std;
 
-bool is_sorted (TList & list) {
+bool is_sorted (TList& list) {
     if (list.size < 2) {
         return true;
     } else {
-        int     data  = list.pHead->data;
-        TNode * pNode = list.pHead->pNext;
+        int data  = list.pHead->data;
+        TNode* pNode = list.pHead->pNext;
 
         while ((pNode != nullptr) && (data <= pNode->data)) {
             data  = pNode->data;
@@ -29,7 +28,7 @@ bool is_sorted (TList & list) {
     }
 }
 
-void clear(TList & list) {
+void clear(TList& list) {
     TNode* current = list.pHead;
     while (current != nullptr) {
         TNode* nextNode = current->pNext;
@@ -57,11 +56,11 @@ size_t count(TList & list, int data) {
     return counter;
 }
 
-bool empty(TList & list) {
+bool empty(TList& list) {
     return list.size == 0;
 }
 
-bool erase(TList & list, int data) {
+bool erase(TList& list, int data) {
     TNode* current = list.pHead;
 
     while (current != nullptr) {
@@ -94,7 +93,7 @@ bool erase(TList & list, int data) {
     return false;
 }
 
-size_t erase_all(TList & list, int data) {
+size_t erase_all(TList& list, int data) {
     size_t count = 0;
     TNode* current = list.pHead;
 
@@ -160,14 +159,14 @@ void erase_lower(TList & list, int limit) {
     list.isSorted = (list.size < 2) ? true : is_sorted(list);
 }
 
-void init(TList & list) {
+void init(TList& list) {
     list.pHead = nullptr;
     list.pTail = nullptr;
     list.size = 0;
     list.isSorted = true;
 }
 
-void insert_after(TList & list, int data, TNode * pNode) {
+void insert_after(TList& list, int data, TNode* pNode) {
     if (pNode == nullptr) {
         return;
     }
@@ -208,7 +207,7 @@ void insert_after(TList & list, int data, TNode * pNode) {
     list.isSorted = is_sorted(list);
 }
 
-void insert_before(TList & list, int data, TNode * pNode) {
+void insert_before(TList& list, int data, TNode* pNode) {
     if (pNode == nullptr) {
         return;
     }
@@ -249,7 +248,7 @@ void insert_before(TList & list, int data, TNode * pNode) {
     list.isSorted = is_sorted(list);
 }
 
-TNode* insert_sorted(TList & list, int data) {
+TNode* insert_sorted(TList& list, int data) {
     TNode* newNode = new TNode;
     newNode->data = data;
     newNode->pNext = nullptr;
@@ -300,7 +299,7 @@ TNode* make_node(int data) {
     return newNode;
 }
 
-void print(TList & list, bool reverse) {
+void print(TList& list, bool reverse) {
     cout << "<";
     TNode* current;
 
@@ -326,7 +325,7 @@ void print(TList & list, bool reverse) {
     cout << ">";
 }
 
-void push_back(TList & list, int data) {
+void push_back(TList& list, int data) {
     TNode* newNode = new TNode;
     newNode->data = data;
     newNode->pNext = nullptr;
@@ -345,7 +344,7 @@ void push_back(TList & list, int data) {
     list.isSorted = is_sorted(list);
 }
 
-void push_front(TList & list, int data) {
+void push_front(TList& list, int data) {
     TNode* newNode = new TNode;
     newNode->data = data;
     newNode->pPrev = nullptr;
@@ -364,7 +363,7 @@ void push_front(TList & list, int data) {
     list.isSorted = is_sorted(list);
 }
 
-void rotate_left(TList & list) {
+void rotate_left(TList& list) {
     // Rotation is only possible/necessary if the list has at least 2 elements
     if (list.size < 2) {
         return;
@@ -388,7 +387,7 @@ void rotate_left(TList & list) {
     list.isSorted = is_sorted(list);
 }
 
-void rotate_right(TList & list) {
+void rotate_right(TList& list) {
     // Rotation is only possible/necessary if the list has at least 2 elements
     if (list.size < 2) {
         return;
@@ -412,7 +411,7 @@ void rotate_right(TList & list) {
     list.isSorted = is_sorted(list);
 }
 
-TNode* search_first(TList & list, int data) {
+TNode* search_first(TList& list, int data) {
     TNode* current = list.pHead;
 
     while (current != nullptr) {
@@ -425,7 +424,7 @@ TNode* search_first(TList & list, int data) {
     return nullptr;
 }
 
-TNode* search_last(TList & list, int data) {
+TNode* search_last(TList& list, int data) {
     TNode* current = list.pTail;
 
     while (current != nullptr) {
@@ -438,11 +437,11 @@ TNode* search_last(TList & list, int data) {
     return nullptr;
 }
 
-size_t size(TList & list) {
+size_t size(TList& list) {
     return list.size;
 }
 
-void sort(TList & list) {
+void sort(TList& list) {
     // If the list is already sorted or has fewer than 2 elements, no work is needed
     if (list.isSorted || list.size < 2) {
         return;
@@ -468,11 +467,11 @@ void sort(TList & list) {
     list.isSorted = true;
 }
 
-bool sorted(TList & list) {
+bool sorted(TList& list) {
     return list.isSorted;
 }
 
-bool valid_node(TList & list, TNode * pNode) {
+bool valid_node(TList& list, TNode * pNode) {
     if (pNode == nullptr) {
         return true;
     }
@@ -488,7 +487,7 @@ bool valid_node(TList & list, TNode * pNode) {
     return false;
 }
 
-bool consistent (TList & list) {
+bool consistent (TList& list) {
     if (list.size == 0) {
         return (list.pHead == nullptr) && (list.pTail == nullptr) && list.isSorted;
     } else {
@@ -514,5 +513,3 @@ bool consistent (TList & list) {
 
     return false;
 }
-
-
