@@ -21,6 +21,7 @@ int main() {
     Append(list, 4);
 
     Print(list);
+    PrintRecursive(list);
     Delete(list, 4);
 
     Print(list);
@@ -29,14 +30,16 @@ int main() {
 
     //---------------------------
     cout << "Liste aufbauen... " << endl;
-    for (int i = 0; i < 1000000000; i++) {
-        Append(list, 17);
-        //Prepend(list, 17);
+    for (int i = 0; i < 1000000; i++) {
+        //Append(list, 17);
+        Prepend(list, 17);
     }
     cout << "Fertig! Taste druecken fuer Loeschen der Liste." << endl;
     cin.get(); //_getch(); // warten auf Tastendrucke
 
     Flush(list);
     Print(list);
+
+    PrintRecursive(list);
     return 0;
 }
