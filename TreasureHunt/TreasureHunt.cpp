@@ -1,13 +1,18 @@
 #include "TreasureHunt.h"
-
 #include <cstring>
 #include <iostream>
-#include <stdbool.h>
 #include <string>
+#include <cassert>
 
 static char* strAlloc(const std::string str) {
-    char* pResult = new char[gSize];
-    std::strcpy(pResult, str.c_str());
+    char* pResult = new(std::nothrow) char[gSize+1];
+    if (pResult == nullptr)
+    {
+        std::cout << "Allocation returned nullptr" << std::endl;
+        assert(false);
+    }
+
+    std::strncpy(pResult, str.c_str(), gSize);
     return pResult;
 }
 
@@ -85,10 +90,10 @@ bool FindTreasure(TMaze maze, int const i, int const j) {
     } else {
         maze[i][j] = '.';
 
-        return (IsValidCoordinate(i-1, j) && FindTreasure(maze, i-1, j)) ||
-               (IsValidCoordinate(i, j+1) && FindTreasure(maze, i, j+1)) ||
-               (IsValidCoordinate(i+1, j) && FindTreasure(maze, i+1, j)) ||
-               (IsValidCoordinate(i, j-1) && FindTreasure(maze, i, j-1));
+        return (IsValidCoordinate(i-1, j) && FindTreasure(maze, i-1, j)) || // up
+               (IsValidCoordinate(i, j+1) && FindTreasure(maze, i, j+1)) || // right
+               (IsValidCoordinate(i+1, j) && FindTreasure(maze, i+1, j)) || // down
+               (IsValidCoordinate(i, j-1) && FindTreasure(maze, i, j-1));   // left
     }
 }
 
