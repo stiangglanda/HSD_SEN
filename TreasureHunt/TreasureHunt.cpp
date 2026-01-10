@@ -76,70 +76,19 @@ void DumpMaze(TMaze const maze) {
     }
 }
 
-static bool FindTreasureRec(TMaze maze, int const i, int const j, int const starti, int const startj) {
+bool FindTreasure(TMaze maze, int const i, int const j) {
 
     if (maze[i][j] == 'X') {
         return true;
-    } else if (maze[i][j] == '+') {
+    } else if (maze[i][j] == '+' || maze[i][j] == '.') {
         return false;
-    } else if (maze[i][j] == ' ') {
+    } else {
         maze[i][j] = '.';
 
-        DumpMaze(maze);
-
-        return (IsValidCoordinate(i-1, j) && FindTreasureRec(maze, i-1, j, starti, startj)) ||
-               (IsValidCoordinate(i, j+1) && FindTreasureRec(maze, i, j+1, starti, startj)) ||
-               (IsValidCoordinate(i+1, j) && FindTreasureRec(maze, i+1, j, starti, startj)) ||
-               (IsValidCoordinate(i, j-1) && FindTreasureRec(maze, i, j-1, starti, startj));
-    }  else {
-        return false;
-
-
-        if (IsValidCoordinate(i-1,j) && maze[i-1][j] == ' '|| maze[i-1][j] == 'X') { //up
-            DumpMaze(maze);
-            return FindTreasureRec(maze, i-1, j, starti, startj);
-        } else if (IsValidCoordinate(i,j+1) && maze[i][j+1] == ' '|| maze[i][j+1] == 'X') { //right
-            DumpMaze(maze);
-            return FindTreasureRec(maze, i, j+1, starti, startj);
-        } else if (IsValidCoordinate(i+1,j) && maze[i+1][j] == ' '|| maze[i+1][j] == 'X') { //down
-            DumpMaze(maze);
-            return FindTreasureRec(maze, i+1, j, starti, startj);
-        } else if (IsValidCoordinate(i,j-1) && maze[i][j-1] == ' ' || maze[i][j-1] == 'X') { //left
-            DumpMaze(maze);
-            return FindTreasureRec(maze, i, j-1, starti, startj);
-        }
-    }
-
-
-    // else if (IsValidCoordinate(i,j+1) && maze[i][j+1] == '.') { //right // backtracking
-    //     DumpMaze(maze);
-    //     return FindTreasureRec(maze, i, j+1, starti, startj);
-    // } else if (IsValidCoordinate(i-1,j) && maze[i-1][j] == '.') { //up
-    //     DumpMaze(maze);
-    //     return FindTreasureRec(maze, i-1, j, starti, startj);
-    // } else if (IsValidCoordinate(i,j-1) && maze[i][j-1] == '.') { //left
-    //     DumpMaze(maze);
-    //     return FindTreasureRec(maze, i, j-1, starti, startj);
-    // } else if (IsValidCoordinate(i+1,j) && maze[i+1][j] == '.') { //down
-    //     DumpMaze(maze);
-    //     return FindTreasureRec(maze, i+1, j, starti, startj);
-    // }
-}
-
-bool FindTreasure(TMaze maze, int const i, int const j) {
-    if (maze[i][j] == 'X') {
-        return true;
-    }
-    maze[i][j] = '.';
-
-    if (IsValidCoordinate(i-1,j) && maze[i-1][j] == ' ') { //up
-        return FindTreasureRec(maze, i-1, j, i, j);
-    } else if (IsValidCoordinate(i,j+1) && maze[i][j+1] == ' ') { //right
-        return FindTreasureRec(maze, i, j+1, i, j);
-    } else if (IsValidCoordinate(i+1,j) && maze[i+1][j] == ' ') { //down
-        return FindTreasureRec(maze, i+1, j, i, j);
-    } else if (IsValidCoordinate(i,j-1) && maze[i][j-1] == ' ') { //left
-        return FindTreasureRec(maze, i, j-1, i, j);
+        return (IsValidCoordinate(i-1, j) && FindTreasure(maze, i-1, j)) ||
+               (IsValidCoordinate(i, j+1) && FindTreasure(maze, i, j+1)) ||
+               (IsValidCoordinate(i+1, j) && FindTreasure(maze, i+1, j)) ||
+               (IsValidCoordinate(i, j-1) && FindTreasure(maze, i, j-1));
     }
 }
 
