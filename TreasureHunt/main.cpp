@@ -1,29 +1,37 @@
+///////////////////////////////////////////////////////////////////////////
+// Workfile : main.cpp
+// Author : Leander Kieweg
+// Date : 10. 01. 2026
+// Description : Treasure Hunt Test Driver
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
+
 #include <iostream>
 #include "TreasureHunt.h"
 
 int main() {
     TMaze maze;
-    int const mazeType = 1;
+    int const mazeType = 0;
     int const startRow = 8;
     int const startCol = 0;
 
     InitMaze(maze, mazeType);
 
-    std::cout << "--- Labyrinth VOR der Suche ---" << std::endl;
+    std::cout << "Treasure Hunt" << std::endl;
     DumpMaze(maze);
     std::cout << std::endl;
 
-    std::cout << "Starte Suche bei (" << startRow << ", " << startCol << ")..." << std::endl;
+    std::cout << "Start Maze " << mazeType << " At (" << startRow << ", " << startCol << ")" << std::endl;
 
     bool found = FindTreasure(maze, startRow, startCol);
 
     if (found) {
-        std::cout << ">>> Erfolg! Schatz gefunden. <<<" << std::endl;
+        std::cout << "Found Treasure" << std::endl;
     } else {
-        std::cout << ">>> Leider kein Weg zum Schatz gefunden. <<<" << std::endl;
+        std::cout << "No Treasure Found" << std::endl;
     }
 
-    std::cout << std::endl << "--- Labyrinth NACH der Suche ---" << std::endl;
     DumpMaze(maze);
 
     FreeMaze(maze);

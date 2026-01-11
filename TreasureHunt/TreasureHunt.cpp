@@ -1,18 +1,28 @@
+///////////////////////////////////////////////////////////////////////////
+// Workfile : TreasureHunt.cpp
+// Author : Leander Kieweg
+// Date : 10. 01. 2026
+// Description : Treasure Hunt Module Implementation
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
+
 #include "TreasureHunt.h"
 #include <cstring>
 #include <iostream>
 #include <string>
-#include <cassert>
+#include <cstdlib>
 
 static char* strAlloc(const std::string str) {
     char* pResult = new(std::nothrow) char[gSize+1];
     if (pResult == nullptr)
     {
         std::cout << "Allocation returned nullptr" << std::endl;
-        assert(false);
+        std::exit(1);
     }
 
     std::strncpy(pResult, str.c_str(), gSize);
+    pResult[gSize] = '\0';
     return pResult;
 }
 
@@ -40,13 +50,13 @@ void InitMaze(TMaze maze, int const type) {
             maze[14]= strAlloc("+++++++++++++++");
             break;
         case 1: // second maze
-            maze[0] = strAlloc("+++++++++++++++");
+            maze[0] = strAlloc("++++  +++++++++");
             maze[1] = strAlloc("+     +++     +");
             maze[2] = strAlloc("+++ + +++  ++ +");
             maze[3] = strAlloc("+   + ++  +++ +");
             maze[4] = strAlloc("+   +         +");
             maze[5] = strAlloc("+ +++++++++ +++");
-            maze[6] = strAlloc("+   +         +");
+            maze[6] = strAlloc("+   +          ");
             maze[7] = strAlloc("+++ +   +++++ +");
             maze[8] = strAlloc("    +      ++ +");
             maze[9] = strAlloc("+++++ ++++++  +");
@@ -56,7 +66,7 @@ void InitMaze(TMaze maze, int const type) {
             maze[13]= strAlloc("+    +++   ++ +");
             maze[14]= strAlloc("+++++++++++++++");
             break;
-        default:
+        case 2: // third maze
             maze[0] = strAlloc("+++++++++++++++");
             maze[1] = strAlloc("+     +++     +");
             maze[2] = strAlloc("+++ + +++  ++ +");
@@ -72,6 +82,10 @@ void InitMaze(TMaze maze, int const type) {
             maze[12]= strAlloc("+     X+ +    +");
             maze[13]= strAlloc("+    +++   ++ +");
             maze[14]= strAlloc("+++++++++++++++");
+            break;
+        default:
+            std::cout << "ERROR Maze Type: " << type << " not valid" << std::endl;
+            std::exit(1);
     }
 }
 
@@ -82,7 +96,9 @@ void DumpMaze(TMaze const maze) {
 }
 
 bool FindTreasure(TMaze maze, int const i, int const j) {
-
+    if (!IsValidCoordinate(i, j)) {
+        return false;
+    }
     if (maze[i][j] == 'X') {
         return true;
     } else if (maze[i][j] == '+' || maze[i][j] == '.') {
@@ -90,10 +106,10 @@ bool FindTreasure(TMaze maze, int const i, int const j) {
     } else {
         maze[i][j] = '.';
 
-        return (IsValidCoordinate(i-1, j) && FindTreasure(maze, i-1, j)) || // up
-               (IsValidCoordinate(i, j+1) && FindTreasure(maze, i, j+1)) || // right
-               (IsValidCoordinate(i+1, j) && FindTreasure(maze, i+1, j)) || // down
-               (IsValidCoordinate(i, j-1) && FindTreasure(maze, i, j-1));   // left
+        return FindTreasure(maze, i-1, j) || // up
+               FindTreasure(maze, i, j+1) || // right
+               FindTreasure(maze, i+1, j) || // down
+               FindTreasure(maze, i, j-1);   // left
     }
 }
 
