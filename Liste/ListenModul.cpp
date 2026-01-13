@@ -151,3 +151,30 @@ size_t LengthRecursive(TList const List) {
     // auswickeln
     return len;
 }
+
+double AvgElementsRecursive(TList pList, int depth) {
+    TNode* pNode = pList;
+    static int sum = 0;
+    static int cnt = 0;
+
+    if (pNode == 0) {
+        return 0.0;
+    }
+
+    sum += pNode->data;
+    cnt++;
+    depth++; // Rekursionstiefe mitführen, damit man letzten Rückruf erkennt
+
+    AvgElementsRecursive(pNode->pNext, depth);
+
+    depth--;
+    if (depth == 0) { // letzter Rückruf: Jetzt Durchschnitt bilden
+        double avg = sum*1.0 / cnt;
+        sum = 0;
+        cnt = 0;// static vars zurücksetzen für nächsten Aufruf
+        return avg;
+    }
+    else {
+        return 0.0;
+    }
+}

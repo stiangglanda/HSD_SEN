@@ -13,6 +13,12 @@ int main() {
     Prepend(list, 3);
     Prepend(list, 4);
 
+    Append(list, 10);
+    Append(list, 20);
+    Append(list, 30);
+    double avg = AvgElementsRecursive(list,0);
+    cout << "AvgElementsRecursive: " << avg << endl;
+
     Print(list);
 
     Append(list, 1);
@@ -22,6 +28,7 @@ int main() {
 
     Print(list);
     PrintRecursive(list);
+
     Delete(list, 4);
 
     Print(list);
