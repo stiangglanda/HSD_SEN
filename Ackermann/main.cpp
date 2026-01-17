@@ -1,3 +1,11 @@
+///////////////////////////////////////////////////////////////////////////
+// Workfile : main.cpp
+// Author : Leander Kieweg
+// Date : 16. 01. 2026
+// Description : Ackermann
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #include <iostream>
 
 struct Result {
@@ -6,6 +14,7 @@ struct Result {
     unsigned int maxDepth;
 };
 
+// b
 unsigned int Ackermann(unsigned int m, unsigned int n) {
     if (m == 0) {
         return n+1;
@@ -15,7 +24,7 @@ unsigned int Ackermann(unsigned int m, unsigned int n) {
         return Ackermann(m-1, Ackermann(m, n-1));
     }
 }
-
+// c & d
 Result AckermannFinal(unsigned int m, unsigned int n, unsigned int currentDepth = 0) {
     static unsigned int globalCallCnt = 0;
     static unsigned int globalMaxDepth = 0;
@@ -49,9 +58,10 @@ int main() {
     const unsigned int m = 3;
     const unsigned int n = 2;
 
-    Result res = AckermannFinal(m, n);
+    std::cout << "b) Ackermann(" << m << ", " << n << ") = " << Ackermann(m, n) << std::endl;
 
-    std::cout << "Ackermann(" << m << ", " << n << ") = " << res.val << std::endl;
+    Result res = AckermannFinal(m, n);
+    std::cout << "c&d) Ackermann(" << m << ", " << n << ") = " << res.val << std::endl;
     std::cout << "Aufrufe: " << res.callCnt << std::endl;
     std::cout << "Max Tiefe: " << res.maxDepth << std::endl;
 
