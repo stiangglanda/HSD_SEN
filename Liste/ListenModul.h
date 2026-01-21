@@ -21,4 +21,8 @@ void Flush(TList& pList);
 void Delete(TList& pList, int const data);
 double AvgElements(TList pList);
 
+void PrintRecursive(TList const List);
+size_t LengthRecursive(TList const List);
+double AvgElementsRecursive(TList pList, int depth);
+
 #endif

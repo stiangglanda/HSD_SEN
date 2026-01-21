@@ -40,6 +40,7 @@ size_t Length(TList pList) {
 void Print(TList pList) {
     TNode* pNode = pList;
     cout << "Liste der laenge " << Length(pList) << endl;
+    cout << "Liste der laenge Recursive " << LengthRecursive(pList) << endl;
     cout << "Elemente: " << endl;
 
     while (pNode != nullptr) {
@@ -118,4 +119,62 @@ void Delete(TList& pList, int const data) {
 
 double AvgElements(TList pList) {
 
+}
+
+void PrintRecursive(TList const List) {
+    TNode* pNode = List;
+    // Abbruchbedingung
+    if (pNode == 0) {
+        cout << "Ende der Liste erreicht" << endl;
+        return;
+    }
+
+    //einwickeln
+    //cout << "Element: " << pNode->data << endl; // von vorne
+
+    PrintRecursive(pNode->pNext);
+    // auswickeln
+
+    cout << "Element: " << pNode->data << endl; // von hinten
+}
+
+size_t LengthRecursive(TList const List) {
+    size_t len = 0;
+    TNode* pNode = List;
+
+    if (pNode == 0) {
+        return 0;
+    }
+
+    //einwickeln
+    len = 1 + LengthRecursive(pNode->pNext);
+    // auswickeln
+    return len;
+}
+
+double AvgElementsRecursive(TList pList, int depth) {
+    TNode* pNode = pList;
+    static int sum = 0;
+    static int cnt = 0;
+
+    if (pNode == 0) {
+        return 0.0;
+    }
+
+    sum += pNode->data;
+    cnt++;
+    depth++; // Rekursionstiefe mitführen, damit man letzten Rückruf erkennt
+
+    AvgElementsRecursive(pNode->pNext, depth);
+
+    depth--;
+    if (depth == 0) { // letzter Rückruf: Jetzt Durchschnitt bilden
+        double avg = sum*1.0 / cnt;
+        sum = 0;
+        cnt = 0;// static vars zurücksetzen für nächsten Aufruf
+        return avg;
+    }
+    else {
+        return 0.0;
+    }
 }
