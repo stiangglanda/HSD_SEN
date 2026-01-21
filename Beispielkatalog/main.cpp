@@ -46,7 +46,7 @@ void PrintValuesBetween(int arr[], size_t n, int min, int max)
 int RemoveElement(int arr[], size_t n, int limit)
 {
 	int removedCnt = 0;
-	for (int i = 0; i < n; ) {
+	for (int i = 0; i < n - removedCnt; ) {
 		if (arr[i] < limit)
 		{
 			for (int j = i; j < n-1; j++) {
