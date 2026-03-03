@@ -30,7 +30,20 @@ int FindMin2(const int F[], size_t n, size_t i) {
     return (F[i] < minRest) ? F[i] : minRest;
 }
 
+void func(int x, int y) {
+    std::cout << x << " " << y << std::endl;
+}
+
 int main() {
+    int x=1;
+    int y=2;
+    func(x,y);
+
+    {
+        bool x=false;
+        char y='s';
+        func(x,y);
+    }
     const int n=5;
     int F[n]={2,3,5,8,9};
     std::cout << FindMin(F,n) << std::endl;
