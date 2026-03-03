@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="88747d4b-267e-46bd-b275-555271240475" name="Changes" comment="Add new classes and update main implementation with additional functionality">
+      <change beforePath="$PROJECT_DIR$/../Ackermann/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ackermann/.idea/Ackermann.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ackermann/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ackermann/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ackermann/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ackermann/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ackermann/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ackermann/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ackermann/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Beispielkatalog/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Beispielkatalog/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/BigInts.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/BigInt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/BigInt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigInts/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearch/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearch/.idea/BinarySearch.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearch/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearch/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearch/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearch/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearch/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearch/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearch/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/.idea/BinaryTree.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/BinaryTree.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/BinaryTree.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinaryTree/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/BinomealBerechnung.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/binom.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/binom.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/faculty.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/faculty.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinomealBerechnung/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/.idea/DoublyConnectedList.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/DoublyConnectedList.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/DoublyConnectedList.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoublyConnectedList/TestTreiber.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/OrderedNumber.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DualConverter/DualConverter.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/Durchschnittsverbrauch.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Durchschnittsverbrauch/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/EuroRechner.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EuroRechner/Calculate.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fibunacci/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fibunacci/.idea/Fibunacci.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fibunacci/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fibunacci/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fibunacci/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fibunacci/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fibunacci/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fibunacci/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fibunacci/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstName/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstName/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/Funktionen_G2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Funktionen_G2/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/sen1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelloWorld/HelloWorld.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/Kennfelder.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/CMakePresets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kennfelder/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/Klammernsuche.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Klammernsuche/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/LeetSpeak.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/CMakePresets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/LeetSpeakConverter.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/LeetSpeakConverter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetSpeak/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/Liste.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/ListeMain.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/ListenModul.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Liste/ListenModul.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/Matrix.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/CMakePresets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/Matrix.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/Matrix.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Memory/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Memory/.idea/Memory.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Memory/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Memory/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Memory/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Memory/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Memory/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Memory/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Memory/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/MergeSort.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/CMakePresets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/Operators.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Operators/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/OrderedNumber.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderedNumber/OrderedNumber.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/Pointer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pointer/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/Power.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Power/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PowerOf/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PowerOf/.idea/PowerOf.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PowerOf/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PowerOf/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PowerOf/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PowerOf/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PowerOf/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PowerOf/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PowerOf/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/PrimeFactors.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/CMakePresets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/PrimeFactors/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/PrimeFactors/Main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/PrimeFactors/Prime.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PrimeFactors/PrimeFactors/Prime.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/Primfaktorenzerlegung.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Primfaktorenzerlegung/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Quersumme/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Quersumme/.idea/Quersumme.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Quersumme/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Quersumme/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Quersumme/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Quersumme/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Quersumme/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Quersumme/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Quersumme/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/.idea/RandomNumberLaeufeTest.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/RandomGen.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/RandomGen.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RandomNumberLaeufeTest/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecursivSqrt/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecursivSqrt/.idea/RecursivSqrt.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecursivSqrt/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecursivSqrt/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecursivSqrt/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecursivSqrt/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecursivSqrt/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecursivSqrt/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecursivSqrt/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RedundancyEliminatior/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RedundancyEliminatior/RedundancyEliminatior.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/SortThreeDesc.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SortThreeDesc/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/Textstatistics.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/CMakePresets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/FileOps.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/FileOps.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/SampleText.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/Textstatistics.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/Textstatistics.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Textstatistics/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/.idea/TreasureHunt.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/Console.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/Console.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/ConsoleMain.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/TreasureHunt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/TreasureHunt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreasureHunt/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/VsTest.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VsTest/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/WeatherStation.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/CMakePresets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/WeatherStation.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/WeatherStation.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WeatherStation/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/Widerstandswerte.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/CMakePresets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Widerstandswerte/Widerstandswerte.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/rekursionSEN.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/static.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/stdstrings.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../stdstrings/main.cpp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;stiangglanda&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/stiangglanda/HSD_SEN.git&quot;,
+    &quot;accountId&quot;: &quot;6bf423e6-e34c-4774-9896-79d8828b0f9c&quot;
+  }
+}</component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="4xaNWdyr" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2025" />
+    <option name="minorVersion" value="3.1.1" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="38PCE8cHgIl4ekqVzhGLwD0UYUv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.rekursionSEN.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="88747d4b-267e-46bd-b275-555271240475" name="Changes" comment="" />
+      <created>1768691704189</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1768691704189</updated>
+      <workItem from="1768691705415" duration="2500000" />
+      <workItem from="1768752252712" duration="87000" />
+      <workItem from="1769361021412" duration="864000" />
+      <workItem from="1772526943557" duration="140000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add initial project files including CMake configuration and main implementation">
+      <option name="closed" value="true" />
+      <created>1768694182362</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768694182362</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add new classes and update main implementation with additional functionality">
+      <option name="closed" value="true" />
+      <created>1772526996652</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1772526996653</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add initial project files including CMake configuration and main implementation" />
+    <MESSAGE value="Add new classes and update main implementation with additional functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new classes and update main implementation with additional functionality" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>
