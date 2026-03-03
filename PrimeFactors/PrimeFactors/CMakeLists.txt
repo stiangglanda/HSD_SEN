@@ -1,5 +1,0 @@
-﻿add_executable (PrimeFactors "Prime.cpp" "Prime.h" "Main.cpp")
-
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET PrimeFactors PROPERTY CXX_STANDARD 20)
-endif()
