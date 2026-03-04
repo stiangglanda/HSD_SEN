@@ -1,0 +1,89 @@
+// Testeingabe
+// -----------
+// @ und | und & | ! werden nicht erkannt.
+   for i = 1 to 10 do
+      abc = -1.009 / 332.090790;
+      xyz = "D'Arcy";
+
+      function (xyz, 3);   // Ein
+                           // Funktionsaufruf.
+
+      abc = 34;
+      xyz = "";
+   endfor 
+
+// Ein paar Schlüsselwörter.
+//	-------------------------
+   mult
+   print
+
+   prettyprint (x^    - +3
+      + -7 )
+
+   sub
+   add     Add
+
+67..78
+
+:i,.
+
+
+// Testeingabe
+// -----------
+   for i = 1 to 10 do
+      abc = -1.009 / 332.090790;
+      xyz = "D'Arcy";
+
+      function (xyz, 3);   // Ein
+                           // Funktionsaufruf.
+
+      abc = 34;
+      xyz = "";
+   endfor
+
+// Ein paar Schlüsselwörter.
+//	-------------------------
+   mult
+   print
+
+   prettyprint (x^    - +3
+      + -7 )
+
+   sub
+   add     Add
+
+67..78
+
+:i,.
+
+
+// Testeingabe
+// -----------
+   for i = 1 to 10 do
+      abc = -1.009 / 332.090790;
+      xyz = "D'Arcy";
+
+      function (xyz, 3);   // Ein
+                           // Funktionsaufruf.
+
+      abc = 34;
+      xyz = "";
+   endfor
+
+// Ein paar Schlüsselwörter.
+//	-------------------------
+   mult
+   print
+
+   prettyprint (x^    - +3
+      + -7 )
+
+   sub
+   add     Add
+
+67..78
+
+:i,.
+
+7 .. 8
+
