@@ -10,61 +10,97 @@ using namespace pfc;
 // Function Definitions
 // --------------------
 
-//Pr�fung auf terminalen Anfang f�r den Add-Operator(+,-)
+//Prüfung auf terminalen Anfang für den Add-Operator(+,-)
 static bool IsTBAddOp (scanner const& scan)
 {
-   return false;
+   return scan.is('+') || scan.is('-');
 }
 
-//Pr�fung auf terminalen Anfang f�r den Mul-Operator(*,/)
+//Prüfung auf terminalen Anfang für den Mul-Operator(*,/)
 static bool IsTBMulOp(scanner const& scan)
 {
-   return false;
+   return scan.is('*') || scan.is('/');
 }
 
-//Pr�fung auf terminalen Anfang f�r einen Faktor
+//Prüfung auf terminalen Anfang für einen Faktor
 static bool IsTBFactor(scanner const& scan)
 {
-   return false;
+   return scan.get_integer() || scan.is('(');
 }
 
-//Pr�fung auf terminalen Anfang f�r einen Term
-static bool IsTBTerm (scanner const& scan)
+//Prüfung auf terminalen Anfang für einen Term
+static bool IsTBTerm(scanner const& scan)
 {
-   return false;
+   return IsTBFactor(scan);
 }
 
-//Pr�fung auf terminalen Anfang f�r eine Expression
+//Prüfung auf terminalen Anfang für eine Expression
 static bool IsTBExpression(scanner const& scan)
 {
-   return false;
+   return IsTBAddOp(scan) || IsTBTerm(scan);
 }
 
 
 //Erkenne den Additionsoperator und liefer das Vorzeichen
 static int ScanAddOp(scanner& scan)
 {
-   return 0;
+   int sign = 0;
+   if (scan.is('+')) {
+      sign = +1; //positives vorzeichen
+   }
+   else if (scan.is('-')) {
+      sign = -1; //negatives vorzeichen
+   }
+
+   scan.next_symbol(); //weiterschalten auf das nächste symbol
+   return sign;
 }
 
-//Vorw�rtsdeklaration (forward declaration)
+//Vorwärtsdeklaration (forward declaration)
 static int ScanExpression(scanner& scan);
 
 //Erkenne einen Faktor
 static int ScanFactor(scanner& scan)
 {
-   return 0;
+   int val = 0;
+   if (scan.is_integer()) {
+      val = scan.get_integer();
+      scan.next_symbol();
+   }
+   //TODO geklammerter ausdruck
+
+   return val;
 }
 
 //Erkenne einen Term
 static int ScanTerm(scanner& scan)
 {
-   return 0;
+   int val = ScanFactor(scan);
+
+   while (IsTBMulOp(scan)) {
+      if (scan.is('*')) {
+         scan.next_symbol(); // weiterlesen
+         val *= ScanFactor(scan); // -> multiplizieren
+      }
+      //TODO Division
+   }
+
+   return val;
 }
 
 //Erkenne einen arithmetischen Ausdruck
 static int ScanExpression (scanner& scan)
 {
+   int sign = 1;
+   int val = 0;
+
+   if (IsTBAddOp(scan)) {
+      sign = ScanAddOp(scan);
+
+   }
+   val = sign * ScanTerm(scan);
+
+   // TODO add loop for multiple terms
    return 0;
 }
 
