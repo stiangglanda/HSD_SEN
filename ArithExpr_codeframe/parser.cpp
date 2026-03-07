@@ -1,0 +1,129 @@
+#include <iostream>
+#include "parser.h"
+
+using namespace std;
+using namespace pfc;
+
+// --------------------
+// Function Definitions
+// --------------------
+
+//Prüfung auf terminalen Anfang für den Add-Operator(+,-)
+static bool IsTBAddOp (scanner const& scan)
+{
+   return scan.is('+') || scan.is('-');
+}
+
+//Prüfung auf terminalen Anfang für den Mul-Operator(*,/)
+static bool IsTBMulOp(scanner const& scan)
+{
+   return scan.is('*') || scan.is('/');
+}
+
+//Prüfung auf terminalen Anfang für einen Faktor
+static bool IsTBFactor(scanner const& scan)
+{
+   return scan.get_integer() || scan.is('(');
+}
+
+//Prüfung auf terminalen Anfang für einen Term
+static bool IsTBTerm(scanner const& scan)
+{
+   return IsTBFactor(scan);
+}
+
+//Prüfung auf terminalen Anfang für eine Expression
+static bool IsTBExpression(scanner const& scan)
+{
+   return IsTBAddOp(scan) || IsTBTerm(scan);
+}
+
+
+//Erkenne den Additionsoperator und liefer das Vorzeichen
+static int ScanAddOp(scanner& scan)
+{
+   int sign = 0;
+   if (scan.is('+')) {
+      sign = +1; //positives vorzeichen
+   }
+   else if (scan.is('-')) {
+      sign = -1; //negatives vorzeichen
+   }
+
+   scan.next_symbol(); //weiterschalten auf das nächste symbol
+   return sign;
+}
+
+//Erkenne einen Faktor
+static int ScanFactor(scanner& scan)
+{
+   int val = 0;
+   if (scan.is_integer()) {
+      val = scan.get_integer();
+      scan.next_symbol();
+   } else if (scan.is('(')) {
+      scan.next_symbol(); // öffnende Klammer konsumieren
+      val = ScanExpression(scan); // Ausdruck berechnen und speichern
+
+      if (scan.is(')')) {
+         scan.next_symbol(); // schließende Klammer konsumieren
+      } else {
+         std::cerr << "error scan factor" << std::endl;
+         throw std::runtime_error("error scan factor");
+         return 0;
+      }
+   } else {
+      std::cerr << "error scan factor" << std::endl;
+      throw std::runtime_error("error scan factor");
+      return 0;
+   }
+
+   return val;
+}
+
+//Erkenne einen Term
+static int ScanTerm(scanner& scan)
+{
+   if (!scan.is_integer() && !scan.is('(')) {
+      std::cerr << "error scan term" << std::endl;
+   }
+
+   int val = ScanFactor(scan);
+
+   while (IsTBMulOp(scan)) {
+      if (scan.is('*')) {
+         scan.next_symbol(); // weiterlesen
+         val *= ScanFactor(scan); // -> multiplizieren
+      } else {
+         scan.next_symbol();
+         val /= ScanFactor(scan);
+      }
+   }
+
+   return val;
+}
+
+//Erkenne einen arithmetischen Ausdruck
+int ScanExpression (scanner& scan)
+{
+   int sign = 1;
+   int val = 0;
+
+
+   if (IsTBAddOp(scan)) {
+      sign = ScanAddOp(scan);
+   }
+   val = sign * ScanTerm(scan);
+
+   while (IsTBAddOp(scan)) {
+      if (scan.is('+')) {
+         scan.next_symbol();
+         val += ScanTerm(scan);
+      } else {
+         scan.next_symbol();
+         val -= ScanTerm(scan);
+      }
+   }
+
+   return val;
+}
