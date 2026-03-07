@@ -29,7 +29,7 @@ int main()
    {
       scanner scan{ file };
       //...scan expression
-      std::cout << "Result: " << ScanExpression(scan) << std::endl;
+      std::cout << ScanExpression(scan) << std::endl;
 
       if (!scan.is_eof()) {
          std::cerr << "error scan expression" << std::endl;
