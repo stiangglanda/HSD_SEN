@@ -29,11 +29,18 @@ int main()
    {
       scanner scan{ file };
       //...scan expression
-      std::cout << ScanExpression(scan) << std::endl;
+      std::cout << "Result: " << ScanExpression(scan) << std::endl;
+
       if (!scan.is_eof()) {
          std::cerr << "error scan expression" << std::endl;
-         throw std::runtime_error("error scan expression");
+         throw std::runtime_error("error scan expression: unexpected tokens at end");
       }
+   }
+   catch (pfc::scn::exception const&)
+   {
+      std::cerr << "error scan term" << std::endl;
+      file.close();
+      return 1;
    }
    //hier werden die Exceptions des Scanners gefangen und eine Fehlermeldung ausgegeben
    catch (exception const& ex)

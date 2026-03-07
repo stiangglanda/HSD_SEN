@@ -31,7 +31,7 @@ static bool IsTBMulOp(scanner const& scan)
 //Prüfung auf terminalen Anfang für einen Faktor
 static bool IsTBFactor(scanner const& scan)
 {
-   return scan.get_integer() || scan.is('(');
+   return scan.is_integer() || scan.is('(');
 }
 
 //Prüfung auf terminalen Anfang für einen Term
@@ -77,13 +77,11 @@ static int ScanFactor(scanner& scan)
          scan.next_symbol(); // schließende Klammer konsumieren
       } else {
          std::cerr << "error scan factor" << std::endl;
-         throw std::runtime_error("error scan factor");
-         return 0;
+         throw std::runtime_error("error scan factor: missing ')'");
       }
    } else {
       std::cerr << "error scan factor" << std::endl;
-      throw std::runtime_error("error scan factor");
-      return 0;
+      throw std::runtime_error("error scan factor: expected number or '('");
    }
 
    return val;
@@ -92,11 +90,6 @@ static int ScanFactor(scanner& scan)
 //Erkenne einen Term
 static int ScanTerm(scanner& scan)
 {
-   if (!scan.is_integer() && !scan.is('(')) {
-      std::cerr << "error scan term" << std::endl;
-      throw std::runtime_error("error scan term");
-   }
-
    int val = ScanFactor(scan);
 
    while (IsTBMulOp(scan)) {
@@ -104,8 +97,14 @@ static int ScanTerm(scanner& scan)
          scan.next_symbol(); // weiterlesen
          val *= ScanFactor(scan); // -> multiplizieren
       } else {
-         scan.next_symbol();
-         val /= ScanFactor(scan);
+         scan.next_symbol(); // Division
+         int divisor = ScanFactor(scan);
+
+         if (divisor == 0) {
+            std::cerr << "error: division by zero" << std::endl;
+            throw std::runtime_error("division by zero");
+         }
+         val /= divisor;
       }
    }
 
@@ -122,6 +121,7 @@ int ScanExpression (scanner& scan)
    if (IsTBAddOp(scan)) {
       sign = ScanAddOp(scan);
    }
+
    val = sign * ScanTerm(scan);
 
    while (IsTBAddOp(scan)) {
