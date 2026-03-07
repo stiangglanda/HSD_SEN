@@ -1,3 +1,11 @@
+///////////////////////////////////////////////////////////////////////////
+// Workfile : ArithExpr.cpp
+// Author : Leander Kieweg
+// Date : 07.03.2026
+// Description : Arithmetic Expression Test Driver
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #include <fstream>
 #include <iostream>
 #include "parser.h"
@@ -24,6 +32,7 @@ int main()
       std::cout << ScanExpression(scan) << std::endl;
       if (!scan.is_eof()) {
          std::cerr << "error scan expression" << std::endl;
+         throw std::runtime_error("error scan expression");
       }
    }
    //hier werden die Exceptions des Scanners gefangen und eine Fehlermeldung ausgegeben

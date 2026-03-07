@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : main.cpp
+// Workfile : BinarySearchTree.cpp
 // Author : Leander Kieweg
 // Date : 07.03.2026
 // Description : BinarySearchTree header

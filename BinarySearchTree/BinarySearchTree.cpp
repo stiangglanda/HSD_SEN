@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : main.cpp
+// Workfile : BinarySearchTree.cpp
 // Author : Leander Kieweg
 // Date : 07.03.2026
 // Description : BinarySearchTree Implementaion
@@ -12,21 +12,28 @@
 #include <cassert>
 
 TTreeNode* MakeNode(int const Data) {
-    TTreeNode* root = new (std::nothrow)TTreeNode(Data, nullptr, nullptr);
-    assert(root != nullptr);
-    return root;
+    TTreeNode* newNode = new (std::nothrow) TTreeNode;
+    if (newNode != nullptr) {
+        newNode->Data = Data;
+        newNode->pLeft = nullptr;
+        newNode->pRight = nullptr;
+    }
+    assert(newNode != nullptr);
+    return newNode;
 }
 
 bool Contains(const TTreeNode* const pRoot, int const Data) {
-
-    if (pRoot != nullptr) {
-        if (pRoot->Data == Data) {
-            return true;
-        }
-        Contains(pRoot->pLeft, Data);
-        Contains(pRoot->pRight, Data);
+    if (pRoot == nullptr) {
+        return false;
     }
-    return false;
+
+    if (Data == pRoot->Data) {
+        return true;
+    } else if (Data < pRoot->Data) {
+        return Contains(pRoot->pLeft, Data);
+    } else {
+        return Contains(pRoot->pRight, Data);
+    }
 }
 
 void Delete(TTreeNode*& pRoot, int const Data) {
@@ -66,8 +73,6 @@ void Flush(TTreeNode*& pRoot) {
     if (pRoot != nullptr) {
         Flush(pRoot->pLeft);
         Flush(pRoot->pRight);
-
-        std::cout << "freeing " << pRoot->Data << std::endl;
         delete pRoot; pRoot = nullptr;
     }
 }
@@ -95,7 +100,7 @@ int CountNodes(const TTreeNode* const pRoot) {
     }
 }
 
-static void ExtractToArrayRec(const TTreeNode* const pRoot, int* const pArray, size_t const Size, int& i) {
+static void ExtractToArrayRec(const TTreeNode* const pRoot, int* const pArray, size_t const Size, size_t& i) {
     if (pRoot != nullptr && i < Size) {
         ExtractToArrayRec(pRoot->pLeft, pArray, Size, i);
         if (i<Size) {
@@ -107,7 +112,7 @@ static void ExtractToArrayRec(const TTreeNode* const pRoot, int* const pArray, s
 }
 
 void ExtractToArray(const TTreeNode* const pRoot, int* const pArray, size_t const Size) {
-    int i = 0;
+    size_t i = 0;
     ExtractToArrayRec(pRoot, pArray, Size, i);
 }
 

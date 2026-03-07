@@ -1,3 +1,11 @@
+///////////////////////////////////////////////////////////////////////////
+// Workfile : parser.cpp
+// Author : Leander Kieweg
+// Date : 07.03.2026
+// Description : parser for Arithmetic Expression
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include "parser.h"
 
@@ -86,6 +94,7 @@ static int ScanTerm(scanner& scan)
 {
    if (!scan.is_integer() && !scan.is('(')) {
       std::cerr << "error scan term" << std::endl;
+      throw std::runtime_error("error scan term");
    }
 
    int val = ScanFactor(scan);
