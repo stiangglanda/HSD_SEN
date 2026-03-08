@@ -36,12 +36,6 @@ int main()
          throw std::runtime_error("error scan expression: unexpected tokens at end");
       }
    }
-   catch (pfc::scn::exception const&)
-   {
-      std::cerr << "error scan term" << std::endl;
-      file.close();
-      return 1;
-   }
    //hier werden die Exceptions des Scanners gefangen und eine Fehlermeldung ausgegeben
    catch (exception const& ex)
    {
