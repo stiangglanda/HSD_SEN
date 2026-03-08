@@ -71,7 +71,13 @@ static int ScanFactor(scanner& scan)
       scan.next_symbol();
    } else if (scan.is('(')) {
       scan.next_symbol(); // öffnende Klammer konsumieren
-      val = ScanExpression(scan); // Ausdruck berechnen und speichern
+
+      if (IsTBExpression(scan)) {
+         val = ScanExpression(scan);
+      } else {
+         std::cerr << "error scan factor" << std::endl;
+         throw std::runtime_error("error scan factor");
+      }
 
       if (scan.is(')')) {
          scan.next_symbol(); // schließende Klammer konsumieren
