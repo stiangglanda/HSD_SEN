@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
+#include <format>
 
 using namespace std;
 
@@ -81,6 +82,36 @@ static void ConvertWithStreams()
    converter << d;
    string res = converter.str(); // liefert wieder einen string
    cout << res << endl;
+
+   // variante 2
+   stringstream{}.swap(converter);
+   converter << "complicated string" << 4711 << ": " << d << ", "
+   << "float: " << 47.11f;
+   cout << converter.str();
+}
+
+//formatieren mit std::format aus C++20
+static void Format() {
+   string const name = "John Wick";
+   int const age = 25;
+
+   //{} ist ein Platzhalter fuer eine Variable
+   string res = format("Name: {}, Alter: {}\n", name, age);
+   cout << res;
+
+   float const val = 3.1415f;
+   cout << format("float -> {:.3f}\n", val);
+
+   //Fuellzeichen
+   cout << format("float -> {:*<20.2f}\n", val);
+   cout << format("float -> {:*>20.2f}\n", val);
+   cout << format("float -> {:*^20.2f}\n", val);
+
+   cout << format("binaer: {1:b}, {0:b}\n", 255, 1024); //{index:binaer}
+   cout << format("hex: {1:x}, {0:x}\n", 255, 1024);
+   cout << format("okt: {1:o}, {0:o}\n", 255, 1024);
+   cout << format("okt: {1:d}, {0:d}\n", 255, 1024);
+   cout << format("exp: {1:e}, {0:E}\n", 255.255, 1024.1024);
 }
 
 int main()
@@ -195,4 +226,5 @@ int main()
    }
 
    ConvertWithStreams();
+   Format();
 }
