@@ -66,9 +66,21 @@ static void ConvertWithStreams()
    string line;
 
    cout << endl << endl << "enter double value: ";
+   getline(cin,line); // liest eine Zeile direkt von der Eingabe
 
-   //to do
+   converter << line << endl;
+   double d = 0.0;
+   converter >> d;
+   d *= 2;
+   cout << "Double: " << d << endl;
 
+   //back to string -> stringstream leeren
+   //variante 1
+   converter.str("");
+   converter.clear(); //EOF-Flag loeschen
+   converter << d;
+   string res = converter.str(); // liefert wieder einen string
+   cout << res << endl;
 }
 
 int main()
@@ -146,4 +158,41 @@ int main()
       outfile.close();
       infile.close();
    }
+
+   outfile.open(cFileNameDupText, ios::app);
+   if (outfile.is_open()) {
+      outfile.seekp(0,ios::beg);
+      outfile << "hansi" << endl;
+
+      outfile.seekp(10,ios::beg);
+      outfile << "erich" << endl;
+
+      //Schreibfehler pruefen
+      if (!CheckOutFile(outfile)) {
+         return 1;
+      }
+      outfile.close();
+      cout << endl;
+   }
+   else {
+      cerr << cErrOpenFile << endl;
+   }
+
+   infile.open(cFileNameDupText);
+
+   if (infile.is_open()) {
+      string inStr;
+      while (infile >> inStr) { //Leerzeichen werden uebersprungen
+         cout << inStr << endl;
+      }
+      if (!CheckInFile(infile)) {
+         return 1;
+      }
+      infile.close();
+      cout << endl;
+   } else {
+      cerr << cErrOpenFile << endl;
+   }
+
+   ConvertWithStreams();
 }
