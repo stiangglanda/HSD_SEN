@@ -29,12 +29,13 @@ int main()
    {
       scanner scan{ file };
       //...scan expression
-      std::cout << ScanExpression(scan) << std::endl;
-
+      int Result = ScanExpression(scan);
       if (!scan.is_eof()) {
          std::cerr << "error scan expression" << std::endl;
-         throw std::runtime_error("error scan expression: unexpected tokens at end");
+         std::exit(1);
       }
+
+      std::cout << Result << std::endl;
    }
    //hier werden die Exceptions des Scanners gefangen und eine Fehlermeldung ausgegeben
    catch (exception const& ex)

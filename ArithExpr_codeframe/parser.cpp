@@ -72,22 +72,17 @@ static int ScanFactor(scanner& scan)
    } else if (scan.is('(')) {
       scan.next_symbol(); // öffnende Klammer konsumieren
 
-      if (IsTBExpression(scan)) {
-         val = ScanExpression(scan);
-      } else {
-         std::cerr << "error scan factor" << std::endl;
-         throw std::runtime_error("error scan factor");
-      }
+      val = ScanExpression(scan);
 
       if (scan.is(')')) {
          scan.next_symbol(); // schließende Klammer konsumieren
       } else {
          std::cerr << "error scan factor" << std::endl;
-         throw std::runtime_error("error scan factor: missing ')'");
+         std::exit(1);
       }
    } else {
       std::cerr << "error scan factor" << std::endl;
-      throw std::runtime_error("error scan factor: expected number or '('");
+      std::exit(1);
    }
 
    return val;
@@ -108,7 +103,7 @@ static int ScanTerm(scanner& scan)
 
          if (divisor == 0) {
             std::cerr << "error: division by zero" << std::endl;
-            throw std::runtime_error("division by zero");
+            std::exit(1);
          }
          val /= divisor;
       }

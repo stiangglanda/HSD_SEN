@@ -11,7 +11,7 @@
 #include <iostream>
 #include <cassert>
 
-TTreeNode* MakeNode(int const Data) {
+static TTreeNode* MakeNode(int const Data) {
     TTreeNode* newNode = new (std::nothrow) TTreeNode;
     if (newNode != nullptr) {
         newNode->Data = Data;

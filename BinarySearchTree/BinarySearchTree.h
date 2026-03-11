@@ -16,8 +16,6 @@ struct TTreeNode {
     TTreeNode* pRight;
 };
 
-TTreeNode* MakeNode (int const Data);
-
 // Check if a value exists in the tree
 bool Contains(const TTreeNode* const pRoot, int const Data);
 
