@@ -25,12 +25,12 @@ void PrintStatistics(const Stat& stats) {
    size_t totalKeywordOccurence=0;
    size_t totalIdentifierOccurence=0;
 
-   for (int i =0; i<stats.keywordCnt; i++) {
+   for (size_t i =0; i<stats.keywordCnt; i++) {
       cout << "Keyword('" << stats.Keywords[i].name << "'): " << stats.Keywords[i].occurrence << endl;
       totalKeywordOccurence+=stats.Keywords[i].occurrence;
    }
 
-   for (int i =0; i<stats.IdentifierCnt; i++) {
+   for (size_t i =0; i<stats.IdentifierCnt; i++) {
       cout << "Identifier('" << stats.Identifier[i].name << "'): " << stats.Identifier[i].occurrence << endl;
       totalIdentifierOccurence+=stats.Identifier[i].occurrence;
    }
@@ -55,7 +55,7 @@ Stat ExtractStatistics (scanner& scan)
             stats.Keywords[stats.keywordCnt++]=StatEntry{CurrentName,1};
          } else {
             std::cerr << "Out of bounds" << std::endl;
-            std::exit(1);
+            return stats;
          }
 
       } else if (scan.is_identifier()) {
@@ -68,7 +68,7 @@ Stat ExtractStatistics (scanner& scan)
             stats.Identifier[stats.IdentifierCnt++]=StatEntry{CurrentName,1};
          } else {
             std::cerr << "Out of bounds" << std::endl;
-            std::exit(1);
+            return stats;
          }
       }
       scan.next_symbol();

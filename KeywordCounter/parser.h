@@ -10,6 +10,8 @@
 #define PARSER_H
 
 #include "scanner.h"
+#include <cstddef>
+#include <string>
 
 const size_t MaxKeywords=10;
 const size_t MaxIdentifier=20;
