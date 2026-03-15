@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : ArithExpr.cpp
+// Workfile : main.cpp
 // Author : Leander Kieweg
-// Date : 07.03.2026
-// Description : Arithmetic Expression Test Driver
+// Date : 14.03.2026
+// Description : Keyword Counter Test Driver
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
@@ -28,21 +28,17 @@ int main(int argc, char* argv[])
 
    try
    {
-      scanner scan{ file };
-
-      //ouputs program arguments
+      scanner scan{};
       for (int i = 1; i < argc; ++i) {
-         std::cout << "argument" << i << ": " << argv[i] << std::endl;
          scan.register_keyword(argv[i]);
       }
-      //...scan expression
-      int Result = ScanExpression(scan);
-      if (!scan.is_eof()) {
-         std::cerr << "error scan expression" << std::endl;
-         std::exit(1);
-      }
+      scan.set_istream(file);
 
-      std::cout << Result << std::endl;
+      Stat stat=ExtractStatistics(scan);
+      cout << "Ausgabe:" << endl;
+      PrintStatistics(stat);
+
+
    }
    //hier werden die Exceptions des Scanners gefangen und eine Fehlermeldung ausgegeben
    catch (exception const& ex)

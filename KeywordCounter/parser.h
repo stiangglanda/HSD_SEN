@@ -1,25 +1,32 @@
 ///////////////////////////////////////////////////////////////////////////
 // Workfile : parser.h
 // Author : Leander Kieweg
-// Date : 07.03.2026
-// Description : parser for Arithmetic Expression Header
+// Date : 14.03.2026
+// Description : Keyword Counter parser Header
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 #ifndef PARSER_H
 #define PARSER_H
 
-#include <map>
-
 #include "scanner.h"
 
+const size_t MaxKeywords=10;
+const size_t MaxIdentifier=20;
+
 struct StatEntry {
-    bool isKeyword;
-    size_t occurence;
+    std::string name;
+    size_t occurrence;
 };
 
-using Stats = std::map<std::string, StatEntry>;
+struct Stat {
+    StatEntry Keywords[MaxKeywords];
+    StatEntry Identifier[MaxIdentifier];
+    size_t keywordCnt=0;
+    size_t IdentifierCnt=0;
+};
 
-int ScanExpression(pfc::scanner& scan);
+Stat ExtractStatistics(pfc::scanner& scan);
+void PrintStatistics(const Stat& stats);
 
 #endif
