@@ -9,9 +9,6 @@
 #include <iostream>
 #include "parser.h"
 
-using namespace std;
-using namespace pfc;
-
 static StatEntry* Find(StatEntry arr[], size_t n, const std::string& name) {
    for (size_t i=0; i<n; i++) {
       if (arr[i].name==name) {
@@ -26,20 +23,20 @@ void PrintStatistics(const Stat& stats) {
    size_t totalIdentifierOccurence=0;
 
    for (size_t i =0; i<stats.keywordCnt; i++) {
-      cout << "Keyword('" << stats.Keywords[i].name << "'): " << stats.Keywords[i].occurrence << endl;
+      std::cout << "Keyword('" << stats.Keywords[i].name << "'): " << stats.Keywords[i].occurrence << std::endl;
       totalKeywordOccurence+=stats.Keywords[i].occurrence;
    }
 
    for (size_t i =0; i<stats.IdentifierCnt; i++) {
-      cout << "Identifier('" << stats.Identifier[i].name << "'): " << stats.Identifier[i].occurrence << endl;
+      std::cout << "Identifier('" << stats.Identifier[i].name << "'): " << stats.Identifier[i].occurrence << std::endl;
       totalIdentifierOccurence+=stats.Identifier[i].occurrence;
    }
-   cout << endl;
-   cout << "Keywords: " << stats.keywordCnt << " unterschiedlich, " << totalKeywordOccurence << " gesamt"  << endl;
-   cout << "Identifiers: " << stats.IdentifierCnt << " unterschiedlich, " << totalIdentifierOccurence << " gesamt" << endl;
+   std::cout << std::endl;
+   std::cout << "Keywords: " << stats.keywordCnt << " unterschiedlich, " << totalKeywordOccurence << " gesamt"  << std::endl;
+   std::cout << "Identifiers: " << stats.IdentifierCnt << " unterschiedlich, " << totalIdentifierOccurence << " gesamt" << std::endl;
 }
 
-Stat ExtractStatistics (scanner& scan)
+Stat ExtractStatistics (pfc::scanner& scan)
 {
    Stat stats{};
    std::string CurrentName="";

@@ -28,7 +28,10 @@ struct Stat {
     size_t IdentifierCnt=0;
 };
 
+// Extract keyword and identifier statistics from the provided scanner
 Stat ExtractStatistics(pfc::scanner& scan);
+
+// Print the collected keyword and identifier statistics to the standard output
 void PrintStatistics(const Stat& stats);
 
 #endif
