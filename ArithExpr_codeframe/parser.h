@@ -11,6 +11,7 @@
 
 #include "scanner.h"
 
+// Parse an arithmetic expression from the scanner and return the calculated result
 int ScanExpression(pfc::scanner& scan);
 
 #endif

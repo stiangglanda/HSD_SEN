@@ -32,7 +32,7 @@ int main()
       int Result = ScanExpression(scan);
       if (!scan.is_eof()) {
          std::cerr << "error scan expression" << std::endl;
-         std::exit(1);
+         throw std::runtime_error("error scan expression");
       }
 
       std::cout << Result << std::endl;

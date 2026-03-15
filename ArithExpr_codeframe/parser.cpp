@@ -78,11 +78,11 @@ static int ScanFactor(scanner& scan)
          scan.next_symbol(); // schließende Klammer konsumieren
       } else {
          std::cerr << "error scan factor" << std::endl;
-         std::exit(1);
+         throw std::runtime_error("error scan factor");
       }
    } else {
       std::cerr << "error scan factor" << std::endl;
-      std::exit(1);
+      throw std::runtime_error("error scan factor");
    }
 
    return val;
@@ -103,7 +103,7 @@ static int ScanTerm(scanner& scan)
 
          if (divisor == 0) {
             std::cerr << "error: division by zero" << std::endl;
-            std::exit(1);
+            throw std::runtime_error("error: division by zero");
          }
          val /= divisor;
       }
