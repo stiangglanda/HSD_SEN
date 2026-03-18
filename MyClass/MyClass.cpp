@@ -2,7 +2,9 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <vld.h>
+#if defined(_WIN32) || defined(_WIN64)
+#include <vld.h> // Visual Leak Detector (Windows only)
+#endif
 using namespace std;
 
 //Konstanten
@@ -55,7 +57,7 @@ int main()
    {
       MyClass myObj; //CTor wird aufgerufen
       myObj.Print();
-   } //Zerstörung des am Stack angelegten Objektes -> DTor wird aufgerufen
+   } //Zerstï¿½rung des am Stack angelegten Objektes -> DTor wird aufgerufen
    
    //1 Objekt dynamisch (am Heap) anlegen:
    MyClass* pMyObj = nullptr;
