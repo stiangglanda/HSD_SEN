@@ -102,6 +102,15 @@ void Simple::PrintFormated(std::ostream &ost) const {
    ost << setw(8) << setfill('x') << 4711 << endl;
    ost << setw(8) << left << 4711 << endl;
 
+   //weitere Manipulatoren
+   double const pi = 3.14159265358979323846;
+   ost << scientific << pi << endl;
+   ost << fixed << setprecision(3) << pi << endl;
+   ost << hex << showbase << 255 << endl;
+   ost << uppercase << scientific << pi << endl;
+
+   OutputActStreamValues(ost << dec);
+
    if (ost.fail()) {
       cerr << cErrWrite << endl;
       return;
