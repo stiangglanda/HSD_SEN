@@ -25,5 +25,5 @@ int main()
 
     sObj4=sObj3; //das ist eine zuweisung -> kein CopyCTor
 
-    sObj4.Print(cout);
+    sObj4.PrintFormated(cout);
 }

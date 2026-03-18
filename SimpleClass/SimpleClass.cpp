@@ -99,6 +99,9 @@ void Simple::PrintFormated(std::ostream &ost) const {
    ost << euro << mFirstVal << endl;
    ost << euro << mSecondVal << endl;
 
+   ost << setw(8) << setfill('x') << 4711 << endl;
+   ost << setw(8) << left << 4711 << endl;
+
    if (ost.fail()) {
       cerr << cErrWrite << endl;
       return;
