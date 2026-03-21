@@ -4,6 +4,7 @@
 
 #include "TestData.h"
 #include "RandomGen.h"
+#include "scanner.h"
 
 const int low=-100;
 const int high=100;
@@ -30,3 +31,29 @@ void GenerateTestData(int Amount, std::ostream& out) {
 void PrintTestData(std::istream& in) {
     std::cout << in.rdbuf();
 }
+
+static int ScanHeader(pfc::scanner& scan) {
+    int val=0;
+
+    if (scan.current_symbol().get_keyword()=="COUNT") {
+        scan.next_symbol();
+        if (scan.is('=')) {
+            scan.next_symbol();
+            val=scan.get_integer();
+        } else {
+            std::cerr << "Error ScanHeader =";
+        }
+    } else {
+        std::cerr << "Error ScanHeader";
+    }
+    return val;
+}
+
+void ScanTestData(std::istream &in) {
+    pfc::scanner scan{};
+    scan.register_keyword("COUNT");
+    scan.set_istream(in);
+
+    int amount=ScanHeader(scan);
+}
+

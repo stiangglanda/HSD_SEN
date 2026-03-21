@@ -10,6 +10,7 @@ int main() {
     GenerateTestData(10, out);
     out.close();
     std::ifstream in{filePath};
+    ScanTestData(in);
     PrintTestData(in);
     in.close();
 }
