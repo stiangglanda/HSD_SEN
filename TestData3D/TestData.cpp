@@ -6,8 +6,8 @@
 #include "RandomGen.h"
 #include "scanner.h"
 
-const int low=-100;
-const int high=100;
+const int low=-0;
+const int high=1000;
 
 struct Point3D {
     int x, y, z;
@@ -40,6 +40,7 @@ static int ScanHeader(pfc::scanner& scan) {
         if (scan.is('=')) {
             scan.next_symbol();
             val=scan.get_integer();
+            scan.next_symbol();
         } else {
             std::cerr << "Error ScanHeader =";
         }
@@ -49,11 +50,50 @@ static int ScanHeader(pfc::scanner& scan) {
     return val;
 }
 
+static Point3D ScanPoint3D(pfc::scanner& scan) {
+    if (!scan.is('(')) {
+        std::cerr << "Error ScanPoint3D (";
+    }
+    scan.next_symbol();
+    Point3D point;
+    point.x = scan.get_integer();
+    scan.next_symbol();
+    if (!scan.is(',')) {
+        std::cerr << "Error ScanPoint3D , y";
+    }
+    scan.next_symbol();
+    point.y = scan.get_integer();
+    scan.next_symbol();
+    if (!scan.is(',')) {
+        std::cerr << "Error ScanPoint3D , z";
+    }
+    scan.next_symbol();
+    point.z = scan.get_integer();
+    scan.next_symbol();
+    if (!scan.is(')')) {
+        std::cerr << "Error ScanPoint3D )";
+    }
+    scan.next_symbol();
+    return point;
+}
+
 void ScanTestData(std::istream &in) {
     pfc::scanner scan{};
     scan.register_keyword("COUNT");
     scan.set_istream(in);
 
     int amount=ScanHeader(scan);
+    Point3D* pointArray=new Point3D[amount];
+    int index=0;
+
+    while (!scan.is_eof()) {
+        if (index >= amount) {
+            std::cerr << "index >= amount" << std::endl;
+            break;
+        }
+
+        pointArray[index]=ScanPoint3D(scan);
+        index++;
+    }
 }
 
