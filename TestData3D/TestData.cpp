@@ -7,7 +7,7 @@
 #include "scanner.h"
 
 const int low=-0;
-const int high=1000;
+const int high=50;
 
 struct Point3D {
     int x, y, z;
@@ -94,6 +94,30 @@ void ScanTestData(std::istream &in) {
 
         pointArray[index]=ScanPoint3D(scan);
         index++;
+    }
+
+    if (index!=amount) {
+        std::cerr << "index != amount" << std::endl;
+    }
+
+    PrintMatchingPoints(pointArray, index);
+
+}
+
+void PrintMatchingPoints(struct Point3D const *points, int n) {
+    std::cout << "Points with matching dimensions:" << std::endl;
+    for (int i=0; i<n; i++) {
+        bool firstMatch = true;
+
+        for (int j=0; j<n; j++) {
+            if (i != j && (points[i].x==points[j].x || points[i].y==points[j].y || points[i].z==points[j].z)) {
+                if (firstMatch) {
+                    std::cout << std::endl << points[i] << " ->";
+                    firstMatch=false;
+                }
+                std::cout << " " << points[j];
+            }
+        }
     }
 }
 

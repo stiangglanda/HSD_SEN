@@ -9,5 +9,6 @@
 void GenerateTestData(int Amount, std::ostream& os);
 void PrintTestData(std::istream& in);
 void ScanTestData(std::istream& in);
+void PrintMatchingPoints(struct Point3D const * points, int n);
 
 #endif
