@@ -113,13 +113,12 @@ void PrintMatchingPoints(Point3D const* points, int n) {
     if (points == nullptr || n <= 0) {
         return;
     }
+
     std::cout << "Points with matching dimensions:" << std::endl;
     for (int i = 0; i < n; i++) {
         bool firstMatch = true;
 
-        for (int j = 0; j < n; j++) {
-            if (i == j) continue;
-
+        for (int j = i+1; j < n; j++) {
             if (points[i].x == points[j].x ||
                 points[i].y == points[j].y ||
                 points[i].z == points[j].z) {
