@@ -17,7 +17,7 @@ struct Point3D {
 };
 
 // Generates Test Data according to the grammar rules
-void GenerateTestData(int Amount, std::ostream& os, const int lo=0, const int hi=50);
+void GenerateTestData(size_t Amount, std::ostream& os, const int lo=0, const int hi=50);
 
 // Prints the content of a stream in this case for the testdata
 void PrintTestData(std::istream& in);

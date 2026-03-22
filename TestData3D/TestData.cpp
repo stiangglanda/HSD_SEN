@@ -18,7 +18,7 @@ static Point3D GeneratePoint3D(const int lo, const int hi) {
     return Point3D{rgen::GetRandVal(lo, hi), rgen::GetRandVal(lo, hi), rgen::GetRandVal(lo, hi)};
 }
 
-void GenerateTestData(int Amount, std::ostream& out, const int lo, const int hi) {
+void GenerateTestData(size_t Amount, std::ostream& out, const int lo, const int hi) {
     if (!out.good()) {
         std::cerr << "error write file" << std::endl;
         return;
