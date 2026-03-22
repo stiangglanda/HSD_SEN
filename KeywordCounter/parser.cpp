@@ -10,8 +10,8 @@
 #include "parser.h"
 #include "scanner.h"
 
-const size_t MaxKeywords=10;
-const size_t MaxIdentifier=20;
+const size_t MaxKeywords=100;
+const size_t MaxIdentifier=500;
 
 struct StatEntry {
     std::string name;
@@ -61,6 +61,9 @@ void PrintStatistics() {
 
 void ExtractStatistics (std::istream& file)
 {
+   stats.keywordCnt = 0; //Reset
+   stats.IdentifierCnt = 0;
+
    scanner.set_istream(file);
    std::string CurrentName="";
 
