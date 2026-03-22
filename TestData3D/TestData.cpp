@@ -152,7 +152,7 @@ Point3D* ScanTestData(std::istream& in, int& count) {
     }
 
     int amount = ScanHeader(scan);
-    if (amount <= 0) {
+    if (amount < 0) {
         return nullptr;
     }
 
