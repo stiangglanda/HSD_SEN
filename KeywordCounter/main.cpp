@@ -25,15 +25,13 @@ int main(int argc, char* argv[])
 
    try
    {
-      pfc::scanner scan{};
       for (int i = 1; i < argc; ++i) {
-         scan.register_keyword(argv[i]);
+         RegisterKeyword(argv[i]);
       }
-      scan.set_istream(file);
 
-      Stat stat=ExtractStatistics(scan);
+      ExtractStatistics(file);
       std::cout << "Ausgabe:" << std::endl;
-      PrintStatistics(stat);
+      PrintStatistics();
 
 
    }

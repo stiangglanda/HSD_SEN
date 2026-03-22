@@ -8,6 +8,29 @@
 ///////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include "parser.h"
+#include "scanner.h"
+
+const size_t MaxKeywords=10;
+const size_t MaxIdentifier=20;
+
+struct StatEntry {
+    std::string name;
+    size_t occurrence;
+};
+
+struct Stat {
+    StatEntry Keywords[MaxKeywords];
+    StatEntry Identifier[MaxIdentifier];
+    size_t keywordCnt=0;
+    size_t IdentifierCnt=0;
+};
+
+static Stat stats;
+static pfc::scanner scanner;
+
+void RegisterKeyword(const std::string& keyword) {
+    scanner.register_keyword(keyword);
+}
 
 static StatEntry* Find(StatEntry arr[], size_t n, const std::string& name) {
    for (size_t i=0; i<n; i++) {
@@ -18,7 +41,7 @@ static StatEntry* Find(StatEntry arr[], size_t n, const std::string& name) {
    return nullptr;
 }
 
-void PrintStatistics(const Stat& stats) {
+void PrintStatistics() {
    size_t totalKeywordOccurence=0;
    size_t totalIdentifierOccurence=0;
 
@@ -36,14 +59,14 @@ void PrintStatistics(const Stat& stats) {
    std::cout << "Identifiers: " << stats.IdentifierCnt << " unterschiedlich, " << totalIdentifierOccurence << " gesamt" << std::endl;
 }
 
-Stat ExtractStatistics (pfc::scanner& scan)
+void ExtractStatistics (std::istream& file)
 {
-   Stat stats{};
+   scanner.set_istream(file);
    std::string CurrentName="";
 
-   while (!scan.is_eof()) {
-      if (scan.is_keyword()) {
-         CurrentName = scan.current_symbol().get_keyword();
+   while (!scanner.is_eof()) {
+      if (scanner.is_keyword()) {
+         CurrentName = scanner.current_symbol().get_keyword();
 
          StatEntry* foundEntry=Find(stats.Keywords,stats.keywordCnt,CurrentName);
          if (foundEntry) {
@@ -52,11 +75,11 @@ Stat ExtractStatistics (pfc::scanner& scan)
             stats.Keywords[stats.keywordCnt++]=StatEntry{CurrentName,1};
          } else {
             std::cerr << "Out of bounds" << std::endl;
-            return stats;
+            return;
          }
 
-      } else if (scan.is_identifier()) {
-         CurrentName = scan.get_identifier();
+      } else if (scanner.is_identifier()) {
+         CurrentName = scanner.get_identifier();
 
          StatEntry* foundEntry = Find(stats.Identifier,stats.IdentifierCnt,CurrentName);
          if (foundEntry) {
@@ -65,11 +88,9 @@ Stat ExtractStatistics (pfc::scanner& scan)
             stats.Identifier[stats.IdentifierCnt++]=StatEntry{CurrentName,1};
          } else {
             std::cerr << "Out of bounds" << std::endl;
-            return stats;
+            return;
          }
       }
-      scan.next_symbol();
+      scanner.next_symbol();
    }
-
-   return stats;
 }

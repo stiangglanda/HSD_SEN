@@ -9,29 +9,16 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "scanner.h"
-#include <cstddef>
+#include <iosfwd>
 #include <string>
 
-const size_t MaxKeywords=10;
-const size_t MaxIdentifier=20;
+// Register a keyword with the internal scanner
+void RegisterKeyword(const std::string& keyword);
 
-struct StatEntry {
-    std::string name;
-    size_t occurrence;
-};
-
-struct Stat {
-    StatEntry Keywords[MaxKeywords];
-    StatEntry Identifier[MaxIdentifier];
-    size_t keywordCnt=0;
-    size_t IdentifierCnt=0;
-};
-
-// Extract keyword and identifier statistics from the provided scanner
-Stat ExtractStatistics(pfc::scanner& scan);
+// Extract keyword and identifier statistics from the provided input stream
+void ExtractStatistics(std::istream& file);
 
 // Print the collected keyword and identifier statistics to the standard output
-void PrintStatistics(const Stat& stats);
+void PrintStatistics();
 
 #endif
