@@ -6,15 +6,32 @@
 class Fraction
 {
 public:
+   //Default CTor
+   Fraction() = default; // keine Impl. in cpp notwendig
+   //Ctor mit Parameter
+   Fraction(int const numerator, int const denominator = 1);
 
+   //Copy CTor in diesem Fall nicht notwendig, es reicht der Standard-CopyCtor (die Werte werden kopiert)
+
+   //DTor ist in diesem Fall ebenfalls nicht notwendig, da keine Heap-Allokation im CTor statt finden
+
+   //Operator Overloading: *, +, <, ==
+   Fraction operator*(Fraction const& f) const;
+
+   //Zugriffsmethoden
+   int GetNumerator() const;
+   int GetDenominator() const;
 
 private:
+   //direkte Member-Initialisierung
+   int mNumerator = 0;
+   int mDenominator = 1;
 
 
    //groeszter gemeinsamer Teiler
    unsigned int GreatestCommonDivisor(int a, int b) const;
 
-   //interner Rueckgabetyp für Zaehler und Nenner
+   //interner Rueckgabetyp fï¿½r Zaehler und Nenner
    struct Reduced
    {
       int num;
