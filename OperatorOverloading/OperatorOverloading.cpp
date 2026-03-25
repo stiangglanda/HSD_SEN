@@ -101,6 +101,7 @@ void TestFraction() {
 
    //Verhinderung der impliziten Typkonversion durch Angabe von explicit beim CTOR
    // TO DO
+   PrintTestResult("explicite type conversion", (f0+ Fraction{3})== Fraction{3});
 }
 
 

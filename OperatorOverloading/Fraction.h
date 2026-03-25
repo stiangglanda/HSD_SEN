@@ -9,7 +9,7 @@ public:
    //Default CTor
    Fraction() = default; // keine Impl. in cpp notwendig
    //Ctor mit Parameter
-   Fraction(int const numerator, int const denominator = 1);
+   /*explicit*/ Fraction(int const numerator, int const denominator = 1);
 
    //Copy CTor in diesem Fall nicht notwendig, es reicht der Standard-CopyCtor (die Werte werden kopiert)
 
