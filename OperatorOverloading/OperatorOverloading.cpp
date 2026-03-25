@@ -1,4 +1,6 @@
 #include "Fraction.h"
+#include <iostream>
+#include <sstream>
 using namespace std;
 
 // Hilfsfunktion fuer den Testausdruck
@@ -50,23 +52,52 @@ void TestFraction() {
 
     Fraction f8 = f5 * f4;
     PrintTestResult("Multiplikation 3", f8.GetNumerator() == 3 && f8.GetDenominator() == 10);
-   // Addition
-   // TO DO
+
+    // Addition
+    // TO DO
+    Fraction f9{1,2};
+    Fraction f10{1,3};
+    Fraction f11 = f9 + f10;
+    PrintTestResult("Addition 1", f11.GetNumerator() == 5 && f11.GetDenominator() == 6);
+    Fraction f12 = f9.operator+(f10);
+    PrintTestResult("Addition 2", f12.GetNumerator() == 5 && f12.GetDenominator() == 6);
+    Fraction f13 = f10 + f9;
+    PrintTestResult("Addition 3", f13.GetNumerator() == 5 && f13.GetDenominator() == 6);
 
    // Vergleichsoperatoren
    // TO DO
+    Fraction f14{2,3};
+    Fraction f15{2,3};
+    Fraction f16{1,2};
+    PrintTestResult("test1 - operator <", f16 < f14);
+    PrintTestResult("test2 - operator <", !(f14 < f16));
+    PrintTestResult("test3 - operator <", !(f14 < f15));
+    PrintTestResult("test1 - operator ==", f14 == f15);
+    PrintTestResult("test2 - operator ==", !(f16 == f15));
+    PrintTestResult("test3 - operator ==", !(f14 == f16));
 
    // Zuweisungsoperator
    // TO DO
+    Fraction f17;
+    f17=f14;
+    PrintTestResult("assign operator 1", f17==f14);
 
    // Ausgabeoperator
    // TO DO
+    cout << f14;
+    operator << (cout, f14);
+    ostringstream ost1, ost2;
+    ost1 << f14;
+    Fraction f18{f14};
+    ost2 << f18;
+    PrintTestResult("operator <<", ost1.str()==ost2.str());
 
    //Operationen mischen
    // TO DO
 
    //implizite Typumwandlung
    // TO DO
+    PrintTestResult("implicit type conversion", (f0+ 3)== 3);
 
    //Verhinderung der impliziten Typkonversion durch Angabe von explicit beim CTOR
    // TO DO

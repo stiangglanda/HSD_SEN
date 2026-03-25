@@ -17,6 +17,11 @@ public:
 
    //Operator Overloading: *, +, <, ==
    Fraction operator*(Fraction const& f) const;
+   Fraction operator+(Fraction const& f) const;
+   bool operator<(Fraction const& f) const;
+   bool operator==(Fraction const& f) const;
+
+   //Assign Operator ist in diesem Fall nicht notwendig, es Reicht der Default AssignOp aus. Keine Heap Allocation
 
    //Zugriffsmethoden
    int GetNumerator() const;
@@ -42,5 +47,8 @@ private:
    Reduced Reduce(int numerator, int denominator) const;
 
 };
+
+// Ueberladen des Ausgabeoperators << als einfache Funktion
+std::ostream& operator<<(std::ostream& ost, Fraction const& f);
 
 #endif //FRACTION_H
