@@ -5,4 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(DateClass main.cpp
         Date.cpp
-        Date.h)
+        Date.h
+        BinarySearchTree.h
+        BinarySearchTree.cpp
+        Calendar.cpp
+        Calendar.h)
