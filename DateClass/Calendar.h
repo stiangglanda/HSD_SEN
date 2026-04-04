@@ -1,7 +1,11 @@
-//
-// Created by stiangglanda on 2026-04-04.
-//
-
+///////////////////////////////////////////////////////////////////////////
+// Workfile : Calendar.h
+// Author : Leander Kieweg
+// Date : 04.04.2026
+// Description : Calendar Class Header
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #ifndef CALENDAR_H
 #define CALENDAR_H
 #include <string>
@@ -40,7 +44,11 @@ private:
     // member variables
     CalendarEntry* mRoot;
     // private helper methods
+
+    // L-W-R
     void PrintInOrder(const CalendarEntry* const pRoot) const;
+
+    // R-W-L
     void PrintReverseOrder(const CalendarEntry* const pRoot) const;
 
     static CalendarEntry* MakeNode(Date const& date, std::string const& text);

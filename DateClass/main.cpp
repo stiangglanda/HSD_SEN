@@ -1,14 +1,13 @@
 ///////////////////////////////////////////////////////////////////////////
 // Workfile : main.cpp
 // Author : Leander Kieweg
-// Date : 21.03.2026
-// Description : TestData Test Driver
+// Date : 04.04.2026
+// Description : Test Driver for Date and Calendar
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 #include <chrono>
 #include <iostream>
-#include <fstream>
 
 #include "Date.h"
 #include "Calendar.h"
@@ -122,7 +121,7 @@ void testCalendar() {
 }
 
 int main() {
-    //testDate();
+    testDate();
     testCalendar();
     return 0;
 }

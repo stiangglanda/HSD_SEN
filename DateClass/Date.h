@@ -1,7 +1,11 @@
-//
-// Created by stiangglanda on 2026-04-03.
-//
-
+///////////////////////////////////////////////////////////////////////////
+// Workfile : Date.h
+// Author : Leander Kieweg
+// Date : 04.04.2026
+// Description : Date Class Header
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #ifndef DATE_H
 #define DATE_H
 #include <cstddef>
@@ -16,7 +20,6 @@ public:
     size_t getDay() const;
     size_t getMonth() const;
     size_t getYear() const;
-
 
     // Comparison function
     // returns -1 if current date (this) is before d, +1 if it is after d, 0 if it is equal

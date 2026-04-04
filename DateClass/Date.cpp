@@ -1,9 +1,12 @@
-//
-// Created by stiangglanda on 2026-04-03.
-//
-
+///////////////////////////////////////////////////////////////////////////
+// Workfile : Date.cpp
+// Author : Leander Kieweg
+// Date : 04.04.2026
+// Description : Date Class Implementation
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #include "Date.h"
-
 #include <iomanip>
 
 Date::Date(size_t const day, size_t const month, size_t const year) :
