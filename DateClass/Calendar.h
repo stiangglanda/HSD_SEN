@@ -36,7 +36,7 @@ private:
     // nested struct: Fully encapsulated within the private scope.
     // Belongs exclusively to Calendar and is invisible from outside.
     struct CalendarEntry {
-        Date date;
+        const Date date;
         std::string text;
         CalendarEntry* pLeft;
         CalendarEntry* pRight;
@@ -58,7 +58,7 @@ private:
     // Delete all nodes in the tree
     void Flush(CalendarEntry*& pRoot);
 
-    void CopyPreOrder(CalendarEntry* pRoot);
+    void CopyPreOrder(const CalendarEntry* pRoot);
 };
 
 #endif

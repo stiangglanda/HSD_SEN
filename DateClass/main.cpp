@@ -6,9 +6,7 @@
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
-#include <chrono>
 #include <iostream>
-
 #include "Date.h"
 #include "Calendar.h"
 
@@ -29,19 +27,19 @@ void testDate() {
 
     std::cout << "Testing invalid dates" << std::endl;
     Date inv1{32, 12, 2023};
-    std::cout << "32.12.2023 -> Expected: 01.01.1 | Actual: " << inv1 << std::endl;
+    std::cout << "32.12.2023 -> Expected: 01.01.2023 | Actual: " << inv1 << std::endl;
 
     Date inv2{31, 4, 2024};
-    std::cout << "31.04.2024 -> Expected: 01.01.1 | Actual: " << inv2 << std::endl;
+    std::cout << "31.04.2024 -> Expected: 01.01.2024 | Actual: " << inv2 << std::endl;
 
     Date inv3{29, 2, 2023}; // Not a leap year
-    std::cout << "29.02.2023 -> Expected: 01.01.1 | Actual: " << inv3 << std::endl;
+    std::cout << "29.02.2023 -> Expected: 01.01.2023 | Actual: " << inv3 << std::endl;
 
     Date inv4{0, 5, 2024}; // Day 0
-    std::cout << "0.5.2024   -> Expected: 01.01.1 | Actual: " << inv4 << std::endl;
+    std::cout << "0.5.2024   -> Expected: 01.01.2024 | Actual: " << inv4 << std::endl;
 
     Date inv5{15, 13, 2024}; // Month 13
-    std::cout << "15.13.2024 -> Expected: 01.01.1 | Actual: " << inv5 << std::endl;
+    std::cout << "15.13.2024 -> Expected: 01.01.2024 | Actual: " << inv5 << std::endl;
 
     std::cout << "Testing comparisons" << std::endl;
     Date c1{10, 5, 2024};
@@ -97,7 +95,7 @@ void testCalendar() {
     Calendar cal2(cal);
     cal2.PrintAllEntries(true);
 
-    std::cout << "Adding new entry to cal2, modifying original won't affect it." << std::endl;
+    std::cout << "Adding new entry to cal2, modifying original won't affect it" << std::endl;
     cal2.AddEntry(Date{10, 10, 2026}, "cal2 exclusive event");
     std::cout << "cal2 entries:" << std::endl;
     cal2.PrintAllEntries(true);

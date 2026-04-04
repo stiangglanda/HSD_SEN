@@ -12,9 +12,9 @@
 Date::Date(size_t const day, size_t const month, size_t const year) :
     mDay(day), mMonth(month), mYear(year) {
     if (!CheckDate()) {
+        std::cerr << "Date not valid" << std::endl;
         mDay = 1;
         mMonth = 1;
-        mYear = 1;
     }
 }
 
@@ -52,7 +52,7 @@ bool Date::CheckDate() const {
     if (mMonth == 4 || mMonth == 6 || mMonth == 9 || mMonth == 11) {
         daysInMonth = 30;
     } else if (mMonth == 2) {
-        bool isLeapYear = (mYear % 4 == 0 && mYear % 100 != 0) || (mYear % 400 == 0);
+        const bool isLeapYear = (mYear % 4 == 0 && mYear % 100 != 0) || (mYear % 400 == 0);
         daysInMonth = isLeapYear ? 29 : 28;
     }
 

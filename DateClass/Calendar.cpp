@@ -37,7 +37,7 @@ void Calendar::Flush(CalendarEntry *&pRoot) {
     }
 }
 
-void Calendar::CopyPreOrder(CalendarEntry *pRoot) {
+void Calendar::CopyPreOrder(const CalendarEntry *pRoot) {
     if (pRoot != nullptr) {
         AddEntry(pRoot->date, pRoot->text);
         CopyPreOrder(pRoot->pLeft);
@@ -46,7 +46,6 @@ void Calendar::CopyPreOrder(CalendarEntry *pRoot) {
 }
 
 Calendar::Calendar() : mRoot(nullptr) {
-
 }
 
 Calendar::Calendar(Calendar const &cal) : mRoot(nullptr) {
