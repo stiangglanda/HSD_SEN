@@ -62,7 +62,7 @@ void testBsp1() {
 }
 
 int main() {
-    testBsp1();
+    //testBsp1();
 
     return 0;
 }
