@@ -11,8 +11,9 @@
 #include <fstream>
 
 #include "Date.h"
+#include "Calendar.h"
 
-void testBsp1() {
+void testDate() {
     std::cout << "Testing valid dates" << std::endl;
     Date d1{3, 5, 2026};
     std::cout << "d1 (Expected: 03.05.2026): " << d1 << std::endl;
@@ -61,8 +62,67 @@ void testBsp1() {
     std::cout << c1 << " Compare " << c6 << " (Expected:  1) -> " << c1.Compare(c6) << std::endl;
 }
 
-int main() {
-    //testBsp1();
+void testCalendar() {
+    std::cout << "Testing Calendar" << std::endl;
+    Calendar cal;
 
+    std::cout << "Adding entries" << std::endl;
+    Date d1{15, 6, 2026};
+    Date d2{1, 1, 2026};
+    Date d3{31, 12, 2026};
+    Date d4{15, 6, 2026}; // Duplicate date for replacement
+
+    cal.AddEntry(d1, "Mid-year meeting");
+    cal.AddEntry(d2, "New Year's Day");
+    cal.AddEntry(d3, "New Year's Eve");
+
+    std::cout << "Ascending Print:" << std::endl;
+    cal.PrintAllEntries(true);
+    // Expected:
+    // 01.01.2026 New Year's Day
+    // 15.06.2026 Mid-year meeting
+    // 31.12.2026 New Year's Eve
+
+    std::cout << "Descending Print:" << std::endl;
+    cal.PrintAllEntries(false);
+    // Expected:
+    // 31.12.2026 New Year's Eve
+    // 15.06.2026 Mid-year meeting
+    // 01.01.2026 New Year's Day
+
+    std::cout << "Replacing entry for 15.06.2026" << std::endl;
+    cal.AddEntry(d4, "Important Project Deadline");
+    cal.PrintAllEntries(true);
+
+    std::cout << "Testing Copy Constructor (cal2 = cal)" << std::endl;
+    Calendar cal2(cal);
+    cal2.PrintAllEntries(true);
+
+    std::cout << "Adding new entry to cal2, modifying original won't affect it." << std::endl;
+    cal2.AddEntry(Date{10, 10, 2026}, "cal2 exclusive event");
+    std::cout << "cal2 entries:" << std::endl;
+    cal2.PrintAllEntries(true);
+    std::cout << "Original cal entries:" << std::endl;
+    cal.PrintAllEntries(true);
+
+    std::cout << "Testing Assignment Operator (cal3 = cal2)" << std::endl;
+    Calendar cal3;
+    cal3.AddEntry(Date{5, 5, 2025}, "Old event in cal3");
+    cal3 = cal2;
+    cal3.PrintAllEntries(true);
+
+    std::cout << "Testing Self-Assignment (cal = cal)" << std::endl;
+    cal = cal;
+    cal.PrintAllEntries(true);
+
+    std::cout << "Testing Clear()" << std::endl;
+    cal.Clear();
+    std::cout << "Cal entries after Clear (Should be empty):" << std::endl;
+    cal.PrintAllEntries(true);
+}
+
+int main() {
+    //testDate();
+    testCalendar();
     return 0;
 }

@@ -34,17 +34,23 @@ private:
     struct CalendarEntry {
         Date date;
         std::string text;
-        CalendarEntry* pRight;
         CalendarEntry* pLeft;
+        CalendarEntry* pRight;
     };
     // member variables
     CalendarEntry* mRoot;
     // private helper methods
     void PrintInOrder(const CalendarEntry* const pRoot) const;
+    void PrintReverseOrder(const CalendarEntry* const pRoot) const;
 
-    CalendarEntry* MakeNode(Date const& date, std::string const& text);
+    static CalendarEntry* MakeNode(Date const& date, std::string const& text);
 
-    void InsertSorted(CalendarEntry*& pRoot, int const Data);
+    void InsertSorted(CalendarEntry*& pRoot, Date const &date, std::string const &text);
+
+    // Delete all nodes in the tree
+    void Flush(CalendarEntry*& pRoot);
+
+    void CopyPreOrder(CalendarEntry* pRoot);
 };
 
 #endif
