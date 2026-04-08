@@ -20,6 +20,20 @@ static void PrintVecAdminInfo(vector<int> const& vect, string const& label = "")
 	}
 
 	// TO DO
+	cout << "vector empty: " << boolalpha << vect.empty() << endl;
+	cout << "size: " << vect.size() << endl;
+	cout << "max size: " << vect.max_size() << endl;
+	cout << "capacity: " << vect.capacity() << endl;
+	cout << "size of vector footprint: " << sizeof(vect) << " bytes" << endl << endl;
+}
+
+//Ieberladen des <<-Operators fuer vector<int>
+static ostream& operator << (ostream& ost, vector<int> const& v) {
+	// Iteration herkoemlich
+	for (size_t i = 0; i < v.size(); ++i) {
+		ost << v[i] << " ";
+	}
+	return ost << endl;
 }
 
 
@@ -30,6 +44,16 @@ static void DemonstrateBasicsAndCapacity()
 	vector<int> vect{ 1, 2, 3 };
 
 	// TO DO
+	PrintVecAdminInfo(vect, "Initial Vector");
+	vect.push_back(100);
+	vect.push_back(200);
+	PrintVecAdminInfo(vect, "After push_back");
+
+	// Groesse setzen
+	vect.resize(vect.size()*2, 666);
+	cout << "After resize up: " << vect;
+	vect.resize(vect.size()/4);
+	cout << "After resize down: " << vect;
 }
 
 
