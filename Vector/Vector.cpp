@@ -81,6 +81,35 @@ static void DemonstrateInsertionAccessAndIteration()
 	vect[0] = 111;
 	//besser -> wirft eine aóut of range exception
 	vect.at(1) = 112;
+
+	// einfügen an bestimmten Positionen
+	vect.insert(vect.begin() + 2, 4, 99);
+	vect.insert(vect.cbegin() + 5, {1000, 1001});
+
+	// Range-based for-loop
+	for (/*int*/auto const& elem : vect) {
+		cout << elem << endl;
+	}
+	cout << endl;
+
+	cout << "for-loop by index: ";
+	size_t startIdx = vect.size() / 2-2;
+	size_t endIdx = vect.size() / 2+2;
+	for (size_t i = startIdx; i < endIdx; ++i) {
+		cout << setw(5) << right << vect.at(i);
+	}
+	cout << endl;
+
+	cout << "Iterator loop: ";
+	// auto -> vector<int>::const_iterator
+	for (auto it = vect.cbegin()+1; it != vect.cend()-1; ++it) {
+		cout << *it << " ";
+	}
+	cout << endl;
+
+	//Ausgabe per Algorithmus
+	cout << "Output with copy-algo: ";
+	copy(vect.cbegin(), vect.cend(), ostream_iterator<int>(cout, " "));
 }
 
 
