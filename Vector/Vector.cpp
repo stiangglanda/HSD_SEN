@@ -54,6 +54,18 @@ static void DemonstrateBasicsAndCapacity()
 	cout << "After resize up: " << vect;
 	vect.resize(vect.size()/4);
 	cout << "After resize down: " << vect;
+	cout << "Free places: " << vect.capacity() - vect.size() << endl;
+
+	//explizite Speichermanipulation
+	vect.reserve(vect.size()*10);
+	cout << "Capacity after reserve: " << vect.capacity() << endl;
+
+	vect.shrink_to_fit();
+	cout << "Capacity after shrink: " << vect.capacity() << endl;
+
+	vect.clear();
+	cout << "After clear: " << vect;
+	cout << "Capacity after clear: " << vect.capacity() << endl;
 }
 
 
@@ -65,6 +77,10 @@ static void DemonstrateInsertionAccessAndIteration()
 	vector<int> vect{ 1, 2, 3, 4, 5 };
 
 	// TO DO
+	// direkter Zugriff
+	vect[0] = 111;
+	//besser -> wirft eine aóut of range exception
+	vect.at(1) = 112;
 }
 
 
