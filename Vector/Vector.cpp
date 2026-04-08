@@ -121,6 +121,18 @@ static void DemonstrateRemoveAndSwap()
 	vector<int> vect{ 10, 20, 30, 40, 50, 60, 70, 80, 90 };
 
 	// TO DO
+	vect.erase(vect.begin());
+	vect.pop_back();
+
+	//Bereich loeschen
+	vect.erase(vect.cbegin()+2, vect.cend()-2);
+	cout << "after erase: " << vect;
+
+	//Inhalt tauschen
+	vector<int> vectInt{1000, 2000};
+	vect.swap(vectInt); // es wird nur die Verwaltungsinfo getauscht -> kein umkopieren!!!
+	cout << "vect: " << vect;
+	cout << "vectInt: " << vectInt;
 }
 
 
@@ -143,6 +155,15 @@ static void DemonstrateEmplaceAdvantage()
 	cout << "\n========== Demonstrate emplace_back Advantage ==========\n";
 	
 	// TO DO
+	vector<Person> people;
+	people.reserve(3);
+
+	cout << "Using push_back: " << endl;
+	people.push_back( Person{ "Alice", 20 } );
+
+	cout << "\nUsing emplace_back:" << endl;
+	people.emplace_back("Bob", 30); //Person wird direkt im Vektor erzeugt -> keine Kopie notwendig!
+	people.emplace(people.cbegin()+2, "Steve", 34);
 }
 
 
@@ -151,7 +172,7 @@ static void DemonstrateEmplaceAdvantage()
 static void DemonstrateAlgorithmsAndMedian()
 {
 	cout << "\n========== Demonstrate Algorithms: Median ==========\n";
-	vector<int> numbers{ 12, 46, 1, 23, 6, 789, 234, 213 };
+	vector<int> numbers{ 12, 46, 1, 23, 6, 789, 234, 4711 };
 
 	// Definition eines Datentyps fuer die Groesse des Vektors
 	// size_type ist ein Synonym fuer den Datentyp unsigned int, gross genug 
@@ -171,6 +192,17 @@ static void DemonstrateAlgorithmsAndMedian()
 	// auto const size = numbers.size();
 
 	// TO DO
+	if (size>0) {
+		std::sort(numbers.begin(), numbers.end());
+		cout << "Sorted values: " << numbers;
+
+		TVectorSize const m = size / 2;
+		float const median = (size % 2 == 0) ? (numbers.at(m) + numbers.at(m-1)) / 2.0f : numbers.at(m);
+		cout << "Median: " << fixed << setprecision(3) << median << endl;
+
+		//oder
+
+	}
 }
 
 
