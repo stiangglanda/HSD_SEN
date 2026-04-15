@@ -2,7 +2,7 @@
 #include <exception>
 #include <vector>
 
-// Beispielklasse zur Simulation eines größeren Objekts
+// Beispielklasse zur Simulation eines grï¿½ï¿½eren Objekts
 class A {
 public:
 	int const GetVal() const { return mVal; }
@@ -16,7 +16,7 @@ private:
 static void TestNewHandling() {
 	std::cout << "\n--- TestNewHandling ---\n";
 
-	// Variante ohne Ausnahmebehandlung – kann std::bad_alloc werfen
+	// Variante ohne Ausnahmebehandlung ï¿½ kann std::bad_alloc werfen
 	try {
 		A* a1 = new A; // kann Exception werfen!
 		std::cout << "new A successful (without nothrow)\n";
@@ -26,7 +26,7 @@ static void TestNewHandling() {
 		std::cerr << "Error in new A: " << e.what() << "\n";
 	}
 
-	// Variante mit std::nothrow – gibt nullptr zurueck
+	// Variante mit std::nothrow ï¿½ gibt nullptr zurueck
 	A* a2 = new(std::nothrow) A;
 	if (a2 != nullptr) {
 		std::cout << "new A successful (with nothrow)\n";
@@ -57,7 +57,7 @@ static void TestVectorAccess() {
 	std::cout << "Access using [3] (may crash!): ";
 	std::cout << v[3].GetVal() << "\n"; // Undefiniertes Verhalten!
 
-	// Zugriff per Iterator – auch gefaehrlich!
+	// Zugriff per Iterator ï¿½ auch gefaehrlich!
 	std::cout << "Iterator access (cbegin + 3): ";
 	std::cout << (v.cbegin() + 3)->GetVal() << "\n"; // Undefiniertes Verhalten!
 }
@@ -97,7 +97,7 @@ static void TestUnhandledException() {
 int main() {
 	try {
 		TestNewHandling();
-		//TestVectorAccess();         // Hinweis: Absturzgefahr! Nur gezielt ausfuehren
+		TestVectorAccess();         // Hinweis: Absturzgefahr! Nur gezielt ausfuehren
 		//TestMemoryExhaustion();  // Hinweis: Endlosschleife, nur zum Testen aktivieren
 		//TestUnhandledException();     // Neu: Exception wird hier oben gefangen
 	}
