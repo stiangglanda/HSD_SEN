@@ -60,6 +60,11 @@ bool Date::CheckDate() const {
 }
 
 void Date::Print(std::ostream &out) const {
+    if (!out.good()) {
+        std::cerr << "ostream not ok" << std::endl;
+        return;
+    }
+
     out << std::setw(2) << std::setfill('0') << mDay << '.'
         << std::setw(2) << std::setfill('0') << mMonth << '.'
         << mYear;
