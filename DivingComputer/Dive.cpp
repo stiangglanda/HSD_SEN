@@ -18,12 +18,12 @@ const int col_spacing = 4;
 const int depth_prec = 2;
 const int speed_prec = 3;
 
-std::ostream& sep(std::ostream& ost) {
+static std::ostream& sep(std::ostream& ost) {
     ost << std::string(col_spacing, ' ');
     return ost;
 }
 
-std::ostream& line(std::ostream& ost) {
+static std::ostream& line(std::ostream& ost) {
     ost << std::string(3 * col_width + 2 * col_spacing, '-') << std::endl;
     return ost;
 }

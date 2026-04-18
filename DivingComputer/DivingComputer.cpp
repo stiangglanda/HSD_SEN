@@ -19,7 +19,7 @@ void DivingComputer::PrintAllDives(std::ostream& ost) const {
 
     for (size_t i = 0; i < dives.size(); ++i) {
         ost << "=== Dive " << (i + 1) << " ===" << std::endl;
-        dives[i].PrintStats(ost);
+        dives.at(i).PrintStats(ost);
         ost << std::endl;
     }
 }

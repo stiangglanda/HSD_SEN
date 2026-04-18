@@ -10,6 +10,7 @@
 #define DIVE_H
 #include <iostream>
 #include <vector>
+#include <string>
 
 struct DiveEntry {
     size_t time; // in seconds
@@ -18,11 +19,15 @@ struct DiveEntry {
 
 class Dive {
 public:
+    // Creates an empty dive.
     Dive() = default;
 
+    // Prints the dive statistics.
     void PrintStats(std::ostream& ost = std::cout) const;
 
+    // Adds one entry and sorts the data.
     void PushBackDiveEntry(const DiveEntry& entry);
+    // Creates one entry and sorts the data.
     void EmplaceBackDiveEntry(size_t time, double depth);
 private:
     double CalcSpeed(const DiveEntry& curr, const DiveEntry& next) const;
