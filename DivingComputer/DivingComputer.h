@@ -1,35 +1,25 @@
 ///////////////////////////////////////////////////////////////////////////
 // Workfile : DivingComputer.h
 // Author : Leander Kieweg
-// Date : 04.04.2026
+// Date : 18.04.2026
 // Description : Diving Computer Header
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 #ifndef DIVINGCOMPUTER_H
 #define DIVINGCOMPUTER_H
-#include <iostream>
 #include <vector>
 
-struct DiveEntry {
-    size_t time; // in seconds
-    double depth; // in meters
-};
+#include "Dive.h"
 
 class DivingComputer {
 public:
-    DivingComputer() = default;
-
-    void PrintDiveStats(std::ostream& ost = std::cout) const;
-
-    void PushBackDiveEntry(const DiveEntry& entry);
-    void EmplaceBackDiveEntry(size_t time, double depth);
+    void AddDive(const Dive& dive);
+    void PrintAllDives(std::ostream& ost = std::cout) const;
+    size_t GetDiveCount() const;
+    const Dive& GetDive(size_t index) const;
 private:
-    double CalcSpeed(const DiveEntry& curr, const DiveEntry& next) const;
-    std::string FormatTime(size_t seconds) const;
-    void Sort();
-
-    std::vector<DiveEntry> diveStats;
+    std::vector<Dive> dives;
 };
 
 #endif

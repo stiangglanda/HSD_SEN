@@ -4,5 +4,7 @@ project(DivingComputer)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(DivingComputer main.cpp
+        Dive.cpp
+        Dive.h
         DivingComputer.cpp
         DivingComputer.h)
