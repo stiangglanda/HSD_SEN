@@ -49,7 +49,7 @@ double Dive::CalcSpeed(const DiveEntry& curr, const DiveEntry& next) const {
     if (dt==0) {
         throw std::domain_error("division by zero");
     }
-    double dd = next.depth - curr.depth;
+    double dd = curr.depth - next.depth;
     return dd / dt;
 }
 
