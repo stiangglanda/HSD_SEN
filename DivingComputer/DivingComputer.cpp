@@ -13,6 +13,10 @@ void DivingComputer::AddDive(const Dive &dive) {
 }
 
 void DivingComputer::PrintAllDives(std::ostream& ost) const {
+    if (!ost.good()) {
+        throw std::runtime_error("output stream is faulty");
+    }
+
     for (size_t i = 0; i < dives.size(); ++i) {
         ost << "=== Dive " << (i + 1) << " ===" << std::endl;
         dives[i].PrintStats(ost);

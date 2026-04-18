@@ -28,7 +28,7 @@ std::ostream& line(std::ostream& ost) {
     return ost;
 }
 
-// helper: convert seconds → hh:mm:ss
+// convert seconds to hh:mm:ss
 std::string Dive::FormatTime(size_t seconds) const {
     size_t h = seconds / 3600;
     size_t m = (seconds % 3600) / 60;
@@ -54,6 +54,9 @@ double Dive::CalcSpeed(const DiveEntry& curr, const DiveEntry& next) const {
 }
 
 void Dive::PrintStats(std::ostream& ost) const {
+    if (!ost.good()) {
+        throw std::runtime_error("output stream is faulty");
+    }
 
     ost << std::left
         << std::setw(col_width) << "Dive Time" << sep
