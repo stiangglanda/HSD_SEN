@@ -2,17 +2,14 @@
 // Workfile : DivingComputer.cpp
 // Author : Leander Kieweg
 // Date : 04.04.2026
-// Description : Test Driver for Date and Calendar
+// Description : Diving Computer Implementation
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 #include "DivingComputer.h"
-
-#include <ostream>
-
 #include <format>
-#include <sstream>
 #include <iomanip>
+#include <stdexcept>
 
 // constants
 const int col_width = 10;
@@ -20,18 +17,18 @@ const int col_spacing = 4;
 const int depth_prec = 2;
 const int speed_prec = 3;
 
-std::ostream& sep(std::ostream& ost) {
+std::ostream& DivingComputer::sep(std::ostream& ost) {
     ost << std::string(col_spacing, ' ');
     return ost;
 }
 
-std::ostream& line(std::ostream& ost) {
+std::ostream& DivingComputer::line(std::ostream& ost) {
     ost << std::string(3 * col_width + 2 * col_spacing, '-') << std::endl;
     return ost;
 }
 
 // helper: convert seconds → hh:mm:ss
-std::string FormatTime(size_t seconds) {
+std::string DivingComputer::FormatTime(size_t seconds) const {
     size_t h = seconds / 3600;
     size_t m = (seconds % 3600) / 60;
     size_t s = seconds % 60;
@@ -39,13 +36,16 @@ std::string FormatTime(size_t seconds) {
     return std::format("{:02}:{:02}:{:02}", h, m, s);
 }
 
-double DivingComputer::CalkUpDown(const DiveEntry& curr, const DiveEntry& next) {
+double DivingComputer::CalcSpeed(const DiveEntry& curr, const DiveEntry& next) const {
     double dt = static_cast<double>(next.time - curr.time);
+    if (dt==0) {
+        throw std::domain_error("devision by zero");
+    }
     double dd = next.depth - curr.depth;
     return dd / dt;
 }
 
-void DivingComputer::PrintDiveStats(std::ostream& ost) {
+void DivingComputer::PrintDiveStats(std::ostream& ost) const {
 
     ost << std::left
         << std::setw(col_width) << "Dive Time" << sep
@@ -60,9 +60,10 @@ void DivingComputer::PrintDiveStats(std::ostream& ost) {
         << std::endl;
 
     ost << line;
+    ost << std::fixed;
 
     for (size_t i = 0; i < diveStats.size(); ++i) {
-        const auto& curr = diveStats[i];
+        const auto& curr = diveStats.at(i);
 
         ost << std::left
             << std::setw(col_width) << FormatTime(curr.time) << sep
@@ -70,13 +71,16 @@ void DivingComputer::PrintDiveStats(std::ostream& ost) {
             << std::endl;
 
         if (i+1<diveStats.size()) {
-            const auto& next = diveStats[i+1];
-            ost << std::string(2 * col_width + 2 * col_spacing, ' ') << std::setprecision(depth_prec) << CalkUpDown(curr, next) << std::endl;
+            double UpDown = CalcSpeed(curr, diveStats.at(i+1));
+            ost << std::string(2 * col_width + 2 * col_spacing, ' ')
+                << std::setprecision(speed_prec)
+                << std::showpos << UpDown
+                << std::noshowpos << std::endl;
         }
     }
 }
 
-void DivingComputer::PushBackDiveEntry(DiveEntry entry) {
+void DivingComputer::PushBackDiveEntry(const DiveEntry& entry) {
     diveStats.push_back(entry);
 }
 

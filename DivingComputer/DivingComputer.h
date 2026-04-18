@@ -2,13 +2,12 @@
 // Workfile : DivingComputer.h
 // Author : Leander Kieweg
 // Date : 04.04.2026
-// Description : Test Driver for Date and Calendar
+// Description : Diving Computer Header
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 #ifndef DIVINGCOMPUTER_H
 #define DIVINGCOMPUTER_H
-#include <iosfwd>
 #include <iostream>
 #include <vector>
 
@@ -21,13 +20,15 @@ class DivingComputer {
 public:
     DivingComputer() = default;
 
-    double CalkUpDown(const DiveEntry& curr, const DiveEntry& next);
+    void PrintDiveStats(std::ostream& ost = std::cout) const;
 
-    void PrintDiveStats(std::ostream& ost = std::cout);
-
-    void PushBackDiveEntry(DiveEntry entry);
+    void PushBackDiveEntry(const DiveEntry& entry);
     void EmplaceBackDiveEntry(size_t time, double depth);
 private:
+    double CalcSpeed(const DiveEntry& curr, const DiveEntry& next) const;
+    std::string FormatTime(size_t seconds) const;
+    static std::ostream& sep(std::ostream& ost);
+    static std::ostream& line(std::ostream& ost);
 
     std::vector<DiveEntry> diveStats;
 };
