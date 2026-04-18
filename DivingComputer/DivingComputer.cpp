@@ -7,6 +7,7 @@
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 #include "DivingComputer.h"
+#include <algorithm>
 #include <format>
 #include <iomanip>
 #include <stdexcept>
@@ -17,12 +18,12 @@ const int col_spacing = 4;
 const int depth_prec = 2;
 const int speed_prec = 3;
 
-std::ostream& DivingComputer::sep(std::ostream& ost) {
+std::ostream& sep(std::ostream& ost) {
     ost << std::string(col_spacing, ' ');
     return ost;
 }
 
-std::ostream& DivingComputer::line(std::ostream& ost) {
+std::ostream& line(std::ostream& ost) {
     ost << std::string(3 * col_width + 2 * col_spacing, '-') << std::endl;
     return ost;
 }
@@ -36,10 +37,17 @@ std::string DivingComputer::FormatTime(size_t seconds) const {
     return std::format("{:02}:{:02}:{:02}", h, m, s);
 }
 
+void DivingComputer::Sort() {
+    std::sort(diveStats.begin(), diveStats.end(),
+        [](const DiveEntry& lhs, const DiveEntry& rhs) {
+            return lhs.time < rhs.time;
+        });
+}
+
 double DivingComputer::CalcSpeed(const DiveEntry& curr, const DiveEntry& next) const {
     double dt = static_cast<double>(next.time - curr.time);
     if (dt==0) {
-        throw std::domain_error("devision by zero");
+        throw std::domain_error("division by zero");
     }
     double dd = next.depth - curr.depth;
     return dd / dt;
@@ -82,8 +90,10 @@ void DivingComputer::PrintDiveStats(std::ostream& ost) const {
 
 void DivingComputer::PushBackDiveEntry(const DiveEntry& entry) {
     diveStats.push_back(entry);
+    Sort();
 }
 
 void DivingComputer::EmplaceBackDiveEntry(size_t time, double depth) {
     diveStats.emplace_back(time, depth);
+    Sort();
 }

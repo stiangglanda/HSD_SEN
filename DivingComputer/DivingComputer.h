@@ -27,8 +27,7 @@ public:
 private:
     double CalcSpeed(const DiveEntry& curr, const DiveEntry& next) const;
     std::string FormatTime(size_t seconds) const;
-    static std::ostream& sep(std::ostream& ost);
-    static std::ostream& line(std::ostream& ost);
+    void Sort();
 
     std::vector<DiveEntry> diveStats;
 };
