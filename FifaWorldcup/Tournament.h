@@ -1,0 +1,26 @@
+#pragma once
+#include <string>
+#include <vector>
+#include <iostream>
+#include "scanner.h" 
+
+// Represents a tournament consisting of various groups and teams.
+// Handles parsing tournament data, extracting team info, and printing results.
+class Tournament {
+public:
+	// Parses the tournament data from a given formatted string.
+	void Parse(const std::string& data);
+
+	// Prints the parsed tournament information to the specified output stream.
+	// Defaults to std::cout if no stream is provided.
+	void Print(std::ostream& os = std::cout) const;
+
+	// TO DO: Implementation of the `Extract` method, which extracts and returns the teams
+
+private:
+	// TO DO: Implementation of data structures for groups and teams -> use separate classes for Group and Team
+
+	// Parses an individual group block using the provided scanner.
+	void ParseGroup(pfc::scanner& sc);
+};
+
