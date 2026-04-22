@@ -27,10 +27,13 @@ struct StudentInfo {
    TPoints points;
 };
 
-using TGroup = vector<StudentInfo>; // eine Studierendengruppe
+using TGroup = list<StudentInfo>; // eine Studierendengruppe
 using TGroupSize = TGroup::size_type;
 using TStudent = TGroup::value_type;
 using TGroupItorConst = TGroup::const_iterator;
+
+//Konstante fuer Punkte-Minimum
+static TPointValue cPointsMin = 10;
 //////////////////////////
 //Sortieren mit Prädikat
 /////////////////////////
@@ -102,7 +105,64 @@ static void Print(TGroupItorConst begin, TGroupItorConst end, ostream& ost = cou
 
 // TO DO
 
+//Berechnung der Punktesumme
+static TPointValue SumUp(TPoints const& points) {
+   TPointValue s=0;
+   for (auto const& p : points) { s += p; }
+   return s;
+}
 
+// Predikat fuer Studierenden
+static bool DoesFail(TStudent const& stud) {
+   return SumUp(stud.points) < cPointsMin;
+}
+// // Extrahieren wir Indizierung (funkt nur fuer vector, deque)
+// static TGroup Extract(TGroup& group) {
+//    TGroup fail;
+//    TGroupSize i = 0;
+//
+//    while (i!= group.size()) { //Groesze kann sich aendern
+//       if (DoesFail(group.at(i))) {
+//          fail.push_back(group.at(i));
+//          group.erase(group.begin() + i);
+//          // i zeit automastisch auf das naechste Element
+//       } else {
+//          ++i;
+//       }
+//    }
+//
+//    return fail;
+// }
+
+// Extrahieren wir Indizierung
+static TGroup Extract(TGroup& group) {
+   TGroup fail;
+   TGroupItorConst itor = group.cbegin();
+
+   while (itor != group.cend()) { //Groesze kann sich aendern
+      if (DoesFail(*itor)) {
+         fail.push_back(*itor);
+         itor=group.erase(itor);
+         // i zeit automastisch auf das naechste Element
+      } else {
+         ++itor;
+      }
+   }
+
+   return fail;
+}
+
+// Extrahieren via STL-Algos
+static TGroup ExtractSTL(TGroup& group) {
+   TGroup fail;
+
+   copy_if(group.cbegin(), group.cend(),back_inserter(fail), DoesFail);
+   //auto newEnd=remove_if(group.begin(), group.end(), DoesFail);
+   //group.erase(newEnd,group.end());
+
+   group.erase(remove_if(group.begin(), group.end(), DoesFail),group.end());
+   return fail;
+}
 
 
 // Testtreiber für Studierende
@@ -120,14 +180,25 @@ int main ()
    try 
    {
       //TO DO
-      sort(group.begin(), group.end(), CompareAsc); //das ist ein function pointer -> CompareAsc
-      sort(group.begin(), group.end(), CompareDesc); //das ist ein function pointer -> CompareDesc
+      //sort(group.begin(), group.end(), CompareAsc); //das ist ein function pointer -> CompareAsc
+      //sort(group.begin(), group.end(), CompareDesc); //das ist ein function pointer -> CompareDesc
+
+      //eigenes sort der Liste -> Bidirektionaler Iterator der List ist nicht geeignet fuer std::sort (RandomAccessIterator)
+      group.sort(CompareAsc);
+      group.sort(CompareDesc);
 
       cout << "alle ausgeben: " << endl;
       Print(group);
 
       cout << "alle bis auf den letzten: " << endl;
       Print(group.cbegin(), --group.cend());
+
+      cout << endl << "nicht geschaft:" << endl;
+      TGroup fail = Extract(group);
+      Print(fail);
+
+      cout << endl << "gescheft:" << endl;
+      Print(group);
    }
    catch (bad_alloc const& ex)
    {
