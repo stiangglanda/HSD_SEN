@@ -1,7 +1,11 @@
-//
-// Created by stiangglanda on 2026-04-26.
-//
-
+///////////////////////////////////////////////////////////////////////////
+// Workfile : Group.cpp
+// Author : Leander Kieweg
+// Date : 26.04.2026
+// Description : Group Implementation
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #include "Group.h"
 #include <algorithm>
 #include <iomanip>
@@ -34,6 +38,14 @@ void Group::Print(std::ostream &ost) const {
     for (size_t i = 0; i < mTeams.size(); i++) {
         ost << std::right << std::setw(col_width_num) << i+1 << sep;
         ost << mTeams[i];
+    }
+}
+
+void Group::ExtractNegativeDifferenceTeams(std::vector<Team> &result) const {
+    for (auto team: mTeams) {
+        if (team.getGoalDifference() < 0) {
+            result.emplace_back(team);
+        }
     }
 }
 

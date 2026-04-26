@@ -1,7 +1,11 @@
-//
-// Created by stiangglanda on 2026-04-26.
-//
-
+///////////////////////////////////////////////////////////////////////////
+// Workfile : Team.h
+// Author : Leander Kieweg
+// Date : 26.04.2026
+// Description : Team Header
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #ifndef TEAM_H
 #define TEAM_H
 #include <iostream>
@@ -22,6 +26,7 @@ public:
     int getGoalDifference() const { return static_cast<int>(mGoalsScored - mGoalsConceded); };
 
     void Print(std::ostream& ost = std::cout) const;
+    void PrintNegativeDifferenceStyle(std::ostream& ost = std::cout) const;
 
     bool operator<(const Team& other) const;
     friend std::ostream& operator<<(std::ostream& os, const Team& team);

@@ -44,7 +44,7 @@ int main()
 
 	std::cout << "\n--- Beispiel 2: Mannschaften extrahieren ---\n";
 	// TO DO
-
+	std::cout << tournament.Extract();
 	
 	// Exception handling for robust error management
 	// TO DO

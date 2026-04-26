@@ -18,7 +18,7 @@ public:
 	void Print(std::ostream& os = std::cout) const;
 
 	// TO DO: Implementation of the `Extract` method, which extracts and returns the teams
-
+	std::vector<Team> Extract() const;
 private:
 	// TO DO: Implementation of data structures for groups and teams -> use separate classes for Group and Team
 	std::vector<Group> groups;
@@ -26,4 +26,6 @@ private:
 	// Parses an individual group block using the provided scanner.
 	Group ParseGroup(pfc::scanner& sc);
 };
+
+std::ostream& operator<<(std::ostream& ost, const std::vector<Team>& teams);
 

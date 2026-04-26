@@ -1,7 +1,11 @@
-//
-// Created by stiangglanda on 2026-04-26.
-//
-
+///////////////////////////////////////////////////////////////////////////
+// Workfile : Team.cpp
+// Author : Leander Kieweg
+// Date : 26.04.2026
+// Description : Team Implementation
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #include "Team.h"
 
 #include <iomanip>
@@ -40,6 +44,17 @@ void Team::Print(std::ostream &ost) const {
         << std::setw(col_width_num) << mGoalsScored
         << std::setw(col_width_num) << getGoalDifference()
         << std::setw(col_width_num) << mPoints
+        << std::endl;
+}
+
+void Team::PrintNegativeDifferenceStyle(std::ostream &ost) const {
+    if (!ost.good()) {
+        throw std::runtime_error(cErrStream);
+    }
+
+    ost << std::left
+        << std::setw(col_width_name) << mName
+        << std::right << std::setw(col_width_num) << getGoalDifference()
         << std::endl;
 }
 

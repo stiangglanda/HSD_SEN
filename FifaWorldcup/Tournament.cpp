@@ -13,6 +13,7 @@ const std::string MSG_EXPECTED_GOALS = "Parsing Error: Expected integer for scor
 const std::string MSG_EXPECTED_GOALS_COLON = "Parsing Error: Expected integer for conceded goals after colon.";
 const std::string MSG_UNEXPECTED_CHAR = "Parsing Error: Unexpected character after match result. Expected ',', '/', or ')'.";
 const std::string MSG_EXPECTED_IDENTIFIER = "Parsing Error: is_identifier to be true at start of ParseGroup";
+const std::string cErrStream{ "output stream is faulty" };
 
 
 // Scanner-based parser for the group block
@@ -74,6 +75,19 @@ Group Tournament::ParseGroup(pfc::scanner& sc) {
 	return group;
 }
 
+std::ostream & operator<<(std::ostream &ost, const std::vector<Team> &teams) {
+	if (!ost.good()) {
+		throw std::runtime_error(cErrStream);
+	}
+
+	ost << "Mannschaften mit negativer Tordifferenz:" << std::endl;
+	ost << "----------------------------------------" << std::endl;
+	for (const auto& team : teams) {
+		team.PrintNegativeDifferenceStyle(ost);
+	}
+	return ost;
+}
+
 
 void Tournament::Parse(const std::string& data) {
 	std::istringstream is(data);
@@ -91,4 +105,18 @@ void Tournament::Print(std::ostream& os) const {
 	for (auto group: groups) {
 		os << group;
 	}
+}
+
+std::vector<Team> Tournament::Extract() const {
+	std::vector<Team> teams;
+	for (auto group: groups) {
+		group.ExtractNegativeDifferenceTeams(teams);
+	}
+
+	std::sort(teams.begin(), teams.end(),
+		[](const Team& a, const Team& b) -> bool {
+			return a.getGoalDifference() < b.getGoalDifference();
+		});
+
+	return teams;
 }
