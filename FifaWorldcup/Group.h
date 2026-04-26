@@ -12,7 +12,6 @@
 #include <vector>
 #include "Team.h"
 
-
 class Group {
 public:
     Group(const std::string& name) : mName(name) {};

@@ -11,7 +11,6 @@
 #include <iostream>
 #include <string>
 
-
 class Team {
 public:
     Team(const std::string& name) : mName(name) {};

@@ -7,7 +7,6 @@
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 #include "Team.h"
-
 #include <iomanip>
 
 static std::string const cErrStream{ "output stream is faulty" };

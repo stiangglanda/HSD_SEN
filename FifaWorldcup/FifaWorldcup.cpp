@@ -1,9 +1,15 @@
-// FifaWorldcup.cpp : Test driver for the World Cup program
-//
-
+///////////////////////////////////////////////////////////////////////////
+// Workfile : FifaWorldcup.h
+// Author : Leander Kieweg
+// Date : 26.04.2026
+// Description : Test Driver
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <string>
 #include <exception> // Für std::exception
+#include <fstream>   // Für std::ofstream
 #include "Tournament.h"
 
 
@@ -36,18 +42,48 @@ int main()
 
 	Tournament tournament;
 
-	std::cout << "--- Parse Daten ---\n";
-	tournament.Parse(inputDataNew);
+	try {
+		std::cout << "--- Parse Daten ---\n";
+		tournament.Parse(inputDataNew);
 
-	std::cout << "--- Beispiel 1: Ausgabe der Gruppe ---\n";
-	tournament.Print();
+		std::cout << "--- Beispiel 1: Ausgabe der Gruppe ---\n";
+		tournament.Print();
 
-	std::cout << "\n--- Beispiel 2: Mannschaften extrahieren ---\n";
-	// TO DO
-	std::cout << tournament.Extract();
-	
-	// Exception handling for robust error management
-	// TO DO
+		std::cout << "\n--- Beispiel 2: Mannschaften extrahieren ---\n";
+		std::cout << tournament.Extract();
+
+		std::cout << "\n--- Fehlerbehandlung testen (Selbst implementierte Kantenfaelle) ---\n";
+
+		std::cout << "Test 1: Fehlender Identifier zum Gruppenstart (MSG_EXPECTED_IDENTIFIER)...\n";
+		Tournament fehlerTournament1;
+		try {
+			// Hier startet der String fälschlicherweise nicht mit einem Gruppen-Identifier wie 'A'
+			fehlerTournament1.Parse("(\"Mexiko\"=2:1,1:1,3:0/)");
+		} catch (const std::runtime_error& e) {
+			std::cerr << "Erfolgreich gefangen: " << e.what() << "\n";
+		}
+
+		std::cout << "\nTest 2: Defekter Ausgabestream...\n";
+		// Wir uebergeben einen Stream, der sich in einem bad()-State befindet, an eine Ausgabe
+		std::ofstream badStream;
+		badStream.setstate(std::ios::badbit); // Stream absichtlich in Fehlerzustand versetzen
+
+		try {
+			// Teste die ueberladenen Print/Operator-Methoden, die cErrStream werfen sollen
+			tournament.Print(badStream);
+		} catch (const std::runtime_error& e) {
+			std::cerr << "Erfolgreich gefangen: " << e.what() << "\n";
+		}
+
+	} catch (const std::bad_alloc& e) {
+		std::cerr << ERR_ALLOC << e.what() << '\n';
+	} catch (const std::runtime_error& e) {
+		std::cerr << ERR_RUN << e.what() << '\n';
+	} catch (const std::exception& e) {
+		std::cerr << ERR_STANDARD << e.what() << '\n';
+	} catch (...) {
+		std::cerr << ERR_UNKNOWN << '\n';
+	}
 
 	return 0;
 }
