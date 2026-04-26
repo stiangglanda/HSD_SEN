@@ -15,11 +15,12 @@ public:
     void AddTeam(const Team& team);
     void Sort();
     void Print(std::ostream& ost = std::cout) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Group& group);
+
 private:
-    static bool SortTeam(const Team &teamA, const Team &teamB);
     std::string mName;
     std::vector<Team> mTeams;
 };
-
 
 #endif

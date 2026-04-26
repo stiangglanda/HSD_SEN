@@ -21,7 +21,7 @@ void Group::AddTeam(const Team &team) {
 }
 
 void Group::Sort() {
-    std::sort(mTeams.begin(), mTeams.end(),SortTeam);
+    std::sort(mTeams.rbegin(), mTeams.rend());
 }
 
 void Group::Print(std::ostream &ost) const {
@@ -33,18 +33,11 @@ void Group::Print(std::ostream &ost) const {
 
     for (size_t i = 0; i < mTeams.size(); i++) {
         ost << std::right << std::setw(col_width_num) << i+1 << sep;
-        mTeams[i].Print(ost);
+        ost << mTeams[i];
     }
 }
 
-bool Group::SortTeam(const Team &teamA, const Team &teamB) {
-    if (teamA.getPoints() != teamB.getPoints()) {
-        return teamA.getPoints() > teamB.getPoints();
-    }
-
-    if (teamA.getGoalDifference() != teamB.getGoalDifference()) {
-        return teamA.getGoalDifference() > teamB.getGoalDifference();
-    }
-
-    return teamA.getGoalsScored() > teamB.getGoalsScored();
+std::ostream& operator<<(std::ostream& os, const Group& group) {
+    group.Print(os);
+    return os;
 }

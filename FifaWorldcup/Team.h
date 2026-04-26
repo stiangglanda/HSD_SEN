@@ -23,6 +23,9 @@ public:
 
     void Print(std::ostream& ost = std::cout) const;
 
+    bool operator<(const Team& other) const;
+    friend std::ostream& operator<<(std::ostream& os, const Team& team);
+
 private:
     std::string mName;
     size_t mMatches = 0;

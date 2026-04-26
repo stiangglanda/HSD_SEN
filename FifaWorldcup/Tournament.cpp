@@ -89,6 +89,6 @@ void Tournament::Parse(const std::string& data) {
 
 void Tournament::Print(std::ostream& os) const {
 	for (auto group: groups) {
-		group.Print(os);
+		os << group;
 	}
 }

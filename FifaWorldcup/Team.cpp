@@ -42,3 +42,18 @@ void Team::Print(std::ostream &ost) const {
         << std::setw(col_width_num) << mPoints
         << std::endl;
 }
+
+bool Team::operator<(const Team& other) const {
+    if (mPoints != other.mPoints) {
+        return mPoints < other.mPoints;
+    }
+    if (getGoalDifference() != other.getGoalDifference()) {
+        return getGoalDifference() < other.getGoalDifference();
+    }
+    return mGoalsScored < other.mGoalsScored;
+}
+
+std::ostream& operator<<(std::ostream& os, const Team& team) {
+    team.Print(os);
+    return os;
+}
