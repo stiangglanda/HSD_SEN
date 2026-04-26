@@ -20,7 +20,7 @@ const std::string MSG_EXPECTED_TEAM_NAME = "Parsing Error: Expected string for t
 const std::string MSG_EXPECTED_GOALS = "Parsing Error: Expected integer for scored goals.";
 const std::string MSG_EXPECTED_GOALS_COLON = "Parsing Error: Expected integer for conceded goals after colon.";
 const std::string MSG_UNEXPECTED_CHAR = "Parsing Error: Unexpected character after match result. Expected ',', '/', or ')'.";
-const std::string MSG_EXPECTED_IDENTIFIER = "Parsing Error: is_identifier to be true at start of ParseGroup";
+const std::string MSG_EXPECTED_IDENTIFIER = "Parsing Error: is_identifier should be true at start of ParseGroup";
 const std::string cErrStream{ "output stream is faulty" };
 
 
