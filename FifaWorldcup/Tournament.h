@@ -2,7 +2,9 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "scanner.h" 
+
+#include "Group.h"
+#include "scanner.h"
 
 // Represents a tournament consisting of various groups and teams.
 // Handles parsing tournament data, extracting team info, and printing results.
@@ -19,8 +21,9 @@ public:
 
 private:
 	// TO DO: Implementation of data structures for groups and teams -> use separate classes for Group and Team
+	std::vector<Group> groups;
 
 	// Parses an individual group block using the provided scanner.
-	void ParseGroup(pfc::scanner& sc);
+	Group ParseGroup(pfc::scanner& sc);
 };
 

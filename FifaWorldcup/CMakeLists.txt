@@ -3,4 +3,8 @@ project(FifaWorldcup)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(FifaWorldcup FifaWorldcup.cpp Tournament.h Tournament.cpp scanner.h)
+add_executable(FifaWorldcup FifaWorldcup.cpp Tournament.h Tournament.cpp scanner.h
+        Team.cpp
+        Team.h
+        Group.cpp
+        Group.h)

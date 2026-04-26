@@ -3,19 +3,26 @@
 #include <iomanip>
 #include "Tournament.h"
 
+#include "Group.h"
+#include "Team.h"
+
 
 // error messages for parsing
 const std::string MSG_EXPECTED_TEAM_NAME = "Parsing Error: Expected string for team name.";
 const std::string MSG_EXPECTED_GOALS = "Parsing Error: Expected integer for scored goals.";
 const std::string MSG_EXPECTED_GOALS_COLON = "Parsing Error: Expected integer for conceded goals after colon.";
 const std::string MSG_UNEXPECTED_CHAR = "Parsing Error: Unexpected character after match result. Expected ',', '/', or ')'.";
+const std::string MSG_EXPECTED_IDENTIFIER = "Parsing Error: is_identifier to be true at start of ParseGroup";
 
 
 // Scanner-based parser for the group block
-void Tournament::ParseGroup(pfc::scanner& sc) {
-	if (!sc.is_identifier()) return;
+Group Tournament::ParseGroup(pfc::scanner& sc) {
+	if (!sc.is_identifier()) {
+		throw std::runtime_error(MSG_EXPECTED_IDENTIFIER);
+	}
 
 	std::string const groupNameStr = sc.get_identifier();
+	Group group{groupNameStr};
 
 	sc.next_symbol(); // consume identifiers
 	sc.next_symbol('(');
@@ -26,6 +33,8 @@ void Tournament::ParseGroup(pfc::scanner& sc) {
 		if (!sc.is_string()) {
 			throw std::runtime_error(MSG_EXPECTED_TEAM_NAME);
 		}
+
+		Team team{sc.get_string()};
 		sc.next_symbol();
 
 		sc.next_symbol('=');
@@ -41,6 +50,8 @@ void Tournament::ParseGroup(pfc::scanner& sc) {
 			if (!sc.is_integer()) throw std::runtime_error(MSG_EXPECTED_GOALS_COLON);
 			int goals2 = sc.get_integer();
 			sc.next_symbol();
+
+			team.addMatch(goals1, goals2);
 
 			if (sc.is(',')) {
 				sc.next_symbol();
@@ -58,7 +69,9 @@ void Tournament::ParseGroup(pfc::scanner& sc) {
 				throw std::runtime_error(MSG_UNEXPECTED_CHAR);
 			}
 		}
+		group.AddTeam(team);
 	}
+	return group;
 }
 
 
@@ -67,11 +80,15 @@ void Tournament::Parse(const std::string& data) {
 	pfc::scanner sc(is);
 
 	while (sc.has_symbol()) {
-		ParseGroup(sc);
+		Group group = ParseGroup(sc);
+		group.Sort();
+		groups.push_back(group);
 	}
 }
 
 
 void Tournament::Print(std::ostream& os) const {
-	// TO DO
+	for (auto group: groups) {
+		group.Print(os);
+	}
 }
