@@ -12,11 +12,6 @@
 #include <vector>
 #include <string>
 
-struct DiveEntry {
-    size_t time; // in seconds
-    double depth; // in meters
-};
-
 class Dive {
 public:
     // Creates an empty dive.
@@ -25,11 +20,14 @@ public:
     // Prints the dive statistics.
     void PrintStats(std::ostream& ost = std::cout) const;
 
-    // Adds one entry and sorts the data.
-    void PushBackDiveEntry(const DiveEntry& entry);
     // Creates one entry and sorts the data.
     void EmplaceBackDiveEntry(size_t time, double depth);
 private:
+    struct DiveEntry {
+        size_t time; // in seconds
+        double depth; // in meters
+    };
+
     double CalcSpeed(const DiveEntry& curr, const DiveEntry& next) const;
     std::string FormatTime(size_t seconds) const;
     void Sort();

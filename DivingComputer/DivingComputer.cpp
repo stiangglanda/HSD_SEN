@@ -8,13 +8,16 @@
 ///////////////////////////////////////////////////////////////////////////
 #include "DivingComputer.h"
 
+static std::string const cErrStream{ "output stream is faulty" };
+static std::string const cErrOutofBounds{ "Dive index out of bounds" };
+
 void DivingComputer::AddDive(const Dive &dive) {
     dives.push_back(dive);
 }
 
 void DivingComputer::PrintAllDives(std::ostream& ost) const {
     if (!ost.good()) {
-        throw std::runtime_error("output stream is faulty");
+        throw std::runtime_error(cErrStream);
     }
 
     for (size_t i = 0; i < dives.size(); ++i) {
@@ -30,7 +33,7 @@ size_t DivingComputer::GetDiveCount() const {
 
 const Dive& DivingComputer::GetDive(size_t index) const {
     if (index >= dives.size()) {
-        throw std::out_of_range("Dive index out of bounds");
+        throw std::out_of_range(cErrOutofBounds);
     }
     return dives.at(index);
 }

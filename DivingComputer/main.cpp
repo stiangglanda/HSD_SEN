@@ -19,7 +19,7 @@ void TestSingleDive() {
     std::cout << "Adding reference data (unsorted)" << std::endl;
 
     singleDive.EmplaceBackDiveEntry(150, 15.0);
-    singleDive.PushBackDiveEntry({0, 0.0}); // Test PushBack variant
+    singleDive.EmplaceBackDiveEntry(0, 0.0);
     singleDive.EmplaceBackDiveEntry(50, 6.8);
     singleDive.EmplaceBackDiveEntry(270, 23.88);
     singleDive.EmplaceBackDiveEntry(10, 2.5);
