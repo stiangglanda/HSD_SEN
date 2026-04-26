@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <iomanip>
 
-static std::string const cErrStream{ "output stream is faulty" };
+static const std::string cErrStream{ "output stream is faulty" };
 
 static const int col_width_num = 2;
 static const int col_spacing = 2;
