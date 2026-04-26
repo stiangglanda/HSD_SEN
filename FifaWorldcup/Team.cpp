@@ -14,11 +14,15 @@ static std::string const cErrStream{ "output stream is faulty" };
 static const int col_width_num = 4;
 static const int col_width_name = 15;
 const int col_spacing = 4;
+const int points_win = 3;
+const int points_draw = 1;
 
 static std::ostream& sep(std::ostream& ost) {
     ost << std::string(col_spacing, ' ');
     return ost;
 }
+
+Team::Team(const std::string &name): mName(name) {}
 
 void Team::addMatch(size_t goalsScored, size_t goalsConceded) {
     mMatches++;
@@ -26,11 +30,23 @@ void Team::addMatch(size_t goalsScored, size_t goalsConceded) {
     mGoalsScored += goalsScored;
 
     if (goalsScored > goalsConceded) { // Win
-        mPoints+=3;
+        mPoints += points_win;
     } else if (goalsScored == goalsConceded) { // Draw
-        mPoints++;
+        mPoints += points_draw;
     } // else = lost(+0 points)
 }
+
+std::string Team::getName() const { return mName; }
+
+size_t Team::getGoalsConceded() const { return mGoalsConceded; }
+
+size_t Team::getGoalsScored() const { return mGoalsScored; }
+
+size_t Team::getPoints() const { return mPoints; }
+
+size_t Team::getMatches() const { return mMatches; }
+
+int Team::getGoalDifference() const { return static_cast<int>(mGoalsScored - mGoalsConceded); }
 
 void Team::Print(std::ostream &ost) const {
     if (!ost.good()) {

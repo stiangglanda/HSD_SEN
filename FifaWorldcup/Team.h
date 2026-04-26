@@ -13,21 +13,33 @@
 
 class Team {
 public:
-    Team(const std::string& name) : mName(name) {};
+    // Initializes a team with the given name
+    explicit Team(const std::string& name);
 
+    // Adds match results and updates points and goals
     void addMatch(size_t goals_scored, size_t goalsConceded);
 
-    std::string getName() const { return mName; };
-    size_t getGoalsConceded() const { return mGoalsConceded; };
-    size_t getGoalsScored() const { return mGoalsScored; };
-    size_t getPoints() const { return mPoints; };
-    size_t getMatches() const { return mMatches; };
-    int getGoalDifference() const { return static_cast<int>(mGoalsScored - mGoalsConceded); };
+    // Returns the name of the team
+    std::string getName() const;
+    // Returns the number of goals conceded
+    size_t getGoalsConceded() const;
+    // Returns the number of goals scored
+    size_t getGoalsScored() const;
+    // Returns the total points
+    size_t getPoints() const;
+    // Returns the total number of matches played
+    size_t getMatches() const;
+    // Calculates and returns the goal difference
+    int getGoalDifference() const;
 
+    // Prints the team's data for the group table
     void Print(std::ostream& ost = std::cout) const;
+    // Prints the team's name and goal difference
     void PrintNegativeDifferenceStyle(std::ostream& ost = std::cout) const;
 
+    // Compares teams for sorting (points, diff, goals)
     bool operator<(const Team& other) const;
+    // Streams the team's data
     friend std::ostream& operator<<(std::ostream& os, const Team& team);
 
 private:

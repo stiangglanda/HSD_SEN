@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : FifaWorldcup.h
+// Workfile : FifaWorldcup.cpp
 // Author : Leander Kieweg
 // Date : 26.04.2026
 // Description : Test Driver
@@ -12,15 +12,12 @@
 #include <fstream>   // Für std::ofstream
 #include "Tournament.h"
 
-
 // error messages for exception handling
 std::string const ERR_STANDARD = "An error occurred: ";
 std::string const ERR_ALLOC = "Memory allocation failed: ";
 std::string const ERR_SCAN = "Scanner error: ";
 std::string const ERR_RUN = "Runtime error: ";
 std::string const ERR_UNKNOWN = "An unknown error occurred!";
-
-
 
 int main()
 {

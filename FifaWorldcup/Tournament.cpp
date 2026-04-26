@@ -104,20 +104,20 @@ void Tournament::Parse(const std::string& data) {
 	while (sc.has_symbol()) {
 		Group group = ParseGroup(sc);
 		group.Sort();
-		groups.push_back(group);
+		groups.emplace_back(group);
 	}
 }
 
 
 void Tournament::Print(std::ostream& os) const {
-	for (auto group: groups) {
+	for (const auto& group: groups) {
 		os << group;
 	}
 }
 
 std::vector<Team> Tournament::Extract() const {
 	std::vector<Team> teams;
-	for (auto group: groups) {
+	for (const auto& group: groups) {
 		group.ExtractNegativeDifferenceTeams(teams);
 	}
 

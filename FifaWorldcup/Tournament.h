@@ -6,7 +6,8 @@
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
-#pragma once
+#ifndef TOURNAMENT_H
+#define TOURNAMENT_H
 #include <string>
 #include <vector>
 #include <iostream>
@@ -37,3 +38,4 @@ private:
 
 std::ostream& operator<<(std::ostream& ost, const std::vector<Team>& teams);
 
+#endif

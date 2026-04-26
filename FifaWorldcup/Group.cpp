@@ -20,6 +20,8 @@ static std::ostream& sep(std::ostream& ost) {
     return ost;
 }
 
+Group::Group(const std::string &name): mName(name) {}
+
 void Group::AddTeam(const Team &team) {
     mTeams.push_back(team);
 }
@@ -37,12 +39,12 @@ void Group::Print(std::ostream &ost) const {
 
     for (size_t i = 0; i < mTeams.size(); i++) {
         ost << std::right << std::setw(col_width_num) << i+1 << sep;
-        ost << mTeams[i];
+        ost << mTeams.at(i);
     }
 }
 
 void Group::ExtractNegativeDifferenceTeams(std::vector<Team> &result) const {
-    for (auto team: mTeams) {
+    for (const auto& team: mTeams) {
         if (team.getGoalDifference() < 0) {
             result.emplace_back(team);
         }
