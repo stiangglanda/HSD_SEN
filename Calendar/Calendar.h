@@ -33,32 +33,6 @@ private:
     std::map<Date, std::string> mCalendar;
 
     std::string toLower(std::string str) const;
-    // nested struct: Fully encapsulated within the private scope.
-    // Belongs exclusively to Calendar and is invisible from outside.
-    struct CalendarEntry {
-        const Date date;
-        std::string text;
-        CalendarEntry* pLeft;
-        CalendarEntry* pRight;
-    };
-    // member variables
-    CalendarEntry* mRoot;
-    // private helper methods
-
-    // L-W-R
-    void PrintInOrder(const CalendarEntry* const pRoot) const;
-
-    // R-W-L
-    void PrintReverseOrder(const CalendarEntry* const pRoot) const;
-
-    static CalendarEntry* MakeNode(Date const& date, std::string const& text);
-
-    void InsertSorted(CalendarEntry*& pRoot, Date const &date, std::string const &text);
-
-    // Delete all nodes in the tree
-    void Flush(CalendarEntry*& pRoot);
-
-    void CopyPreOrder(const CalendarEntry* pRoot);
 };
 
 #endif
