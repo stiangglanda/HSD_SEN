@@ -30,7 +30,7 @@ int main() {
     }
     std::cout << std::endl;
 
-    std::cout << "negatives: " << nc.NegativesAmount() << std::endl;
+    std::cout << "negatives: " << nc.NegativeAmount() << std::endl;
     std::cout << "min: " << nc.GetMin() << std::endl;
     std::cout << "max: " << nc.GetMax() << std::endl;
 

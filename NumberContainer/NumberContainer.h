@@ -22,7 +22,7 @@ public:
     int GetMax() const;
     int GetMin() const;
     std::vector<size_t> GetPositions(int val) const;
-    size_t NegativesAmount() const;
+    size_t NegativeAmount() const;
     std::vector<int> GetBiggestFive() const;
 
 private:

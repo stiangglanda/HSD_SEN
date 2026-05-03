@@ -64,7 +64,7 @@ std::vector<size_t> NumberContainer::GetPositions(int val) const {
     return result;
 }
 
-size_t NumberContainer::NegativesAmount() const {
+size_t NumberContainer::NegativeAmount() const {
     return std::count_if(mNumbers.begin(), mNumbers.end(), [](int i) { return i < 0; });
 }
 
