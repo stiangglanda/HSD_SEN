@@ -112,6 +112,20 @@ void testCalendar() {
     cal = cal;
     cal.PrintAllEntries(true);
 
+    std::cout << "Testing FindByText (Search for 'new year')" << std::endl;
+    std::vector<Date> foundDates = cal2.FindByText("new year");
+    for (const auto& d : foundDates) {
+        std::cout << "Found: " << d << std::endl;
+    }
+    // Expected: 01.01.2026, 31.12.2026
+
+    std::cout << "Testing FindByText (Search for 'PROJECT')" << std::endl;
+    std::vector<Date> foundDates2 = cal2.FindByText("PROJECT");
+    for (const auto& d : foundDates2) {
+        std::cout << "Found: " << d << std::endl;
+    }
+    // Expected: 15.06.2026
+
     std::cout << "Testing Clear()" << std::endl;
     cal.Clear();
     std::cout << "Cal entries after Clear (Should be empty):" << std::endl;
