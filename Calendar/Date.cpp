@@ -9,12 +9,15 @@
 #include "Date.h"
 #include <iomanip>
 
+static const std::string cErrDateValid = "Date not valid";
+static const std::string cErrStream = "ostream not ok";
+
 Date::Date(size_t const day, size_t const month, size_t const year) :
     mDay(day), mMonth(month), mYear(year) {
     if (!CheckDate()) {
-        std::cerr << "Date not valid" << std::endl;
         mDay = 1;
         mMonth = 1;
+        throw std::invalid_argument(cErrDateValid);
     }
 }
 
@@ -65,8 +68,7 @@ bool Date::CheckDate() const {
 
 void Date::Print(std::ostream &out) const {
     if (!out.good()) {
-        std::cerr << "ostream not ok" << std::endl;
-        return;
+        throw std::invalid_argument(cErrStream);
     }
 
     out << std::setw(2) << std::setfill('0') << mDay << '.'
