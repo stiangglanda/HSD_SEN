@@ -11,7 +11,6 @@
 #include <vector>
 #include <iterator>
 
-
 class NumberContainer {
 public:
     NumberContainer(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end);
@@ -28,6 +27,5 @@ public:
 private:
     std::vector<int> mNumbers;
 };
-
 
 #endif
