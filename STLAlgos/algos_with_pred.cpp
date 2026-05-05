@@ -2,6 +2,18 @@
 #include "Output.h"
 using namespace std;
 
+static auto lower = [](auto c) { return tolower(c); };
+static auto upper = [](auto c) { return toupper(c); };
+
+//unary function als Lambda-Funktion -> Rueckgabetyp -> void, Parametertyp -> string
+static std::function<void(string)> capOutput = [](string str) {
+   transform(str.cbegin(), str.cend(), str.begin(),
+      [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+   if (!str.empty()) {
+      str.at(0)=std::toupper(str.at(0));
+   }
+   cout << str << " ";
+};
 
 void Test_Algos_With_Pred(string const& header)
 {
@@ -17,7 +29,52 @@ void Test_Algos_With_Pred(string const& header)
       TDeqCont cont{ 1, -2, 3, -4, 5, -6 };
 
       //to do
+      //mit accumulate multiplizieren, statt addieren
+      auto const cInit = 1;
+      cout << "product: " << accumulate(cont.cbegin(), cont.cend(), cInit, multiplies<int>{}) << endl;
 
+      cout << "Vorzeichen umdrehen: " << endl;
+      transform(cont.cbegin(), cont.cend(), cont.begin(), negate<int>{});
+      cout << cont;
+
+      TVecCont vec;
+      transform(cont.cbegin(), cont.cend(), back_inserter(vec), negate<int>{});
+      cout << vec;
+
+      TDeqCont deq;
+      transform(cont.cbegin(), cont.cend(), front_inserter(deq), negate<int>{});
+      cout << deq;
+
+      cout << "2 Sequenzen multiplizieren:" << endl;
+      transform(cont.cbegin(), cont.cend(), vec.cbegin(), back_inserter(cont), multiplies<int>{});
+      cout << cont;
+
+      // oder
+      transform(deq.cbegin(), deq.cend(), vec.cbegin(), ostream_iterator<int>{cout, "\n"}, multiplies<int>{});
+
+      cout << "bitwise operieren:" << endl;
+      TDeqCont cont2{ 0b1100, 0b0101, 0b1010 };
+      TDeqCont cont3{ 0b1001, 0b0100, 0b1111 };
+      transform(cont2.cbegin(), cont2.cend(), cont3.cbegin(), back_inserter(vec), bit_and<int>{});
+      cout << vec;
+
+      cout << "auf/absteigend sortieren:" << endl;
+      sort(cont.begin(), cont.end());
+      cout << cont;
+      sort(cont.begin(), cont.end(), greater<int>{});
+      cout << cont;
+
+      cout << "Umwandlung Gross/Kleinbuchstaben:" << endl;
+      //transform(str.cbegin(), str.cend(), str.begin(), std::tolower/*{}*/); // -> ist eine funktion, kein Objekt
+      transform(str.cbegin(), str.cend(), str.begin(),
+          [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+      cout << str << endl;
+
+      transform(str.cbegin(), str.cend(), str.begin(),
+    [](unsigned char c) { return static_cast<char>(std::toupper(c)); });
+      cout << str << endl;
+
+      for_each(str.cbegin(), str.cend(), capOutput);
    }
    catch (std::bad_alloc const& ex)
    {
