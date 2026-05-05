@@ -6,9 +6,8 @@ static auto lower = [](auto c) { return tolower(c); };
 static auto upper = [](auto c) { return toupper(c); };
 
 //unary function als Lambda-Funktion -> Rueckgabetyp -> void, Parametertyp -> string
-static std::function<void(string)> capOutput = [](string str) {
-   transform(str.cbegin(), str.cend(), str.begin(),
-      [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+static std::function<void(string)> /*auto*/ capOutput = [](string str) {
+   transform(str.cbegin(), str.cend(), str.begin(), lower);
    if (!str.empty()) {
       str.at(0)=std::toupper(str.at(0));
    }
@@ -66,15 +65,17 @@ void Test_Algos_With_Pred(string const& header)
 
       cout << "Umwandlung Gross/Kleinbuchstaben:" << endl;
       //transform(str.cbegin(), str.cend(), str.begin(), std::tolower/*{}*/); // -> ist eine funktion, kein Objekt
-      transform(str.cbegin(), str.cend(), str.begin(),
-          [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+      transform(str.cbegin(), str.cend(), str.begin(), lower);
       cout << str << endl;
 
-      transform(str.cbegin(), str.cend(), str.begin(),
-    [](unsigned char c) { return static_cast<char>(std::toupper(c)); });
+      transform(str.cbegin(), str.cend(), str.begin(), upper);
       cout << str << endl;
 
-      for_each(str.cbegin(), str.cend(), capOutput);
+      for_each(sarr.cbegin(), sarr.cend(), capOutput);
+      cout << endl;
+
+      for_each(sarr.cbegin(), sarr.cend(), capOutput)("That's ALL");
+      cout << endl;
    }
    catch (std::bad_alloc const& ex)
    {
