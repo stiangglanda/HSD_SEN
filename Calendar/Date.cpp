@@ -17,7 +17,7 @@ Date::Date(size_t const day, size_t const month, size_t const year) :
     if (!CheckDate()) {
         mDay = 1;
         mMonth = 1;
-        throw std::invalid_argument(cErrDateValid);
+        std::cerr << cErrDateValid << std::endl;
     }
 }
 
