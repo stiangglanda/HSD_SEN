@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <random>
 #include <stdexcept>
+#include <string>
 
 static const std::string cErrRandom = "start must be <= end";
 static const std::string cErrContEmpty = "Container is empty";

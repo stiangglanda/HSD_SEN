@@ -8,6 +8,7 @@
 ///////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 #include "NumberContainer.h"
 
 int main() {
@@ -54,6 +55,35 @@ int main() {
     std::cout << "Fuege 5 Zufallszahlen zwischen 100 und 200 hinzu" << std::endl;
     nc.AddRandom(5, 100, 200);
     std::cout << "neues max (sollte >= 100 sein): " << nc.GetMax() << std::endl;
+
+    std::cout << std::endl << "Exception Tests" << std::endl;
+
+    std::cout << "Test GetBiggestFive() (nc2 hat nur 2 Elemente):" << std::endl;
+    try {
+        nc2.GetBiggestFive();
+        std::cout << "ERROR: No exception thrown!" << std::endl;
+    } catch (std::invalid_argument const& e) {
+        std::cout << "Exception caught (as expected): " << e.what() << std::endl;
+    }
+
+    const std::vector<int> emptyValues{};
+    NumberContainer ncEmpty(emptyValues.cbegin(), emptyValues.cend());
+
+    std::cout << "Test GetMin() (leerer Container):" << std::endl;
+    try {
+        ncEmpty.GetMin();
+        std::cout << "ERROR: No exception thrown!" << std::endl;
+    } catch (std::logic_error const& e) {
+        std::cout << "Exception caught (as expected): " << e.what() << std::endl;
+    }
+
+    std::cout << "Test GetMax() (leerer Container):" << std::endl;
+    try {
+        ncEmpty.GetMax();
+        std::cout << "ERROR: No exception thrown!" << std::endl;
+    } catch (std::logic_error const& e) {
+        std::cout << "Exception caught (as expected): " << e.what() << std::endl;
+    }
 
     return 0;
 }
