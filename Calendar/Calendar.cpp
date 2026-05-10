@@ -9,6 +9,7 @@
 #include "Calendar.h"
 #include <iterator>
 #include <algorithm>
+#include <iostream>
 
 void Calendar::AddEntry(Date const &date, std::string const &text) {
     mCalendar[date] = text;
