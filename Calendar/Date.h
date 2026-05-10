@@ -14,7 +14,7 @@
 class Date {
 public:
     // Constructor
-    Date(size_t const day, size_t const month, size_t const year);
+    explicit Date(size_t const day, size_t const month, size_t const year);
 
     // Accessor functions getDay, getMonth, getYear
     size_t getDay() const;

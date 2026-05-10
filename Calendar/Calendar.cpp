@@ -19,14 +19,14 @@ void Calendar::Clear() {
 }
 
 void Calendar::PrintAllEntries(bool const ascending) const {
+    auto printEntry = [](const auto& entry) {
+        std::cout << entry.first << " " << entry.second << std::endl;
+    };
+
     if (ascending) {
-        for (auto it = mCalendar.cbegin(); it != mCalendar.cend(); ++it) {
-            std::cout << it->first << " " << it->second << '\n';
-        }
+        std::for_each(mCalendar.cbegin(), mCalendar.cend(), printEntry);
     } else {
-        for (auto it = mCalendar.crbegin(); it != mCalendar.crend(); ++it) {
-            std::cout << it->first << " " << it->second << '\n';
-        }
+        std::for_each(mCalendar.crbegin(), mCalendar.crend(), printEntry);
     }
 }
 

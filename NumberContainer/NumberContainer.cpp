@@ -12,6 +12,7 @@
 #include <random>
 
 static const std::string cErrRandom = "start must be <= end";
+static const std::string cErrContEmpty = "Container is empty";
 static const std::string cErrBigFive = "NumberContainer doesn't have at least 5 numbers";
 
 NumberContainer::NumberContainer(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end) {
@@ -45,10 +46,16 @@ void NumberContainer::AddRandom(size_t const count, int const start, int const e
 }
 
 int NumberContainer::GetMax() const {
+    if (mNumbers.empty()) {
+        throw std::logic_error(cErrContEmpty);
+    }
     return *std::max_element(mNumbers.cbegin(), mNumbers.cend());
 }
 
 int NumberContainer::GetMin() const {
+    if (mNumbers.empty()) {
+        throw std::logic_error(cErrContEmpty);
+    }
     return *std::min_element(mNumbers.cbegin(), mNumbers.cend());
 }
 

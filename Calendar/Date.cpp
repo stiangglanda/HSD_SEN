@@ -8,6 +8,7 @@
 ///////////////////////////////////////////////////////////////////////////
 #include "Date.h"
 #include <iomanip>
+#include <stdexcept>
 
 static const std::string cErrDateValid = "Date not valid";
 static const std::string cErrStream = "ostream not ok";
