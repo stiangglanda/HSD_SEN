@@ -13,7 +13,11 @@
 
 class NumberContainer {
 public:
-    NumberContainer(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end);
+    template<typename Iterator>
+    NumberContainer(Iterator begin, Iterator end) {
+        mNumbers.insert(mNumbers.end(), begin, end);
+    }
+
     bool operator<(NumberContainer const& container) const;
     bool operator==(NumberContainer const& container) const;
 

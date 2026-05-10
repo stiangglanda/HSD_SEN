@@ -10,14 +10,13 @@
 #include <numeric>
 #include <algorithm>
 #include <random>
+#include <stdexcept>
 
 static const std::string cErrRandom = "start must be <= end";
 static const std::string cErrContEmpty = "Container is empty";
 static const std::string cErrBigFive = "NumberContainer doesn't have at least 5 numbers";
 
-NumberContainer::NumberContainer(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end) {
-    mNumbers.insert(mNumbers.end(), begin, end);
-}
+static const size_t cBiggestFiveCount = 5;
 
 bool NumberContainer::operator<(NumberContainer const &container) const {
     int sum1 = std::accumulate(mNumbers.cbegin(), mNumbers.cend(), 0);
@@ -72,15 +71,15 @@ std::vector<size_t> NumberContainer::GetPositions(int val) const {
 }
 
 size_t NumberContainer::NegativeAmount() const {
-    return std::count_if(mNumbers.begin(), mNumbers.end(), [](int i) { return i < 0; });
+    return std::count_if(mNumbers.cbegin(), mNumbers.cend(), [](int i) { return i < 0; });
 }
 
 std::vector<int> NumberContainer::GetBiggestFive() const {
-    if (mNumbers.size() < 5 ) {
+    if (mNumbers.size() < cBiggestFiveCount ) {
         throw std::invalid_argument(cErrBigFive);
     }
 
-    std::vector<int> result(5);
+    std::vector<int> result(cBiggestFiveCount);
 
     std::partial_sort_copy(mNumbers.cbegin(), mNumbers.cend(),
                            result.begin(), result.end(),
