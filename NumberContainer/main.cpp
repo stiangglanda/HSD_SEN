@@ -85,5 +85,13 @@ int main() {
         std::cout << "Exception caught (as expected): " << e.what() << std::endl;
     }
 
+    std::cout << "Test AddRandom() (start > end):" << std::endl;
+    try {
+        ncEmpty.AddRandom(5, 200, 100);
+        std::cout << "ERROR: No exception thrown!" << std::endl;
+    } catch (std::invalid_argument const& e) {
+        std::cout << "Exception caught (as expected): " << e.what() << std::endl;
+    }
+
     return 0;
 }
