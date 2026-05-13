@@ -25,6 +25,19 @@ public:
         copy(mCont.cbegin(), mCont.cend(), std::ostream_iterator<TElem>(ost, delim.c_str()));
         ost << std::endl;
     }
+
+    void Add(TElem const& elem) {
+        mCont.push_back(elem);
+    }
+
+    //Wrapper STL-like
+    using value_type = TCont::value_type;
+    using size_type = TCont::size_type;
+
+    /*TCont::iterator*/ auto begin() { return mCont.begin(); }
+    TCont::iterator end() { return mCont.end(); }
+    auto cbegin() { return mCont.cbegin(); }
+    auto cend() { return mCont.cend(); }
 private:
     TCont mCont;
 };
