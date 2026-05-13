@@ -3,5 +3,5 @@ project(TemplateParam)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(TemplateParam ContainerWrapper.h Fraction.h TemplateParam.cpp)
+add_executable(TemplateParam ContainerWrapper.h Fraction.h Fraction.cpp TemplateParam.cpp)
 

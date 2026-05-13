@@ -17,7 +17,8 @@ int main()
    {
       // to do
       // ....
-
+      ContainerWrapper<> cont;
+      cont.Print();
    }
    catch (std::bad_alloc const& ex)
    {
