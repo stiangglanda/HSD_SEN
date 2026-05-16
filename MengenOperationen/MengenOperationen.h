@@ -11,6 +11,7 @@
 #include <iterator>
 #include <algorithm>
 
+// Copies all unique elements from both ranges into the destination
 template <typename TItor1, typename TItor2, typename TItor3>
 void Union(TItor1 begin1, TItor1 end1, TItor2 begin2, TItor2 end2, TItor3 begin3) {
     TItor3 end3 = begin3;
@@ -25,8 +26,9 @@ void Union(TItor1 begin1, TItor1 end1, TItor2 begin2, TItor2 end2, TItor3 begin3
             *end3++ = *it;
         }
     }
-};
+}
 
+// Copies unique elements from the first range that are also in the second range
 template <typename TItor1, typename TItor2, typename TItor3>
 void Intersection(TItor1 begin1, TItor1 end1, TItor2 begin2, TItor2 end2, TItor3 begin3) {
     TItor3 end3 = begin3;
@@ -35,8 +37,9 @@ void Intersection(TItor1 begin1, TItor1 end1, TItor2 begin2, TItor2 end2, TItor3
             *end3++ = *it;
         }
     }
-};
+}
 
+// Copies unique elements from the first range that are not in the second range
 template <typename TItor1, typename TItor2, typename TItor3>
 void Difference(TItor1 begin1, TItor1 end1, TItor2 begin2, TItor2 end2, TItor3 begin3) {
     TItor3 end3 = begin3;
@@ -45,6 +48,6 @@ void Difference(TItor1 begin1, TItor1 end1, TItor2 begin2, TItor2 end2, TItor3 b
             *end3++ = *it;
         }
     }
-};
+}
 
 #endif

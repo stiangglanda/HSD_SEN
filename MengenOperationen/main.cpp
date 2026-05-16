@@ -12,7 +12,7 @@
 
 void printVector(const std::string& prefix, const std::vector<int>& vec) {
     std::cout << prefix << ": ";
-    copy(vec.cbegin(), vec.cend(), std::ostream_iterator<int>(std::cout, " "));
+    std::copy(vec.cbegin(), vec.cend(), std::ostream_iterator<int>(std::cout, " "));
     std::cout << std::endl;
 }
 
@@ -25,9 +25,9 @@ void runTestCase(const std::string& name, const std::vector<int>& vec1, const st
     std::vector<int> i(i_size);
     std::vector<int> d(d_size);
 
-    Union(vec1.begin(), vec1.end(), vec2.begin(), vec2.end(), u.begin());
-    Intersection(vec1.begin(), vec1.end(), vec2.begin(), vec2.end(), i.begin());
-    Difference(vec1.begin(), vec1.end(), vec2.begin(), vec2.end(), d.begin());
+    Union(vec1.cbegin(), vec1.cend(), vec2.cbegin(), vec2.cend(), u.begin());
+    Intersection(vec1.cbegin(), vec1.cend(), vec2.cbegin(), vec2.cend(), i.begin());
+    Difference(vec1.cbegin(), vec1.cend(), vec2.cbegin(), vec2.cend(), d.begin());
 
     printVector("Union", u);
     printVector("Intersection", i);
@@ -38,6 +38,8 @@ void runTestCase(const std::string& name, const std::vector<int>& vec1, const st
 int main() {
     std::vector<int> baseVec1{ 8, 4, 3, 2, 3, 1, 8 };
     std::vector<int> baseVec2{ 3, 7, 1, 6, 5, 7 };
+    // Result sizes must be known in advance because the interface expects
+    // an output iterator and does not support std::back_inserter
     const size_t base_u = 8;
     const size_t base_i = 2;
     const size_t base_d = 3;
