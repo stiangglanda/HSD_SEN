@@ -7,32 +7,40 @@
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 #include <iostream>
-#include <ostream>
 #include <vector>
 #include "MengenOperationen.h"
+
+void printVector(const std::string& prefix, const std::vector<int>& vec) {
+    std::cout << prefix << ": ";
+    copy(vec.cbegin(), vec.cend(), std::ostream_iterator<int>(std::cout, " "));
+    std::cout << std::endl;
+}
 
 int main() {
     std::vector<int> vec1{ 8, 4, 3, 2, 3, 1, 8 };
     std::vector<int> vec2{ 3, 7, 1, 6, 5, 7 };
-    std::vector<int> vec3{};
-    vec3.resize(vec1.size()+vec2.size());
 
-    std::vector<int> vec4{};
-    vec4.resize(vec3.size());
+    printVector("Container 1", vec1);
+    printVector("Container 2", vec2);
+    std::cout << std::endl;
 
-    std::vector<int> vec5{};
-    vec5.resize(vec3.size());
+    const size_t Union_size = 8; // Exact size for Union
+    const size_t Intersection_size = 2; // Exact size for Intersection
+    const size_t Difference_size = 3; // Exact size for Difference
+
+    // Pre-allocate exact required sizes since the functions return void
+    std::vector<int> vec3(Union_size);
+    std::vector<int> vec4(Intersection_size);
+    std::vector<int> vec5(Difference_size);
 
     Union(vec1.begin(), vec1.end(), vec2.begin(), vec2.end(), vec3.begin());
-    copy(vec3.begin(), vec3.end(), std::ostream_iterator<int>(std::cout, " "));
-    std::cout << std::endl;
+    printVector("Union", vec3);
 
     Intersection(vec1.begin(), vec1.end(), vec2.begin(), vec2.end(), vec4.begin());
-    copy(vec4.begin(), vec4.end(), std::ostream_iterator<int>(std::cout, " "));
-    std::cout << std::endl;
+    printVector("Intersection", vec4);
 
     Difference(vec1.begin(), vec1.end(), vec2.begin(), vec2.end(), vec5.begin());
-    copy(vec5.begin(), vec5.end(), std::ostream_iterator<int>(std::cout, " "));
+    printVector("Difference", vec5);
 
     return 0;
 }
