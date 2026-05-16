@@ -18,29 +18,29 @@
 template <typename Container>
 void PrintContainer(const Container& c) {
     std::cout << "Elements: [ ";
-    copy(c.cbegin(), c.cend(), std::ostream_iterator<typename Container::value_type>(std::cout, " "));
+    std::copy(c.cbegin(), c.cend(), std::ostream_iterator<typename Container::value_type>(std::cout, " "));
     std::cout << "]" << std::endl;
 }
 
 template <typename Container, typename TPred = std::less<>>
-void TestContainer(const std::string& name, Container& c, TPred pred = TPred{}) {
+void TestContainer(const std::string& name, const Container& c, TPred pred = TPred{}) {
     std::cout << "--- Testing " << name << " ---" << std::endl;
     PrintContainer(c);
 
     // Test IsSorted
-    std::cout << "IsSorted: " << IsSorted(c.begin(), c.end(), pred) << std::endl;
+    std::cout << "IsSorted: " << IsSorted(c.cbegin(), c.cend(), pred) << std::endl;
 
     // Test SortedUntil
-    auto until = SortedUntil(c.begin(), c.end(), pred);
-    if (until != c.end()) {
+    auto until = SortedUntil(c.cbegin(), c.cend(), pred);
+    if (until != c.cend()) {
         std::cout << "SortedUntil stops at: " << *until << std::endl;
     } else {
         std::cout << "SortedUntil reached the end." << std::endl;
     }
 
     // Test SortedFrom
-    auto from = SortedFrom(c.begin(), c.end(), pred);
-    if (from != c.end()) {
+    auto from = SortedFrom(c.cbegin(), c.cend(), pred);
+    if (from != c.cend()) {
         std::cout << "SortedFrom starts at: " << *from << std::endl;
     } else {
         std::cout << "SortedFrom reached the end." << std::endl;
@@ -52,6 +52,9 @@ int main() {
 
     std::vector<int> vec{5, 3, 5, 1, 4, 2};
     TestContainer("std::vector", vec);
+
+    std::vector<int> vec1{ 1, 2, 3, 4, 5 };
+    TestContainer("std::vector", vec1);
 
     std::array<int, 6> arr{1, 2, 3, 5, 4, 2};
     TestContainer("std::array", arr);
