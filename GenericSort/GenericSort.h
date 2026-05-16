@@ -22,7 +22,7 @@ TIter SortedUntil(TIter begin, TIter end, TPred pred) {
     ++curr;
 
     while (curr != end) {
-        if (pred(*prev, *curr)) {
+        if (!pred(*curr, *prev)) {
             prev = curr;
             ++curr;
         } else {
@@ -39,13 +39,13 @@ TIter SortedUntil(TIter begin, TIter end) {
 }
 
 template <typename TIter, typename TPred>
-bool isSorted(TIter begin, TIter end, TPred pred) {
+bool IsSorted(TIter begin, TIter end, TPred pred) {
     return SortedUntil(begin, end, pred) == end;
 }
 
 template <typename TIter>
-bool isSorted(TIter begin, TIter end) {
-    return isSorted(begin, end,
+bool IsSorted(TIter begin, TIter end) {
+    return IsSorted(begin, end,
         std::less<typename std::iterator_traits<TIter>::value_type>{});
 }
 

@@ -24,5 +24,7 @@ int main() {
         std::cout << *res1 << std::endl;
     }
 
+    std::cout << "IsSorted: " << std::boolalpha << IsSorted(vec1.begin(), vec1.end()) << std::endl;
+
     return 0;
 }
