@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////
 // Workfile : MengenOperationen.h
 // Author : Leander Kieweg
-// Date : 03.05.2026
+// Date : 16.05.2026
 // Description : MengenOperationen Header
 // Remarks : -
 // Revision : 0

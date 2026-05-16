@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////
 // Workfile : main.cpp
 // Author : Leander Kieweg
-// Date : 03.05.2026
+// Date : 16.05.2026
 // Description : Test Driver for MengenOperationen
 // Remarks : -
 // Revision : 0
@@ -9,7 +9,6 @@
 #include <iostream>
 #include <ostream>
 #include <vector>
-
 #include "MengenOperationen.h"
 
 int main() {
@@ -34,7 +33,6 @@ int main() {
 
     Difference(vec1.begin(), vec1.end(), vec2.begin(), vec2.end(), vec5.begin());
     copy(vec5.begin(), vec5.end(), std::ostream_iterator<int>(std::cout, " "));
-
 
     return 0;
 }
