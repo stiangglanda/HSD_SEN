@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////
 // Workfile : GenericSort.h
 // Author : Leander Kieweg
-// Date : 03.05.2026
+// Date : 16.05.2026
 // Description : GenericSort Header
 // Remarks : -
 // Revision : 0
@@ -65,6 +65,5 @@ TIter SortedFrom(TIter begin, TIter end) {
     return SortedFrom(begin, end,
         std::less<typename std::iterator_traits<TIter>::value_type>{});
 }
-
 
 #endif

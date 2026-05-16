@@ -1,30 +1,69 @@
 ///////////////////////////////////////////////////////////////////////////
 // Workfile : main.cpp
 // Author : Leander Kieweg
-// Date : 03.05.2026
+// Date : 16.05.2026
 // Description : Test Driver for GenericSort
 // Remarks : -
 // Revision : 0
 ///////////////////////////////////////////////////////////////////////////
 #include <iostream>
-#include <ostream>
 #include <vector>
-
+#include <list>
+#include <forward_list>
+#include <deque>
+#include <array>
+#include <functional>
 #include "GenericSort.h"
 
+template <typename Container>
+void PrintContainer(const Container& c) {
+    std::cout << "Elements: [ ";
+    copy(c.cbegin(), c.cend(), std::ostream_iterator<typename Container::value_type>(std::cout, " "));
+    std::cout << "]" << std::endl;
+}
+
+template <typename Container, typename TPred = std::less<>>
+void TestContainer(const std::string& name, Container& c, TPred pred = TPred{}) {
+    std::cout << "--- Testing " << name << " ---" << std::endl;
+    PrintContainer(c);
+
+    // Test IsSorted
+    std::cout << "IsSorted: " << IsSorted(c.begin(), c.end(), pred) << std::endl;
+
+    // Test SortedUntil
+    auto until = SortedUntil(c.begin(), c.end(), pred);
+    if (until != c.end()) {
+        std::cout << "SortedUntil stops at: " << *until << std::endl;
+    } else {
+        std::cout << "SortedUntil reached the end." << std::endl;
+    }
+
+    // Test SortedFrom
+    auto from = SortedFrom(c.begin(), c.end(), pred);
+    if (from != c.end()) {
+        std::cout << "SortedFrom starts at: " << *from << std::endl;
+    } else {
+        std::cout << "SortedFrom reached the end." << std::endl;
+    }
+}
+
 int main() {
-    std::vector<int> vec1{2,4,1,5,3,5};
-    auto res=SortedUntil(vec1.begin(), vec1.end());
-    if (res != vec1.end()) {
-        std::cout << *res << std::endl;
-    }
+    std::cout << std::boolalpha;
 
-    auto res1=SortedFrom(vec1.begin(), vec1.end());
-    if (res1 != vec1.end()) {
-        std::cout << *res1 << std::endl;
-    }
+    std::vector<int> vec{5, 3, 5, 1, 4, 2};
+    TestContainer("std::vector", vec);
 
-    std::cout << "IsSorted: " << std::boolalpha << IsSorted(vec1.begin(), vec1.end()) << std::endl;
+    std::array<int, 6> arr{1, 2, 3, 5, 4, 2};
+    TestContainer("std::array", arr);
+
+    std::list<int> lst{1, 1, 2, 3, 4, 5};
+    TestContainer("std::list", lst);
+
+    std::forward_list<int> flst{};
+    TestContainer("std::forward_list (leer)", flst);
+
+    std::deque<int> deq{5, 4, 3, 2, 1};
+    TestContainer("std::deque with custom predicate (std::greater)", deq, std::greater<>{});
 
     return 0;
 }
