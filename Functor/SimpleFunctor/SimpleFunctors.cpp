@@ -60,4 +60,11 @@ int main()
    
 	transform(values.cbegin(), values.cend(), values.begin(), Replace);
 	cout << values;
+
+	auto repRange = ReplaceRange{ 20, 30 };
+	transform(values.cbegin(), values.cend(), values.begin(), repRange);
+	cout << values;
+
+	transform(values.cbegin(), values.cend(), values.begin(), ReplaceRange{22,29});
+	cout << values;
 }
