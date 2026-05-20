@@ -19,6 +19,33 @@ static ostream& operator << (ostream& ost, TCont const& cont)
 static int const cMIN = 0;
 static int const cMAX = 50;
 
+// Funktion zur Begrenzung von Werten in einer Sequenz
+static int Replace(int const val) {
+	if (val < cMIN) return cMIN;
+	else if (val > cMAX) return cMAX;
+	else return val;
+}
+
+// besser: Funktor als einfache Klasse: die Begrenzungswerte werden bei
+// konstruktion eingestellt
+class ReplaceRange {
+public:
+	ReplaceRange(int const l = cMIN, int const u = cMAX) :
+		mCLower{l}, mCUpper{u} // konstante muessen via initializer list initialisiert werden
+	{ }
+
+	//Funktionsaufruf wird ueberladen und macht somit ein Objekt dieser Klasse
+	// zu einem Funktionsobjekt (Funktor)
+	int operator() (int const val) {
+		if (val < cMIN) return cMIN;
+		else if (val > cMAX) return cMAX;
+		else return val;
+	}
+
+private:
+	int const mCLower;
+	int const mCUpper;
+};
 
 int main()
 {
@@ -31,5 +58,6 @@ int main()
 	auto values = TCont{ 10, 60, 30, -20, -1, 0, 100 };
 	auto values2 = TCont{ values };
    
-  
+	transform(values.cbegin(), values.cend(), values.begin(), Replace);
+	cout << values;
 }
