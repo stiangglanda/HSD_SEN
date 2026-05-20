@@ -47,6 +47,13 @@ private:
 	int const mCUpper;
 };
 
+//Lambda ist ähnlich wie ein funktor
+static auto repLambda = [lower = 21, upper = 29](int const val) {
+	if (val < cMIN) return cMIN;
+	else if (val > cMAX) return cMAX;
+	else return val;
+};
+
 int main()
 {
 	// AAA -> Almost Always Auto: Best Practice fuer die Deklaration von 
@@ -66,5 +73,17 @@ int main()
 	cout << values;
 
 	transform(values.cbegin(), values.cend(), values.begin(), ReplaceRange{22,29});
+	cout << values;
+
+	//oder Variante mit for_each
+	//for_each(values.cbegin(), values.cend(), repRange); -> funkt. nicht
+	for_each(values2.begin(), values2.end(), [/*&*/](auto& val) {
+		if (val < cMIN) val = cMIN;
+		if (val > cMAX) val = cMAX;
+	});
+	cout << values2;
+
+	// Verwendung mit Lambda -> Parameteruebergabe via CTor ist allerdings nicht moeglich
+	transform(values.cbegin(), values.cend(), values.begin(), repLambda);
 	cout << values;
 }
