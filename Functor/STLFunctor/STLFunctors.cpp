@@ -62,6 +62,19 @@ template<typename T>
 class CollectGreater
 {
    //to do
+public:
+   void operator()(T const& first, T const& second) {
+      if (first < second) mCont.push_back(second);
+      if (second < first) mCont.push_back(first);
+   }
+
+   void Out(ostream& ost = cout) const {
+      if (!ost.good()) throw runtime_error("ostream-error in CollectGreater");
+      ost << "collection result: " << endl;
+      copy(mCont.cbegin(), mCont.cend(), ostream_iterator<T>(ost, " "));
+   }
+private:
+   vector<T> mCont;
 };
 
 
@@ -69,7 +82,15 @@ class CollectGreater
 //binäre Funktion auf zwei Elemente anwendet
 
 //to do
-
+template<typename TItor1, typename TItor2, typename BinFunc>
+BinFunc for_each2(TItor1 first1, TItor1 end1, TItor2 first2, TItor2 end2, BinFunc bFunc) {
+   while (first1 != end1 && first2 != end2) {
+      bFunc(*first1++, *first2++);
+      //first1++;
+      //first2++;
+   }
+   return bFunc;
+}
 
 int main()
 {
@@ -107,6 +128,25 @@ int main()
 
       //noch kompakter
       cout << "sum: " << for_each(vInt.cbegin(), vInt.cend(), SumEven<int>{4711}).GetSum() << endl;
+
+      //Anwendung for_each2 und CollectGreater
+      cout << endl;
+      for_each2(vInt.cbegin(), vInt.cend(), dInt.cbegin(), dInt.cend(), CollectGreater<int>{}).Out();
+
+      list<Fraction> fracList;
+      fracList.push_back(Fraction{1,3});
+      //besser
+      fracList.emplace_back(1,3);
+      fracList.emplace_back(2,3);
+      fracList.emplace_back(4,2);
+      fracList.emplace_back(6,4);
+
+      deque<Fraction> fracDeq;
+      fracDeq.emplace_back(1,2);
+      fracDeq.emplace_front(1,3);
+      fracDeq.emplace_back(3);
+
+      for_each2(fracList.cbegin(), fracList.cend(), fracDeq.cbegin(), fracDeq.cend(), CollectGreater<Fraction>{}).Out();
    }
    catch (bad_alloc const& exc)
    {
