@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : RingBuffer.cpp
+// Workfile : RingBuffer.h
 // Author : Leander Kieweg
 // Date : 23.05.2026
 // Description : RingBuffer Header
@@ -117,7 +117,6 @@ void RingBuffer<TValue>::Dequeue(TValue& element) {
 
 template<typename TValue>
 void RingBuffer<TValue>::Print(std::ostream &ost) const {
-    ost << "Print: ";
     size_t index = mTail;
     for (size_t i = 0; i < mSize; ++i) {
         ost << *buffer.at(index) << " ";
