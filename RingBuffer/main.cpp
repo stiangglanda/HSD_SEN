@@ -33,6 +33,5 @@ int main() {
     rb.Dequeue(valRet);
     rb.Print();
 
-    //std::cout << rb.Capacity() << " " << valre << std::endl;
     return 0;
 }
