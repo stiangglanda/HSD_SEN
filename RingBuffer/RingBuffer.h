@@ -12,6 +12,8 @@
 #include <iterator>
 #include <vector>
 
+static std::string const cErrEmpty = "ringBuffer is empty!";
+
 template <typename TValue>
 class RingBuffer {
 public:
@@ -27,6 +29,7 @@ public:
     //AssingOperator -> if necessary
     RingBuffer& operator=(RingBuffer const& other);
 
+    // returns true if the buffer is empty
     bool IsEmpty() const;
 
     //enqueues an element
@@ -111,7 +114,7 @@ void RingBuffer<TValue>::Dequeue(TValue& element) {
         mTail = (mTail + 1) % mCapacity;
         mSize--;
     } else {
-        throw std::out_of_range("ringbuffer is empty!");
+        throw std::out_of_range(cErrEmpty);
     }
 }
 

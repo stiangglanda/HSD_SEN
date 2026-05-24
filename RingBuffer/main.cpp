@@ -12,6 +12,9 @@
 #include <utility>
 #include <stdexcept>
 
+// This operator overload is in the std namespace so that Argument-Dependent Lookup
+// (ADL) finds it when RingBuffer::Print() tries to output pairs. Without this, the
+// template wouldn't know how to print a std::pair.
 namespace std {
     template <typename T1, typename T2>
     ostream& operator<<(ostream& ost, const pair<T1, T2>& p) {
