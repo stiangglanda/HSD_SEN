@@ -3,4 +3,5 @@ project(CalcUpCopy)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(CalcUpCopy main.cpp)
+add_executable(CalcUpCopy main.cpp
+        CalcUpCopy.h)
