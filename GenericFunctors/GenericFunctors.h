@@ -15,6 +15,9 @@ public:
     explicit IsMultipleOf(T multiple) : mMultiple(multiple) {}
 
     bool operator() (T value) const {
+        if (mMultiple == 0) {
+            return value == 0;
+        }
         return (value % mMultiple) == 0;
     }
 private:
@@ -28,7 +31,7 @@ public:
 
     bool operator() (T value) const {
         if (value == 0) {
-            return false;
+            return mPart == 0;
         }
         return (mPart % value) == 0;
     }
