@@ -12,9 +12,10 @@
 template <typename T>
 class IsMultipleOf {
 public:
-    explicit IsMultipleOf(T multiple) : mMultiple(multiple) {}
+    explicit IsMultipleOf(T const& multiple) : mMultiple(multiple) {}
 
-    bool operator() (T value) const {
+    // Checks if the value is a multiple of the stored number
+    bool operator() (T const& value) const {
         if (mMultiple == 0) {
             return value == 0;
         }
@@ -27,9 +28,10 @@ private:
 template <typename T>
 class IsPartOf {
 public:
-    explicit IsPartOf(T part) : mPart(part) {}
+    explicit IsPartOf(T const& part) : mPart(part) {}
 
-    bool operator() (T value) const {
+    // Checks if the value is a divisor of the stored number
+    bool operator() (T const& value) const {
         if (value == 0) {
             return mPart == 0;
         }
