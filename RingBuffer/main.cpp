@@ -24,7 +24,7 @@ namespace std {
 }
 
 void TestBasicAndOverwrite() {
-    std::cout << "Basic Test";
+    std::cout << "Basic Test" << std::endl;
     RingBuffer<int> rb(3);
     rb.Enqueue(1);
     rb.Enqueue(2);
@@ -43,7 +43,7 @@ void TestBasicAndOverwrite() {
 }
 
 void TestEmptyException() {
-    std::cout << "Test Empty Buffer Exception" << std::endl;
+    std::cout << std::endl << "Test Empty Buffer Exception" << std::endl;
     RingBuffer<int> rb(2);
     try {
         int val;
@@ -53,8 +53,28 @@ void TestEmptyException() {
     }
 }
 
+void TestZeroCapacityException() {
+    std::cout << std::endl << "Test Zero Capacity Exception" << std::endl;
+    try {
+        RingBuffer<int> rb(0);
+    } catch (const std::invalid_argument& e) {
+        std::cout << "Expected exception caught: " << e.what() << std::endl;
+    }
+}
+
+void TestCapacityMismatchException() {
+    std::cout << std::endl << "Test Assignment Capacity Mismatch Exception" << std::endl;
+    RingBuffer<int> rb1(2);
+    RingBuffer<int> rb2(3);
+    try {
+        rb1 = rb2; // This should throw due to mismatch
+    } catch (const std::invalid_argument& e) {
+        std::cout << "Expected exception caught: " << e.what() << std::endl;
+    }
+}
+
 void TestCopyAndAssign() {
-    std::cout << "Test Copy Constructor & Assignment Operator" << std::endl;
+    std::cout << std::endl << "Test Copy Constructor & Assignment Operator" << std::endl;
     RingBuffer<int> rb1(3);
     rb1.Enqueue(10);
     rb1.Enqueue(20);
@@ -82,7 +102,7 @@ void TestCopyAndAssign() {
 }
 
 void TestPairType() {
-    std::cout << "Test std::pair" << std::endl;
+    std::cout << std::endl << "Test std::pair" << std::endl;
     RingBuffer<std::pair<int, std::string>> rb(2);
     rb.Enqueue(std::make_pair(1, "One"));
     rb.Enqueue(std::make_pair(2, "Two"));
@@ -102,6 +122,8 @@ int main() {
     try {
         TestBasicAndOverwrite();
         TestEmptyException();
+        TestZeroCapacityException();
+        TestCapacityMismatchException();
         TestCopyAndAssign();
         TestPairType();
     } catch (const std::exception& e) {

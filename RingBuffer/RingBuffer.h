@@ -9,10 +9,11 @@
 #ifndef RINGBUFFER_H
 #define RINGBUFFER_H
 #include <iostream>
-#include <iterator>
 #include <vector>
 
-static std::string const cErrEmpty = "ringBuffer is empty!";
+static std::string const cErrEmpty = "ringbuffer is empty!";
+static std::string const cErrCap = "Capacity mismatch!";
+static std::string const cErrCapCTor = "Capacity of RingBuffer must be greater than 0!";
 
 template <typename TValue>
 class RingBuffer {
@@ -20,13 +21,13 @@ public:
 
     explicit RingBuffer(size_t const capacity);
 
-    //CopyCTor -> if necessary
+    // Creates a deep copy of an existing RingBuffer
     RingBuffer(RingBuffer const& other);
 
-    //DTor -> if necessary
+    // Cleans up all dynamically allocated elements
     ~RingBuffer();
 
-    //AssingOperator -> if necessary
+    // Deep copies elements from another buffer of same capacity
     RingBuffer& operator=(RingBuffer const& other);
 
     // returns true if the buffer is empty
@@ -45,19 +46,29 @@ private:
     size_t mHead = 0;
     size_t mTail = 0;
     std::vector<TValue *> buffer;
-
 };
 
 template<typename TValue>
-RingBuffer<TValue>::RingBuffer(size_t const capacity) : mCapacity(capacity), buffer(capacity) {}
+RingBuffer<TValue>::RingBuffer(size_t const capacity) : mCapacity(capacity), buffer(capacity) {
+    if (mCapacity == 0) {
+        throw std::invalid_argument(cErrCapCTor);
+    }
+}
 
 template<typename TValue>
 RingBuffer<TValue>::RingBuffer(RingBuffer const& other) :
 mCapacity(other.mCapacity), buffer(other.mCapacity),
 mHead(other.mHead), mTail(other.mTail), mSize(other.mSize) {
     size_t index = mTail;
+
     for (size_t i = 0; i < mSize; ++i) {
-        buffer.at(index) = new TValue(*other.buffer.at(index));
+        TValue* sourcePtr = other.buffer.at(index);
+        if (sourcePtr != nullptr) {
+            buffer.at(index) = new TValue(*sourcePtr);
+        } else {
+            buffer.at(index) = nullptr;
+        }
+
         index = (index + 1) % mCapacity;
     }
 }
@@ -69,8 +80,11 @@ RingBuffer<TValue>::~RingBuffer() {
 
 template<typename TValue>
 RingBuffer<TValue> & RingBuffer<TValue>::operator=(RingBuffer const &other) {
-    if (this == &other || mCapacity != other.mCapacity) {
+    if (this == &other) {
         return *this;
+    }
+    if (mCapacity != other.mCapacity) {
+        throw std::invalid_argument(cErrCap);
     }
 
     Clear();
@@ -80,7 +94,12 @@ RingBuffer<TValue> & RingBuffer<TValue>::operator=(RingBuffer const &other) {
 
     size_t index = mTail;
     for (size_t i = 0; i < mSize; ++i) {
-        buffer.at(index) = new TValue(*other.buffer.at(index));
+        TValue* sourcePtr = other.buffer.at(index);
+        if (sourcePtr != nullptr) {
+            buffer.at(index) = new TValue(*sourcePtr);
+        } else {
+            buffer.at(index) = nullptr;
+        }
         index = (index + 1) % mCapacity;
     }
     return *this;
@@ -108,8 +127,11 @@ template<typename TValue>
 void RingBuffer<TValue>::Dequeue(TValue& element) {
 
     if (!IsEmpty()) {
-        element = *buffer.at(mTail);
-        delete buffer.at(mTail);
+        TValue* ptr = buffer.at(mTail);
+        if (ptr != nullptr) {
+            element = *ptr;
+            delete ptr;
+        }
         buffer.at(mTail) = nullptr;
         mTail = (mTail + 1) % mCapacity;
         mSize--;
@@ -122,7 +144,10 @@ template<typename TValue>
 void RingBuffer<TValue>::Print(std::ostream &ost) const {
     size_t index = mTail;
     for (size_t i = 0; i < mSize; ++i) {
-        ost << *buffer.at(index) << " ";
+        TValue* ptr = buffer.at(index);
+        if (ptr != nullptr) {
+            ost << *ptr << " ";
+        }
         index = (index + 1) % mCapacity;
     }
     ost << std::endl;
