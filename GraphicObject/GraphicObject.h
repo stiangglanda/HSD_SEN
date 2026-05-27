@@ -10,13 +10,14 @@ class GraphicObject : public Object
 public:
    //to do
    GraphicObject(std::string const& text = "GRAPHIC_OBJEKT");
-   ~GraphicObject();
+   /*virtual*/ ~GraphicObject();
 
    // auf Getter/Setter wird hier bewusst verzichtet !!!
    void MoveTo(int const xpos, int const ypos);
    void RotateTo(double const orient);
 
-   void Draw() const;
+   virtual void Draw() const; // mit virtual wird diese Methode zur Laufzeit dynamisch gebunden.
+   //einmal virtuell == immer virtuell, auch in allen abgeleitetten Klassen
 
 protected:
    //in abgeleiteten Klassen kann auf diesen Member direkt zugegriffen werden!

@@ -13,7 +13,7 @@ public:
     void SetRadius(size_t const rad);
 
     //ueberschreiben von Draw
-    void Draw() const;
+    void Draw() const override;
  
 private:
    size_t mRadius = 0;

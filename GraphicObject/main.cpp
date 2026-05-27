@@ -45,6 +45,23 @@ int main()
    for_each(circCont.cbegin(), circCont.cend(), [](auto const& c) { c.Draw(); });
    circCont.clear();
 
+   cout << endl << endl << "container with value_type 'GraphicObject*':" << endl;
+   using TGraphCont = vector<GraphicObject*>;
+   TGraphCont graphCont{&circ, pCirc, &rect, pRect};
+
+   //Statischer Datentyp von graphObj = GraphObject* => festgelegt zur Compilezeit
+   //Dynamischer Datentyp von graphObj = Circle* => festgelegt zur Laufzeit (könnte auch Rectangle* sein)
+   GraphicObject* graphObj = new Circle;
+   graphCont.push_back(graphObj);
+   GraphicObject* pGraph = new Rectangle;
+   graphCont.push_back(pGraph);
+
+   cout << "draw graphic objects in vector:" << endl;
+   for_each(graphCont.cbegin(), graphCont.cend(), [](auto c) { c->Draw(); });
+   circCont.clear();
+
    delete pCirc; pCirc = nullptr;
    delete pRect; pRect = nullptr;
+   delete graphObj; graphObj = nullptr;
+   delete pGraph; pGraph = nullptr;
 }

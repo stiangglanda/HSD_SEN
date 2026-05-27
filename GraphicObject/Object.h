@@ -6,7 +6,7 @@ class Object
 {
 public:
    //to do
-   ~Object();
+   virtual ~Object();
 protected:
    Object(); //protected CTor -> es kann kein Objekt dieser Klasse erzeugt werden. -> abstract class
 

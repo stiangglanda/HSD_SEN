@@ -12,7 +12,7 @@ public:
    ~Rectangle();
 
    //ueberschreiben von Draw
-   void Draw() const;
+   void Draw() const override;
 private:
    size_t mWidth = 0;
    size_t mHeight = 0;
