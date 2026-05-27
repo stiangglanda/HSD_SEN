@@ -8,7 +8,11 @@ class Rectangle : public GraphicObject
 {
 public:
    //to do
+   Rectangle();
+   ~Rectangle();
 
+   //ueberschreiben von Draw
+   void Draw() const;
 private:
    size_t mWidth = 0;
    size_t mHeight = 0;

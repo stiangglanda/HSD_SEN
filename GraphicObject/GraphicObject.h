@@ -9,6 +9,14 @@ class GraphicObject : public Object
 {
 public:
    //to do
+   GraphicObject(std::string const& text = "GRAPHIC_OBJEKT");
+   ~GraphicObject();
+
+   // auf Getter/Setter wird hier bewusst verzichtet !!!
+   void MoveTo(int const xpos, int const ypos);
+   void RotateTo(double const orient);
+
+   void Draw() const;
 
 protected:
    //in abgeleiteten Klassen kann auf diesen Member direkt zugegriffen werden!
