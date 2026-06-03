@@ -12,6 +12,8 @@ public:
    std::string ToString() const override;
 
    void GiveTongue() const override;
+
+   Animal* Clone() const override;
 };
 #endif //CAT_H
 

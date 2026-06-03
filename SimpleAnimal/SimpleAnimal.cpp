@@ -39,6 +39,15 @@ int main()
       for_each(z.cbegin(), z.cend(), [](auto ani){ ani->GiveTongue(); });
 
       cout << z.ToString() << endl;
+
+      Zoo z2 = z;
+      cout << z2.ToString() << endl;
+
+      Zoo z3;
+      z3 = z2;
+      cout << z3.ToString() << endl;
+
+      z3 = z3;
    }
    catch (invalid_argument const& ex)
    {

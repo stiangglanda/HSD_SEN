@@ -3,11 +3,20 @@
 #include "Zoo.h"
 using namespace std;
 
+Zoo::Zoo(Zoo const &z) {
+    for_each(z.cbegin(), z.cend(), [&](auto ani) { Add(ani->Clone()); });
+}
+
 Zoo::~Zoo() {
     for (auto ani : mAnimals) {
         delete ani;
     }
     mAnimals.clear();
+}
+
+//assign operator with copy and swap !!!
+void Zoo::operator=(Zoo z) { //per vaule uebergabe
+    swap(mAnimals, z.mAnimals);
 }
 
 void Zoo::Add(Animal const *ani) {

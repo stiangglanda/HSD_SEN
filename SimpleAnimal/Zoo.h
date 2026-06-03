@@ -7,8 +7,12 @@
 class Zoo : public Object
 { 
 public:
+   Zoo() = default;
+   Zoo(Zoo const &z); //fuer Deep-Copy
 
-   ~Zoo(); // Gibt alle Animals Frei
+   ~Zoo(); // Gibt alle Animals frei
+
+   void operator=(Zoo z);
 
    //to do
    void Add(Animal const* ani);

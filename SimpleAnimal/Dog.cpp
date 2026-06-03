@@ -15,3 +15,7 @@ std::string Dog::ToString() const {
 void Dog::GiveTongue() const {
     cout << "wauwau" << endl;
 }
+
+Animal* Dog::Clone() const {
+    return new Dog(*this);
+}

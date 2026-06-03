@@ -17,6 +17,9 @@ public:
    // verhindert das Erzeugen eines Animal-Objektes -> Die Klasse ist abstrakt!
    virtual void GiveTongue() const = 0;
 
+   //pure virtual method: muss in abgeleiteten konkreten klassen implementiert werden
+   virtual Animal* Clone() const = 0;
+
 protected:
    Animal(size_t const w);
 

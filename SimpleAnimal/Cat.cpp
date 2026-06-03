@@ -15,3 +15,7 @@ std::string Cat::ToString() const {
 void Cat::GiveTongue() const {
     cout << "miaoooow" << endl;
 }
+
+Animal * Cat::Clone() const {
+    return new Cat(*this);
+}
