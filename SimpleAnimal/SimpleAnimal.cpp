@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
-#include <vld.h>
+//#include <vld.h>
 #include "Cat.h"
 #include "Dog.h"
 #include "Zoo.h"
@@ -16,7 +16,7 @@ int main()
    
    Cat* pCat = &Minka;
    Dog* pDog = &Rolfi;
-   Animal* pAnimal = 0;
+   Animal* pAnimal = nullptr;
    pAnimal = &Minka;
    
    //es werden die beiden Zeiger verglichen
@@ -32,6 +32,13 @@ int main()
    try
    {
      //to do
+      Zoo z;
+      z.Add(new Dog{35});
+      z.Add(new Cat{11});
+      z.Add(new Dog{Rolfi});
+      for_each(z.cbegin(), z.cend(), [](auto ani){ ani->GiveTongue(); });
+
+      cout << z.ToString() << endl;
    }
    catch (invalid_argument const& ex)
    {

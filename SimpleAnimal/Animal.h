@@ -11,6 +11,11 @@ public:
    size_t GetId() const;
    
    //to do
+   std::string ToString() const override;
+
+   //pure virtual method: muss in abgeleiteten konkreten klassen implementiert werden
+   // verhindert das Erzeugen eines Animal-Objektes -> Die Klasse ist abstrakt!
+   virtual void GiveTongue() const = 0;
 
 protected:
    Animal(size_t const w);

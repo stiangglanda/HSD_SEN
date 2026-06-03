@@ -9,6 +9,7 @@ public:
    virtual ~Object() = default;
 
    //to do
+   virtual std::string ToString() const;
    
 protected:
    //Default-CTor: Benutzer kann kein Object erzeugen

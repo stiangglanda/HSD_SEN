@@ -9,6 +9,9 @@ public:
    Cat(size_t const w);
 
    //to do
+   std::string ToString() const override;
+
+   void GiveTongue() const override;
 };
 #endif //CAT_H
 

@@ -10,6 +10,8 @@ public:
    Dog(size_t const w);
 
    //to do
+   std::string ToString() const override;
 
+   void GiveTongue() const override;
 };
 #endif //DOG_H
