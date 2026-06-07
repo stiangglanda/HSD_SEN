@@ -1,3 +1,13 @@
+///////////////////////////////////////////////////////////////////////////
+// Workfile : StringStatistic.h
+// Author : Leander Kieweg
+// Date : 06.06.2026
+// Description : StringStatistic Header
+// Remarks : -
+// Revision : 0
+///////////////////////////////////////////////////////////////////////////
+#ifndef STRINGSTATISTIC_H
+#define STRINGSTATISTIC_H
 #include <iomanip>
 #include <limits>
 
@@ -40,3 +50,5 @@ std::ostream& operator<<(std::ostream& ost, StringStatistic const& stat) {
    stat.Print(ost);
    return ost;
 }
+
+#endif
