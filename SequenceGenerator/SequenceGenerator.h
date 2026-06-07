@@ -12,8 +12,10 @@
 template <typename T>
 class SequenceGenerator{
 public:
-   SequenceGenerator(T start, T step = T{1}) : mStart{start}, mStep{step} {};
-    
+   // Constructs a sequence generator with a given start value and optional step size (default: 1)
+   explicit SequenceGenerator(T start, T step = T{1}) : mStart{start}, mStep{step} {};
+
+   // Returns the current value and advances the sequence by the step size
    T operator() () {
       T tmp = mStart;
       mStart = mStart + mStep;

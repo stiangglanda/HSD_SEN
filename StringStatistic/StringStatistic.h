@@ -15,6 +15,7 @@ class StringStatistic{
 public:
    StringStatistic() = default;
 
+   // Updates min, max, and accumulated length data based on the given string
    void operator() (std::string const& str) {
       if(str.size() < mStrMin) {
          mStrMin = str.size();
@@ -26,6 +27,7 @@ public:
       mStrCnt++;
    };
 
+   // Prints the computed string statistics (min, max, avg length) to the given output stream
    void Print(std::ostream& ost = std::cout) const {
       ost << "string statistic:" << std::endl;
       if (mStrCnt == 0) {
@@ -35,7 +37,7 @@ public:
 
       ost << "min: " << mStrMin << std::endl
           << "max: " << mStrMax << std::endl
-          << "avg: " << std::fixed << std::setprecision(2)
+          << "avg: " << std::fixed << std::setprecision(mPrecision)
           << (static_cast<double>(mStrSizeSum) / mStrCnt) << std::endl;
    }
 private:
