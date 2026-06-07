@@ -45,6 +45,6 @@ int main()
    cout << endl;
 
    cout << "Non-numeric type (std::string)" << endl;
-   generate_n(ostream_iterator<string>{cout, "\n"}, 5, SequenceGenerator<string>{"*", "*"});
+   generate_n(ostream_iterator<string>{cout, "\n"}, 5, SequenceGenerator<string>{"A", "A"});
    cout << endl;
 }
