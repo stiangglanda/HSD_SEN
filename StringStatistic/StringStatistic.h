@@ -10,6 +10,7 @@
 #define STRINGSTATISTIC_H
 #include <iomanip>
 #include <limits>
+#include <string>
 
 class StringStatistic{
 public:
